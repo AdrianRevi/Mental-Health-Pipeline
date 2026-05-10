@@ -1,6 +1,5 @@
 import logging
 import os
-import requests
 from datetime import datetime
 
 # ---------------------------------------------------------------------------
@@ -15,56 +14,71 @@ logging.basicConfig(
     format="%(asctime)s  %(levelname)-8s  %(message)s",
     handlers=[
         logging.FileHandler(os.path.join(LOG_DIR, "ingest.log"), encoding="utf-8"),
-        logging.StreamHandler(),  # also prints to terminal
+        logging.StreamHandler(),
     ],
 )
 log = logging.getLogger(__name__)
 
 # ---------------------------------------------------------------------------
-# Data sources
-# Each entry: (filename_to_save, direct_download_url)
+# Expected files in bronze/
+# The pipeline does not download files — it validates that they are present.
+# This mirrors real-world pipelines where files arrive via SFTP/S3/manual drop.
 # ---------------------------------------------------------------------------
 BRONZE_DIR = os.path.join(os.path.dirname(__file__), "..", "data", "bronze")
 
-SOURCES = {
+EXPECTED_FILES = {
     "owid_mental_health.csv": (
-        "https://raw.githubusercontent.com/owid/owid-datasets/master/datasets/"
-        "Mental%20health%20-%20Our%20World%20in%20Data/"
-        "Mental%20health%20-%20Our%20World%20in%20Data.csv"
+        "Our World in Data — Mental health prevalence\n"
+        "  Download: https://ourworldindata.org/mental-health\n"
+        "  Click 'Download' -> 'Full Data' -> save as owid_mental_health.csv"
+    ),
+    "who_mental_health.csv": (
+        "WHO Global Health Observatory — Mental health atlas\n"
+        "  Download: https://www.who.int/data/gho/data/themes/mental-health\n"
+        "  Save as: who_mental_health.csv"
+    ),
+    "worldbank_gdp.csv": (
+        "World Bank — GDP per capita (current US$)\n"
+        "  Download: https://data.worldbank.org/indicator/NY.GDP.PCAP.CD\n"
+        "  Click 'Download' -> CSV -> save as worldbank_gdp.csv"
+    ),
+    "worldbank_unemployment.csv": (
+        "World Bank — Unemployment, total (% of labor force)\n"
+        "  Download: https://data.worldbank.org/indicator/SL.UEM.TOTL.ZS\n"
+        "  Click 'Download' -> CSV -> save as worldbank_unemployment.csv"
     ),
 }
 
-# NOTE: WHO and World Bank files require manual download (no stable direct URL).
-# Instructions are printed at the end of this script.
 
+def check_bronze_files() -> dict[str, bool]:
+    """Check which expected files are present in data/bronze/.
 
-def download_file(url: str, dest_path: str) -> bool:
-    """Download a single file from url and save it to dest_path.
-
-    Returns True on success, False on failure.
-    Skips the download if the file already exists (idempotent behaviour).
+    Returns a dict mapping filename -> True (present) / False (missing).
     """
-    filename = os.path.basename(dest_path)
+    os.makedirs(BRONZE_DIR, exist_ok=True)
+    results = {}
+    for filename in EXPECTED_FILES:
+        path = os.path.join(BRONZE_DIR, filename)
+        present = os.path.isfile(path) and os.path.getsize(path) > 0
+        results[filename] = present
+        if present:
+            size_kb = os.path.getsize(path) / 1024
+            log.info("OK     %-40s (%.1f KB)", filename, size_kb)
+        else:
+            log.warning("MISS   %s — not found in data/bronze/", filename)
+    return results
 
-    if os.path.exists(dest_path):
-        log.info("SKIP   %s — already in bronze (delete to re-download)", filename)
-        return True
 
-    log.info("START  Downloading %s", filename)
-    try:
-        response = requests.get(url, timeout=60)
-        response.raise_for_status()  # raises an error for 4xx/5xx responses
-
-        with open(dest_path, "wb") as f:
-            f.write(response.content)
-
-        size_kb = len(response.content) / 1024
-        log.info("OK     %s saved (%.1f KB)", filename, size_kb)
-        return True
-
-    except requests.exceptions.RequestException as e:
-        log.error("FAIL   %s — %s", filename, e)
-        return False
+def print_missing_instructions(results: dict[str, bool]) -> None:
+    missing = [f for f, present in results.items() if not present]
+    if not missing:
+        return
+    print("\n" + "=" * 60)
+    print(f"ACTION REQUIRED — {len(missing)} file(s) missing from data/bronze/")
+    print("=" * 60)
+    for filename in missing:
+        print(f"\n  {EXPECTED_FILES[filename]}")
+    print()
 
 
 def run():
@@ -72,37 +86,20 @@ def run():
     log.info("Ingest run started at %s", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
     log.info("=" * 60)
 
-    os.makedirs(BRONZE_DIR, exist_ok=True)
+    results = check_bronze_files()
 
-    results = {}
-    for filename, url in SOURCES.items():
-        dest = os.path.join(BRONZE_DIR, filename)
-        results[filename] = download_file(url, dest)
-
-    # Summary
     ok = sum(results.values())
     total = len(results)
     log.info("-" * 60)
-    log.info("Ingest complete: %d/%d files downloaded successfully", ok, total)
+    log.info("Bronze check: %d/%d files present", ok, total)
 
-    # Manual download instructions for WHO and World Bank
-    print("\n" + "=" * 60)
-    print("MANUAL DOWNLOADS REQUIRED")
-    print("=" * 60)
-    print("""
-The following datasets must be downloaded manually and placed in data/bronze/:
+    print_missing_instructions(results)
 
-1. WHO Global Health Observatory — Mental health atlas
-   URL: https://www.who.int/data/gho/data/themes/mental-health
-   Save as: data/bronze/who_mental_health.csv
+    if ok < total:
+        log.warning("Pipeline cannot proceed until all files are in data/bronze/")
+        raise SystemExit(1)
 
-2. World Bank — GDP per capita & unemployment
-   URL: https://data.worldbank.org/indicator/NY.GDP.PCAP.CD
-   Save as: data/bronze/worldbank_gdp.csv
-
-   URL: https://data.worldbank.org/indicator/SL.UEM.TOTL.ZS
-   Save as: data/bronze/worldbank_unemployment.csv
-""")
+    log.info("All files present. Bronze layer ready.")
 
 
 if __name__ == "__main__":

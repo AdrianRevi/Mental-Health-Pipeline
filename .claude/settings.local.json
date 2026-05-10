@@ -4,7 +4,12 @@
       "PowerShell(python --version)",
       "PowerShell(python3 --version)",
       "PowerShell(py --version)",
-      "PowerShell(py -3 --version)"
+      "PowerShell(py -3 --version)",
+      "PowerShell(python --version 2>&1)",
+      "PowerShell(py --version 2>&1)",
+      "PowerShell(& \"c:\\\\Users\\\\adria\\\\Desktop\\\\Mental-Health-Pipeline\\\\venv\\\\Scripts\\\\python.exe\" --version)",
+      "PowerShell(& \"c:\\\\Users\\\\adria\\\\Desktop\\\\Mental-Health-Pipeline\\\\venv\\\\Scripts\\\\pip.exe\" install -r \"c:\\\\Users\\\\adria\\\\Desktop\\\\Mental-Health-Pipeline\\\\requirements.txt\" 2>&1)",
+      "PowerShell(& \"c:\\\\Users\\\\adria\\\\Desktop\\\\Mental-Health-Pipeline\\\\venv\\\\Scripts\\\\python.exe\" \"c:\\\\Users\\\\adria\\\\Desktop\\\\Mental-Health-Pipeline\\\\scripts\\\\ingest.py\" 2>&1)"
     ]
   }
 }
