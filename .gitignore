@@ -1,0 +1,23 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.env
+
+# Data files (too large for Git, except .gitkeep placeholders)
+data/bronze/*.csv
+data/silver/*.parquet
+data/gold/*.parquet
+data/gold/*.duckdb
+*.duckdb
+
+# Logs (generated at runtime, not source code)
+logs/*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Great Expectations
+gx/uncommitted/
