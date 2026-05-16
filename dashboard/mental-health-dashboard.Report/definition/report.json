@@ -37,6 +37,17 @@
           "type": "BaseTheme"
         }
       ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "PBI_Background5245898500393145.png",
+          "path": "PBI_Background5245898500393145.png",
+          "type": "Image"
+        }
+      ]
     }
   ],
   "settings": {
