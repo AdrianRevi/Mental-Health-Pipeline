@@ -1,0 +1,48 @@
+name: Mental Health Pipeline
+
+# Runs on every push to main AND every Monday at 08:00 UTC
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '0 8 * * 1'
+
+# GitHub automatically emails the commit author and repo owner when any
+# job fails — no extra configuration needed beyond the default GitHub
+# notification settings in your profile.
+
+jobs:
+  pipeline:
+    name: ETL Pipeline
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip          # caches the venv between runs — much faster
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      # Each script is a separate step so GitHub shows exactly which stage
+      # failed and how long each one took.
+
+      - name: Bronze — Ingest from APIs
+        run: python scripts/ingest.py
+
+      - name: Silver — Clean & Join
+        run: python scripts/transform_silver.py
+
+      - name: Quality Checks
+        run: python scripts/quality_checks.py
+
+      - name: Gold — Build Star Schema
+        run: python scripts/transform_gold.py
+
+      - name: Load DuckDB
+        run: python scripts/load_duckdb.py

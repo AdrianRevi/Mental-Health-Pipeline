@@ -177,12 +177,12 @@ mental-health-pipeline/
 
 | Week | Status | Notes |
 |------|--------|-------|
-| Week 1 — Setup & Bronze | Not started | |
-| Week 2 — Silver Layer | Not started | |
-| Week 3 — Data Quality | Not started | |
-| Week 4 — Gold & DuckDB | Not started | |
-| Week 5 — GitHub Actions | Not started | |
-| Week 6 — Polish & Portfolio | Not started | |
+| Week 1 — Setup & Bronze | ✅ Done | `ingest.py` — World Bank API (3 indicators) + WHO GHO API. 5/5 sources via live APIs, no manual downloads. |
+| Week 2 — Silver Layer | ✅ Done | `transform_silver.py` — filters WB aggregates, joins 4 sources on country_code+year, outputs `mental_health.parquet` (6525 rows × 7 cols). |
+| Week 3 — Data Quality | ✅ Done | `quality_checks.py` — 20 Great Expectations rules (structural, range, coverage, volume). Pipeline stops on any failure. |
+| Week 4 — Gold & DuckDB | ✅ Done | `transform_gold.py` + `load_duckdb.py` — star schema: `dim_country` (217), `dim_year` (25), `fact_mental_health` (6525). Loaded into `mental_health.duckdb`. |
+| Week 5 — GitHub Actions | ✅ Done | `.github/workflows/pipeline.yml` — triggers on push to main + weekly (Mon 08:00 UTC). Email alert on failure via GitHub notifications. |
+| Week 6 — Polish & Portfolio | 🔲 Pending | Fix `dim_year` for PBI calendar, README.md, Power BI dashboard. |
 
 ---
 
