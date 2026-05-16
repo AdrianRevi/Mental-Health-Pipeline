@@ -3,7 +3,7 @@
   "version": "4.0",
   "datasetReference": {
     "byPath": {
-      "path": "../MENTAL HEALTH DASHBOARD.SemanticModel"
+      "path": "../mental-health-dashboard.SemanticModel"
     }
   }
 }
