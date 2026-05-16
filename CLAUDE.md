@@ -1,24 +1,24 @@
 # Mental Health Pipeline — Claude Code Context
 
 ## Project
-End-to-end ETL pipeline on public mental health data (WHO, Our World in Data, World Bank).
+End-to-end ETL pipeline on public mental health data (WHO, World Bank).
 Goal: portfolio-ready project for junior Data Engineer interviews.
 Owner: Adrian | Started: May 2026 | Cost: €0
 
 ## Current Status
-- Week 1 of 6 — not started
-- See `project-brief.md` for full roadmap and architecture details
+Pipeline complete — all 5 scripts written and running on GitHub Actions.
+Next: Power BI dashboard (`mental_health_dashboard.pbix`).
 
 ## Tech Stack
 - Language: Python 3.11+
-- Transformation: pandas + PySpark (basic)
+- Transformation: pandas
 - Storage: local files + DuckDB
-- Data Quality: Great Expectations
+- Data Quality: Great Expectations 0.17.x
 - Orchestration: GitHub Actions
 - Output (optional): Power BI Desktop
 
 ## Architecture
-Bronze (raw CSVs) → Silver (cleaned .parquet) → Gold (aggregates) → DuckDB → Power BI
+Bronze (raw CSVs) → Silver (cleaned .parquet) → Gold (star schema) → DuckDB → Power BI
 
 ## Instructions for Claude
 - Adrian is a junior data analyst/engineer — keep explanations beginner-friendly but technically accurate
@@ -30,9 +30,10 @@ Bronze (raw CSVs) → Silver (cleaned .parquet) → Gold (aggregates) → DuckDB
 - Suggest things that are interview-relevant for junior DE roles
 
 ## Key Files
-- `project-brief.md` — full project brief, roadmap, folder structure, interview pitch
 - `data/bronze/` — raw CSVs, never modified
 - `data/silver/` — cleaned .parquet files
-- `data/gold/` — aggregated tables
-- `scripts/` — Python ETL scripts
+- `data/gold/` — star schema (dim_country, dim_year, fact_mental_health)
+- `data/mental_health.duckdb` — analytical database (gitignored)
+- `scripts/` — Python ETL scripts (ingest → silver → quality → gold → duckdb)
 - `.github/workflows/pipeline.yml` — GitHub Actions orchestration
+- `requirements.txt` — GX pinned to `>=0.17,<0.18` (0.18+ broke the fluent API)
