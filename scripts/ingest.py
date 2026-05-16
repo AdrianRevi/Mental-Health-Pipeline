@@ -51,6 +51,9 @@ WB_INDICATORS = [
     ("SH.STA.SUIC.P5",  "Suicide mortality rate (per 100k pop.)", "worldbank_suicide.csv"),
 ]
 
+# World Bank country metadata — region, income level, capital city
+WB_COUNTRIES_FILE = "worldbank_countries.csv"
+
 # WHO GHO: list of (output_filename, indicator_code, description)
 # The GHO OData API returns JSON with a "value" array.
 WHO_INDICATORS = [
@@ -128,6 +131,42 @@ def fetch_worldbank(code: str, description: str) -> pd.DataFrame:
 
 
 # ---------------------------------------------------------------------------
+# World Bank country metadata downloader
+# ---------------------------------------------------------------------------
+def fetch_worldbank_countries() -> pd.DataFrame:
+    """
+    Fetches country metadata from the World Bank: region, income level,
+    capital city.  One request — all countries fit in a single page.
+
+    This table becomes dim_country in the Gold layer.
+    """
+    url = "https://api.worldbank.org/v2/country?format=json&per_page=300"
+    log.info("  WB GET  country metadata")
+
+    resp = requests.get(url, headers=HEADERS, timeout=30)
+    resp.raise_for_status()
+
+    meta, rows = resp.json()
+    records = []
+    for row in rows or []:
+        records.append(
+            {
+                "country_code":  row["id"],               # ISO3
+                "country_name":  row["name"],
+                "region":        row["region"]["value"],
+                "income_level":  row["incomeLevel"]["value"],
+                "capital_city":  row.get("capitalCity", ""),
+                "longitude":     row.get("longitude", ""),
+                "latitude":      row.get("latitude", ""),
+            }
+        )
+
+    df = pd.DataFrame(records)
+    log.info("  WB countries: %d rows", len(df))
+    return df
+
+
+# ---------------------------------------------------------------------------
 # WHO GHO downloader
 # ---------------------------------------------------------------------------
 def fetch_who_gho(indicator_code: str, description: str) -> pd.DataFrame:
@@ -195,6 +234,13 @@ def run() -> None:
             log.error("FAILED %s: %s", filename, exc)
             errors.append(filename)
 
+    try:
+        df = fetch_worldbank_countries()
+        save_bronze(df, WB_COUNTRIES_FILE)
+    except Exception as exc:
+        log.error("FAILED %s: %s", WB_COUNTRIES_FILE, exc)
+        errors.append(WB_COUNTRIES_FILE)
+
     # --- WHO GHO ---
     log.info("--- WHO Global Health Observatory ---")
     for filename, code, description in WHO_INDICATORS:
@@ -207,7 +253,7 @@ def run() -> None:
 
     # --- Final summary ---
     log.info("=" * 60)
-    total = len(WB_INDICATORS) + len(WHO_INDICATORS)
+    total = len(WB_INDICATORS) + 1 + len(WHO_INDICATORS)
     ok = total - len(errors)
     log.info("Ingest complete: %d/%d sources succeeded", ok, total)
 
