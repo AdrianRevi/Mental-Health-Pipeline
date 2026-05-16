@@ -1,10 +1,27 @@
+"""
+ingest.py — Bronze layer ingestion
+Downloads raw data from public APIs and saves CSVs to data/bronze/.
+
+Sources
+-------
+- World Bank API v2  (no account/key required)
+    • GDP per capita          NY.GDP.PCAP.CD
+    • Unemployment rate       SL.UEM.TOTL.ZS
+    • Suicide mortality rate  SH.STA.SUIC.P5  (mental-health proxy)
+- WHO Global Health Observatory (GHO) OData API  (no account/key required)
+    • Mental health outpatient facilities per 100k population  MH_6
+"""
+
 import logging
 import os
+import time
 from datetime import datetime
 
+import pandas as pd
+import requests
+
 # ---------------------------------------------------------------------------
-# Logging setup
-# Every run appends a timestamped block to logs/ingest.log
+# Logging — writes to logs/ingest.log AND the console
 # ---------------------------------------------------------------------------
 LOG_DIR = os.path.join(os.path.dirname(__file__), "..", "logs")
 os.makedirs(LOG_DIR, exist_ok=True)
@@ -19,87 +36,186 @@ logging.basicConfig(
 )
 log = logging.getLogger(__name__)
 
-# ---------------------------------------------------------------------------
-# Expected files in bronze/
-# The pipeline does not download files — it validates that they are present.
-# This mirrors real-world pipelines where files arrive via SFTP/S3/manual drop.
-# ---------------------------------------------------------------------------
 BRONZE_DIR = os.path.join(os.path.dirname(__file__), "..", "data", "bronze")
 
-EXPECTED_FILES = {
-    "owid_mental_health.csv": (
-        "Our World in Data — Mental health prevalence\n"
-        "  Download: https://ourworldindata.org/mental-health\n"
-        "  Click 'Download' -> 'Full Data' -> save as owid_mental_health.csv"
+# ---------------------------------------------------------------------------
+# Source definitions
+# ---------------------------------------------------------------------------
+
+# World Bank: list of (indicator_code, description, output_filename)
+# The API is free, requires no key, and is extremely well-documented —
+# a great talking point in interviews.
+WB_INDICATORS = [
+    ("NY.GDP.PCAP.CD",  "GDP per capita (current US$)",           "worldbank_gdp.csv"),
+    ("SL.UEM.TOTL.ZS",  "Unemployment, total (% of labor force)", "worldbank_unemployment.csv"),
+    ("SH.STA.SUIC.P5",  "Suicide mortality rate (per 100k pop.)", "worldbank_suicide.csv"),
+]
+
+# WHO GHO: list of (output_filename, indicator_code, description)
+# The GHO OData API returns JSON with a "value" array.
+WHO_INDICATORS = [
+    (
+        "who_mental_health.csv",
+        "MH_6",
+        "Mental health outpatient facilities per 100k population (WHO GHO)",
     ),
-    "who_mental_health.csv": (
-        "WHO Global Health Observatory — Mental health atlas\n"
-        "  Download: https://www.who.int/data/gho/data/themes/mental-health\n"
-        "  Save as: who_mental_health.csv"
-    ),
-    "worldbank_gdp.csv": (
-        "World Bank — GDP per capita (current US$)\n"
-        "  Download: https://data.worldbank.org/indicator/NY.GDP.PCAP.CD\n"
-        "  Click 'Download' -> CSV -> save as worldbank_gdp.csv"
-    ),
-    "worldbank_unemployment.csv": (
-        "World Bank — Unemployment, total (% of labor force)\n"
-        "  Download: https://data.worldbank.org/indicator/SL.UEM.TOTL.ZS\n"
-        "  Click 'Download' -> CSV -> save as worldbank_unemployment.csv"
-    ),
+]
+
+# Polite User-Agent so servers can identify automated requests
+HEADERS = {
+    "User-Agent": (
+        "MentalHealthPipeline/1.0 "
+        "(portfolio; educational use; adrianreviriego@gmail.com)"
+    )
 }
 
 
-def check_bronze_files() -> dict[str, bool]:
-    """Check which expected files are present in data/bronze/.
-
-    Returns a dict mapping filename -> True (present) / False (missing).
+# ---------------------------------------------------------------------------
+# World Bank downloader
+# ---------------------------------------------------------------------------
+def fetch_worldbank(code: str, description: str) -> pd.DataFrame:
     """
+    Fetches all countries × years 2000-2024 for one World Bank indicator.
+
+    The API is paginated (max 1 000 rows per page), so we loop until we
+    have collected every page.  Each row is flattened into a plain dict
+    before being turned into a DataFrame.
+    """
+    WB_BASE = "https://api.worldbank.org/v2"
+    records = []
+    page = 1
+    total_pages = None  # we don't know this until the first response
+
+    while total_pages is None or page <= total_pages:
+        url = (
+            f"{WB_BASE}/country/all/indicator/{code}"
+            f"?format=json&date=2000:2024&per_page=1000&page={page}"
+        )
+        log.info("  WB GET  %s  (page %d/%s)", code, page, total_pages or "?")
+
+        resp = requests.get(url, headers=HEADERS, timeout=30)
+        resp.raise_for_status()  # raises HTTPError for 4xx/5xx
+
+        payload = resp.json()
+        # World Bank always returns a 2-element list:
+        #   payload[0] = pagination metadata
+        #   payload[1] = list of data rows (may be None if no data)
+        meta = payload[0]
+        rows = payload[1] or []
+
+        if total_pages is None:
+            total_pages = meta["pages"]
+
+        for row in rows:
+            records.append(
+                {
+                    "country":        row["country"]["value"],
+                    "country_code":   row["countryiso3code"],
+                    "year":           int(row["date"]),
+                    "value":          row["value"],   # may be None (missing data)
+                    "indicator_code": code,
+                    "indicator_name": description,
+                }
+            )
+
+        page += 1
+        if page <= total_pages:
+            time.sleep(0.3)  # don't hammer the API between pages
+
+    df = pd.DataFrame(records)
+    log.info("  WB %s: %d rows total", code, len(df))
+    return df
+
+
+# ---------------------------------------------------------------------------
+# WHO GHO downloader
+# ---------------------------------------------------------------------------
+def fetch_who_gho(indicator_code: str, description: str) -> pd.DataFrame:
+    """
+    Fetches one indicator from the WHO Global Health Observatory OData API.
+
+    The response is a JSON object with a single "value" key whose content
+    is a list of observation records.  We keep only the columns we need.
+    """
+    GHO_BASE = "https://ghoapi.azureedge.net/api"
+    url = f"{GHO_BASE}/{indicator_code}"
+    log.info("  WHO GET  %s  (%s)", indicator_code, description)
+
+    resp = requests.get(url, headers=HEADERS, timeout=60)
+    resp.raise_for_status()
+
+    rows = resp.json().get("value", [])
+    records = []
+    for row in rows:
+        records.append(
+            {
+                "country_code":   row.get("SpatialDim"),         # ISO3
+                "year":           row.get("TimeDim"),
+                "sex":            row.get("Dim1"),                # BTSX / MLE / FMLE
+                "value":          row.get("NumericValue"),
+                "indicator_code": indicator_code,
+                "indicator_name": description,
+            }
+        )
+
+    df = pd.DataFrame(records)
+    log.info("  WHO %s: %d rows", indicator_code, len(df))
+    return df
+
+
+# ---------------------------------------------------------------------------
+# Save raw DataFrame to bronze/
+# ---------------------------------------------------------------------------
+def save_bronze(df: pd.DataFrame, filename: str) -> None:
+    """Writes a CSV to data/bronze/ — raw, untransformed (bronze = source of truth)."""
     os.makedirs(BRONZE_DIR, exist_ok=True)
-    results = {}
-    for filename in EXPECTED_FILES:
-        path = os.path.join(BRONZE_DIR, filename)
-        present = os.path.isfile(path) and os.path.getsize(path) > 0
-        results[filename] = present
-        if present:
-            size_kb = os.path.getsize(path) / 1024
-            log.info("OK     %-40s (%.1f KB)", filename, size_kb)
-        else:
-            log.warning("MISS   %s — not found in data/bronze/", filename)
-    return results
+    path = os.path.join(BRONZE_DIR, filename)
+    df.to_csv(path, index=False)
+    size_kb = os.path.getsize(path) / 1024
+    log.info("  Saved %-40s  %.1f KB", filename, size_kb)
 
 
-def print_missing_instructions(results: dict[str, bool]) -> None:
-    missing = [f for f, present in results.items() if not present]
-    if not missing:
-        return
-    print("\n" + "=" * 60)
-    print(f"ACTION REQUIRED — {len(missing)} file(s) missing from data/bronze/")
-    print("=" * 60)
-    for filename in missing:
-        print(f"\n  {EXPECTED_FILES[filename]}")
-    print()
-
-
-def run():
+# ---------------------------------------------------------------------------
+# Orchestration
+# ---------------------------------------------------------------------------
+def run() -> None:
     log.info("=" * 60)
-    log.info("Ingest run started at %s", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+    log.info("Ingest started  %s", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
     log.info("=" * 60)
 
-    results = check_bronze_files()
+    errors: list[str] = []
 
-    ok = sum(results.values())
-    total = len(results)
-    log.info("-" * 60)
-    log.info("Bronze check: %d/%d files present", ok, total)
+    # --- World Bank ---
+    log.info("--- World Bank API ---")
+    for code, description, filename in WB_INDICATORS:
+        try:
+            df = fetch_worldbank(code, description)
+            save_bronze(df, filename)
+        except Exception as exc:
+            log.error("FAILED %s: %s", filename, exc)
+            errors.append(filename)
 
-    print_missing_instructions(results)
+    # --- WHO GHO ---
+    log.info("--- WHO Global Health Observatory ---")
+    for filename, code, description in WHO_INDICATORS:
+        try:
+            df = fetch_who_gho(code, description)
+            save_bronze(df, filename)
+        except Exception as exc:
+            log.error("FAILED %s: %s", filename, exc)
+            errors.append(filename)
 
-    if ok < total:
-        log.warning("Pipeline cannot proceed until all files are in data/bronze/")
+    # --- Final summary ---
+    log.info("=" * 60)
+    total = len(WB_INDICATORS) + len(WHO_INDICATORS)
+    ok = total - len(errors)
+    log.info("Ingest complete: %d/%d sources succeeded", ok, total)
+
+    if errors:
+        log.warning("Failed sources: %s", ", ".join(errors))
         raise SystemExit(1)
 
-    log.info("All files present. Bronze layer ready.")
+    log.info("Bronze layer ready.")
 
 
 if __name__ == "__main__":

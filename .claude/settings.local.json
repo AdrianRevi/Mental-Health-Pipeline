@@ -9,7 +9,12 @@
       "PowerShell(py --version 2>&1)",
       "PowerShell(& \"c:\\\\Users\\\\adria\\\\Desktop\\\\Mental-Health-Pipeline\\\\venv\\\\Scripts\\\\python.exe\" --version)",
       "PowerShell(& \"c:\\\\Users\\\\adria\\\\Desktop\\\\Mental-Health-Pipeline\\\\venv\\\\Scripts\\\\pip.exe\" install -r \"c:\\\\Users\\\\adria\\\\Desktop\\\\Mental-Health-Pipeline\\\\requirements.txt\" 2>&1)",
-      "PowerShell(& \"c:\\\\Users\\\\adria\\\\Desktop\\\\Mental-Health-Pipeline\\\\venv\\\\Scripts\\\\python.exe\" \"c:\\\\Users\\\\adria\\\\Desktop\\\\Mental-Health-Pipeline\\\\scripts\\\\ingest.py\" 2>&1)"
+      "PowerShell(& \"c:\\\\Users\\\\adria\\\\Desktop\\\\Mental-Health-Pipeline\\\\venv\\\\Scripts\\\\python.exe\" \"c:\\\\Users\\\\adria\\\\Desktop\\\\Mental-Health-Pipeline\\\\scripts\\\\ingest.py\" 2>&1)",
+      "WebSearch",
+      "Bash(where claude *)",
+      "PowerShell(Get-Command claude -ErrorAction SilentlyContinue)",
+      "PowerShell(npm list -g @anthropic-ai/claude-code 2>$null)",
+      "PowerShell(npm root -g)"
     ]
   }
 }
