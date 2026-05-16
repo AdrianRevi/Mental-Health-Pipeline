@@ -151,19 +151,6 @@ con.execute("""
 
 ---
 
-## Connecting Power BI Desktop
-
-1. Open Power BI Desktop
-2. **Get Data → ODBC**
-3. DSN: point to `data/mental_health.duckdb` using the [DuckDB ODBC driver](https://duckdb.org/docs/api/odbc/overview)
-4. Load `dim_country`, `dim_year`, `fact_mental_health`
-5. In Model view, define relationships:
-   - `fact_mental_health[country_code]` → `dim_country[country_code]`
-   - `fact_mental_health[year]` → `dim_year[year]`
-6. Mark `dim_year` as a Date Table using the `date` column to enable time intelligence (YTD, year-over-year comparisons)
-
----
-
 ## Project Structure
 
 ```
@@ -187,11 +174,7 @@ mental-health-pipeline/
 │
 ├── logs/                    Runtime logs (gitignored)
 ├── requirements.txt
+├── mental_health_dashboard.pbix   Power BI report
 └── README.md
 ```
 
----
-
-## Interview Talking Point
-
-> *"I built an end-to-end ETL pipeline on public mental health data from the World Bank and WHO, following the Medallion Architecture — Bronze for raw API ingestion, Silver for cleaned and validated data, Gold for a star schema ready for Power BI. I used Python and pandas for transformation, Great Expectations for automated data quality with 20 validation rules, DuckDB as a local analytical database, and GitHub Actions for weekly orchestration. The pipeline runs automatically, fails loudly with clear logs if data quality checks don't pass, and outputs a star schema queryable with SQL."*
