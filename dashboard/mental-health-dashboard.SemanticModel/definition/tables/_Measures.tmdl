@@ -1,0 +1,111 @@
+table _Measures
+	lineageTag: 37dcb400-2dec-4b80-95f8-88d2bcc4ee43
+
+	measure 'Avg Suicide Rate per 100k' =
+			
+			AVERAGE(fact_mental_health[suicide_rate_per_100k])
+		formatString: #,0.00
+		lineageTag: 3d1261f9-6c23-4464-befd-3d37e33ecee5
+
+	measure 'Countries Count' =
+			
+			DISTINCTCOUNT(dim_country[country])
+		formatString: #,0
+		lineageTag: ecfb1fe7-9201-43f0-b3df-4b5ea6809f65
+
+	measure 'Year Range' = FORMAT(MAX(dim_year[year]), "0")
+		lineageTag: 7d09ed95-dd85-4aa4-a5c2-c80f04c7885d
+
+	measure 'Avg Outpatient Facilities' =
+			
+			AVERAGE(fact_mental_health[outpatient_facilities])
+		formatString: #,0.00
+		lineageTag: f9e3941a-99a8-4e74-b1d2-5392489bb6cc
+
+	measure 'Top Country Name' =
+			
+			CALCULATE(
+			    SELECTEDVALUE(dim_country[country]),
+			    TOPN(1, dim_country, [Avg Suicide Rate per 100k], DESC)
+			)
+		lineageTag: da49fa9e-91d6-4f35-9419-20d24b4b209d
+
+	measure 'Top Country Rate' =
+			
+			MAXX(
+			    TOPN(1, dim_country, [Avg Suicide Rate per 100k], DESC),
+			    [Avg Suicide Rate per 100k]
+			)
+		lineageTag: 75ceeaf4-f176-4bca-8339-c63344c37920
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'YoY Change Suicide Rate' =
+			
+			VAR CurrentYear = MAX(dim_year[year])
+			VAR CurrentRate = CALCULATE([Avg Suicide Rate per 100k], dim_year[year] = CurrentYear)
+			VAR PrevRate    = CALCULATE([Avg Suicide Rate per 100k], dim_year[year] = CurrentYear - 1)
+			RETURN
+			IF(ISBLANK(PrevRate), BLANK(), CurrentRate - PrevRate)
+		lineageTag: 8cd7f456-e6e8-44f9-856c-add771e22ec5
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg GDP per Capita' =
+			
+			AVERAGE(fact_mental_health[gdp_per_capita])
+		lineageTag: e849a2f0-f7cd-4adc-bdb8-622bbcb579dd
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Unemployment Rate' =
+			
+			AVERAGE(fact_mental_health[unemployment_rate])
+		lineageTag: a1d33d78-4465-49fd-8e0d-676f2b1856a7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Highest Rate Country' =
+			
+			CALCULATE(
+			    SELECTEDVALUE(dim_country[country]),
+			    TOPN(1, dim_country, [Avg Suicide Rate per 100k], DESC)
+			)
+		lineageTag: c1abbd01-3bba-4811-9919-a7b6adf4e95a
+
+	measure 'Lowest Rate Country' =
+			
+			CALCULATE(
+			    SELECTEDVALUE(dim_country[country]),
+			    TOPN(1, dim_country, [Avg Suicide Rate per 100k], ASC)
+			)
+		lineageTag: 27517c52-6bad-43d2-b773-d3f37b5cb140
+
+	measure 'YoY Change Label' =
+			
+			VAR Change = [YoY Change Suicide Rate]
+			RETURN
+			IF(
+			    ISBLANK(Change), "No prev. data",
+			    IF(Change > 0,
+			        "▲ " & FORMAT(ABS(Change), "0.00"),
+			        "▼ " & FORMAT(ABS(Change), "0.00")
+			    )
+			)
+		lineageTag: a6d224d7-5383-472c-bbfa-03b5616c4d7a
+
+	column Value
+		isHidden
+		lineageTag: 815d2f43-d410-4798-befd-3fa9e71ebe7a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Value]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Measures = calculated
+		mode: import
+		source = {""}
+
+	annotation PBI_Id = 13091f9480b6479eaa54d75148b75207
+

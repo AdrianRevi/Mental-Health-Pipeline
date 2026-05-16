@@ -19,6 +19,7 @@ ref table dim_year
 ref table DateTableTemplate_e76b3f4a-89d4-4351-b2ed-e9f579ff7bd8
 ref table LocalDateTable_ff8da501-ac9e-47ad-bb86-fdb3e3ba601f
 ref table fact_mental_health
+ref table _Measures
 
 ref cultureInfo en-US
 
