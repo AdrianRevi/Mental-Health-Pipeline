@@ -1,0 +1,13 @@
+relationship 9544bea0-ad2d-4a47-8483-aca6b12e8895
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_year.date
+	toColumn: LocalDateTable_ff8da501-ac9e-47ad-bb86-fdb3e3ba601f.Date
+
+relationship AutoDetected_01fbd904-2fd5-4f22-9f34-72752089c2ca
+	fromColumn: fact_mental_health.country_code
+	toColumn: dim_country.country_code
+
+relationship AutoDetected_d1129741-f7d0-45ed-a806-5e5fb4055d85
+	fromColumn: fact_mental_health.year
+	toColumn: dim_year.year
+

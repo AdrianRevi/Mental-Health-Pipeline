@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "MENTAL HEALTH DASHBOARD"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "674fdbaa-570f-471c-b500-daaa2455980f"
+  }
+}
