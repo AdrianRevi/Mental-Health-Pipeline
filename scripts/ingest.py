@@ -78,13 +78,14 @@ HEADERS = {
 # ---------------------------------------------------------------------------
 def fetch_worldbank(code: str, description: str) -> pd.DataFrame:
     """
-    Fetches all countries × years 2000-2024 for one World Bank indicator.
+    Fetches all countries × years 2000-{current year} for one World Bank indicator.
 
     The API is paginated (max 1 000 rows per page), so we loop until we
     have collected every page.  Each row is flattened into a plain dict
     before being turned into a DataFrame.
     """
     WB_BASE = "https://api.worldbank.org/v2"
+    end_year = datetime.now().year
     records = []
     page = 1
     total_pages = None  # we don't know this until the first response
@@ -92,7 +93,7 @@ def fetch_worldbank(code: str, description: str) -> pd.DataFrame:
     while total_pages is None or page <= total_pages:
         url = (
             f"{WB_BASE}/country/all/indicator/{code}"
-            f"?format=json&date=2000:2024&per_page=1000&page={page}"
+            f"?format=json&date=2000:{end_year}&per_page=1000&page={page}"
         )
         log.info("  WB GET  %s  (page %d/%s)", code, page, total_pages or "?")
 
