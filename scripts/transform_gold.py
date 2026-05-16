@@ -101,6 +101,10 @@ def build_dim_year(year_min: int = 2000, year_max: int = 2024) -> pd.DataFrame:
     # Human-readable period label for slicers in Power BI
     df["period_label"] = df["decade"].astype(str) + "s"
 
+    # Date column (Jan 1 of each year) so Power BI can mark this as a
+    # Date Table and enable time intelligence (YTD, year-over-year, etc.)
+    df["date"] = pd.to_datetime(df["year"].astype(str) + "-01-01")
+
     log.info("dim_year: %d years (%d – %d)", len(df), year_min, year_max)
     return df
 
