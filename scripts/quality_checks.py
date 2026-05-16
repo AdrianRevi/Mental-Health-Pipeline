@@ -102,7 +102,7 @@ def define_expectations(v) -> None:
     v.expect_column_values_to_not_be_null("year")
 
     # --- STRUCTURAL: year within dataset scope ---
-    v.expect_column_values_to_be_between("year", min_value=2000, max_value=2024)
+    v.expect_column_values_to_be_between("year", min_value=2000, max_value=datetime.now().year)
 
     # --- VOLUME: table must have at least this many rows and columns ---
     v.expect_table_row_count_to_be_between(min_value=6_000)
