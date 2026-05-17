@@ -87,13 +87,19 @@ def define_expectations(v) -> None:
       outpatient_facilities 97.8% null → no null-coverage check (sparse by design)
     """
 
-    # --- STRUCTURAL: all 7 columns must exist ---
-    expected_columns = [
+    # --- STRUCTURAL: core columns must always exist ---
+    core_columns = [
         "country_code", "country", "year",
-        "gdp_per_capita", "unemployment_rate",
-        "suicide_rate_per_100k", "outpatient_facilities",
+        "gdp_per_capita", "unemployment_rate", "suicide_rate_per_100k",
+        "outpatient_facilities", "suicide_rate_male", "suicide_rate_female",
+        "gini_index", "urban_population_pct", "youth_unemployment_rate",
+        "unemployment_male", "unemployment_female",
+        "health_expenditure_per_capita", "health_expenditure_gdp_pct",
+        "life_expectancy", "mental_hospitals", "psychiatric_beds",
+        "psychiatrists_per_100k", "mh_nurses_per_100k", "psychologists_per_100k",
+        "day_treatment_facilities", "mh_expenditure_pct",
     ]
-    for col in expected_columns:
+    for col in core_columns:
         v.expect_column_to_exist(col)
 
     # --- STRUCTURAL: key identifier columns never null ---
@@ -106,27 +112,24 @@ def define_expectations(v) -> None:
 
     # --- VOLUME: table must have at least this many rows and columns ---
     v.expect_table_row_count_to_be_between(min_value=6_000)
-    v.expect_table_column_count_to_equal(7)
+    v.expect_table_column_count_to_be_between(min_value=24)
 
     # --- RANGE: values must be non-negative when present ---
-    # mostly=0.99 allows 1% of rows to fail (handles encoding anomalies)
-    v.expect_column_values_to_be_between(
-        "gdp_per_capita", min_value=0, mostly=0.99
-    )
-    v.expect_column_values_to_be_between(
-        "unemployment_rate", min_value=0, max_value=100, mostly=0.99
-    )
-    v.expect_column_values_to_be_between(
-        "suicide_rate_per_100k", min_value=0, mostly=0.99
-    )
-    v.expect_column_values_to_be_between(
-        "outpatient_facilities", min_value=0, mostly=0.99
-    )
+    v.expect_column_values_to_be_between("gdp_per_capita",           min_value=0, mostly=0.99)
+    v.expect_column_values_to_be_between("unemployment_rate",        min_value=0, max_value=100, mostly=0.99)
+    v.expect_column_values_to_be_between("suicide_rate_per_100k",    min_value=0, mostly=0.99)
+    v.expect_column_values_to_be_between("suicide_rate_male",        min_value=0, mostly=0.99)
+    v.expect_column_values_to_be_between("suicide_rate_female",      min_value=0, mostly=0.99)
+    v.expect_column_values_to_be_between("outpatient_facilities",    min_value=0, mostly=0.99)
+    v.expect_column_values_to_be_between("life_expectancy",          min_value=0, max_value=120, mostly=0.99)
+    v.expect_column_values_to_be_between("urban_population_pct",     min_value=0, max_value=100, mostly=0.99)
+    v.expect_column_values_to_be_between("gini_index",               min_value=0, max_value=100, mostly=0.99)
 
-    # --- COVERAGE: null rates must not exceed documented thresholds ---
-    v.expect_column_values_to_not_be_null("gdp_per_capita",         mostly=0.90)
-    v.expect_column_values_to_not_be_null("unemployment_rate",      mostly=0.80)
-    v.expect_column_values_to_not_be_null("suicide_rate_per_100k",  mostly=0.65)
+    # --- COVERAGE: null rates for core indicators ---
+    v.expect_column_values_to_not_be_null("gdp_per_capita",          mostly=0.90)
+    v.expect_column_values_to_not_be_null("unemployment_rate",       mostly=0.80)
+    v.expect_column_values_to_not_be_null("suicide_rate_per_100k",   mostly=0.65)
+    v.expect_column_values_to_not_be_null("life_expectancy",         mostly=0.85)
 
 
 # ---------------------------------------------------------------------------

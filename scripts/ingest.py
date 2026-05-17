@@ -46,9 +46,21 @@ BRONZE_DIR = os.path.join(os.path.dirname(__file__), "..", "data", "bronze")
 # The API is free, requires no key, and is extremely well-documented —
 # a great talking point in interviews.
 WB_INDICATORS = [
-    ("NY.GDP.PCAP.CD",  "GDP per capita (current US$)",           "worldbank_gdp.csv"),
-    ("SL.UEM.TOTL.ZS",  "Unemployment, total (% of labor force)", "worldbank_unemployment.csv"),
-    ("SH.STA.SUIC.P5",  "Suicide mortality rate (per 100k pop.)", "worldbank_suicide.csv"),
+    # Core economic indicators
+    ("NY.GDP.PCAP.CD",    "GDP per capita (current US$)",              "worldbank_gdp.csv"),
+    ("SL.UEM.TOTL.ZS",   "Unemployment, total (% of labor force)",    "worldbank_unemployment.csv"),
+    ("SL.UEM.TOTL.MA.ZS","Unemployment, male (% of labor force)",     "worldbank_unemployment_male.csv"),
+    ("SL.UEM.TOTL.FE.ZS","Unemployment, female (% of labor force)",   "worldbank_unemployment_female.csv"),
+    ("SL.UEM.1524.ZS",   "Unemployment, youth 15-24 (%)",             "worldbank_youth_unemployment.csv"),
+    ("SI.POV.GINI",       "GINI index (income inequality)",            "worldbank_gini.csv"),
+    ("SP.URB.TOTL.IN.ZS", "Urban population (% of total)",            "worldbank_urban.csv"),
+    # Health indicators
+    ("SH.STA.SUIC.P5",   "Suicide mortality rate (per 100k pop.)",    "worldbank_suicide.csv"),
+    ("SH.STA.SUIC.MA.P5","Suicide mortality rate, male (per 100k)",   "worldbank_suicide_male.csv"),
+    ("SH.STA.SUIC.FE.P5","Suicide mortality rate, female (per 100k)", "worldbank_suicide_female.csv"),
+    ("SH.XPD.CHEX.PC.CD","Health expenditure per capita (US$)",       "worldbank_health_expenditure.csv"),
+    ("SH.XPD.CHEX.GD.ZS","Health expenditure (% of GDP)",             "worldbank_health_expenditure_gdp.csv"),
+    ("SP.DYN.LE00.IN",   "Life expectancy at birth (years)",          "worldbank_life_expectancy.csv"),
 ]
 
 # World Bank country metadata — region, income level, capital city
@@ -57,11 +69,15 @@ WB_COUNTRIES_FILE = "worldbank_countries.csv"
 # WHO GHO: list of (output_filename, indicator_code, description)
 # The GHO OData API returns JSON with a "value" array.
 WHO_INDICATORS = [
-    (
-        "who_mental_health.csv",
-        "MH_6",
-        "Mental health outpatient facilities per 100k population (WHO GHO)",
-    ),
+    ("who_outpatient_facilities.csv", "MH_6",       "Mental health outpatient facilities per 100k"),
+    ("who_mental_hospitals.csv",      "MH_1",       "Mental hospitals per 100k"),
+    ("who_psychiatric_beds.csv",      "MH_2",       "Psychiatric beds per 100k"),
+    ("who_psychiatrists.csv",         "MH_3",       "Psychiatrists working in mental health per 100k"),
+    ("who_mh_nurses.csv",             "MH_4",       "Mental health nurses per 100k"),
+    ("who_psychologists.csv",         "MH_5",       "Psychologists working in mental health per 100k"),
+    ("who_day_treatment.csv",         "MH_7",       "Day treatment facilities per 100k"),
+    ("who_mh_expenditure.csv",        "MH_12",      "Mental health expenditure as % of health budget"),
+    ("who_suicide_by_age.csv",        "SDGSUICIDE", "Suicide mortality rate by age and sex (WHO SDG)"),
 ]
 
 # Polite User-Agent so servers can identify automated requests
@@ -189,9 +205,10 @@ def fetch_who_gho(indicator_code: str, description: str) -> pd.DataFrame:
     for row in rows:
         records.append(
             {
-                "country_code":   row.get("SpatialDim"),         # ISO3
+                "country_code":   row.get("SpatialDim"),   # ISO3
                 "year":           row.get("TimeDim"),
-                "sex":            row.get("Dim1"),                # BTSX / MLE / FMLE
+                "sex":            row.get("Dim1"),          # BTSX / MLE / FMLE
+                "age_group":      row.get("Dim2"),          # populated for SDGSUICIDE
                 "value":          row.get("NumericValue"),
                 "indicator_code": indicator_code,
                 "indicator_name": description,

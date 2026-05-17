@@ -37,9 +37,11 @@ GOLD_DIR   = os.path.join(os.path.dirname(__file__), "..", "data", "gold")
 DB_PATH    = os.path.join(os.path.dirname(__file__), "..", "data", "mental_health.duckdb")
 
 GOLD_TABLES = [
-    ("dim_country",        "dim_country.parquet"),
-    ("dim_year",           "dim_year.parquet"),
-    ("fact_mental_health", "fact_mental_health.parquet"),
+    ("dim_country",          "dim_country.parquet"),
+    ("dim_year",             "dim_year.parquet"),
+    ("dim_age",              "dim_age.parquet"),
+    ("fact_mental_health",   "fact_mental_health.parquet"),
+    ("fact_suicide_by_age",  "fact_suicide_by_age.parquet"),
 ]
 
 

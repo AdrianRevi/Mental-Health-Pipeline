@@ -10,28 +10,10 @@
     "tabOrder": 1001
   },
   "visual": {
-    "visualType": "azureMap",
+    "visualType": "filledMap",
     "query": {
       "queryState": {
-        "Size": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "_Measures"
-                    }
-                  },
-                  "Property": "Avg Suicide Rate per 100k"
-                }
-              },
-              "queryRef": "_Measures.Avg Suicide Rate per 100k",
-              "nativeQueryRef": "Avg Suicide Rate per 100k"
-            }
-          ]
-        },
-        "X": {
+        "Category": {
           "projections": [
             {
               "field": {
@@ -41,67 +23,24 @@
                       "Entity": "dim_country"
                     }
                   },
-                  "Property": "longitude"
+                  "Property": "country"
                 }
               },
-              "queryRef": "dim_country.longitude",
-              "nativeQueryRef": "longitude"
+              "queryRef": "dim_country.country",
+              "nativeQueryRef": "country",
+              "active": true
             }
           ]
         },
-        "Y": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "dim_country"
-                    }
-                  },
-                  "Property": "latitude"
-                }
-              },
-              "queryRef": "dim_country.latitude",
-              "nativeQueryRef": "latitude"
-            }
-          ]
+        "Tooltips": {
+          "projections": []
         }
       }
     },
     "objects": {
       "mapControls": [
         {
-          "properties": {
-            "defaultStyle": {
-              "expr": {
-                "Literal": {
-                  "Value": "'road'"
-                }
-              }
-            },
-            "showStylePicker": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "showNavigationControls": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "showSelectionControl": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          }
+          "properties": {}
         }
       ],
       "categoryLabels": [
@@ -117,33 +56,80 @@
           }
         }
       ],
-      "bubbleLayer": [
+      "dataPoint": [
         {
           "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "FillRule": {
+                      "Input": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "_Measures"
+                            }
+                          },
+                          "Property": "Avg Suicide Rate per 100k"
+                        }
+                      },
+                      "FillRule": {
+                        "linearGradient3": {
+                          "min": {
+                            "color": {
+                              "Literal": {
+                                "Value": "'#0D1117'"
+                              }
+                            }
+                          },
+                          "mid": {
+                            "color": {
+                              "Literal": {
+                                "Value": "'#6366F1'"
+                              }
+                            }
+                          },
+                          "max": {
+                            "color": {
+                              "Literal": {
+                                "Value": "'#06B6D4'"
+                              }
+                            }
+                          },
+                          "nullColoringStrategy": {
+                            "strategy": {
+                              "Literal": {
+                                "Value": "'asZero'"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ]
           }
         }
       ],
-      "filledMap": [
+      "mapStyles": [
         {
           "properties": {
-            "show": {
+            "mapTheme": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "mapTransparency": {
-              "expr": {
-                "Literal": {
-                  "Value": "40L"
+                  "Value": "'canvasDark'"
                 }
               }
             }
@@ -159,6 +145,37 @@
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#1E1E2A'"
+                    }
+                  }
+                }
+              }
+            },
+            "width": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
                 }
               }
             }

@@ -1,0 +1,2 @@
+Filtros -> Genero y Edad
+Gráfico de velas para el overview

@@ -1,27 +1,20 @@
 """
 transform_silver.py — Silver layer transformation
-Reads raw CSVs from data/bronze/, cleans them, and joins them into one
-unified Parquet file at data/silver/mental_health.parquet.
+Reads raw CSVs from data/bronze/, cleans them, and joins them into two
+unified Parquet files at data/silver/.
+
+Output
+------
+  mental_health.parquet    country × year grain  (main fact)
+  suicide_by_age.parquet   country × year × age_group × sex grain
 
 What this script fixes
 ----------------------
-1. World Bank rows without a country_code are income-group aggregates
-   ("High income", "Low income", …) — filtered out, keeping real countries only.
-2. WHO MH_6 has a `sex` column that is 100% null — dropped.
-3. Column names differ between sources — standardised to snake_case.
-4. All four tables are joined on (country_code + year) using a left join
-   anchored on World Bank GDP so we don't lose country/year combinations
-   that exist in WB but not in WHO.
-
-Output schema
--------------
-country_code              str   ISO3 code, e.g. "ESP"
-country                   str   Full name, e.g. "Spain"
-year                      int
-gdp_per_capita            float GDP per capita, current US$
-unemployment_rate         float % of labour force
-suicide_rate_per_100k     float deaths per 100,000 population
-outpatient_facilities     float mental health outpatient facilities per 100k
+1. World Bank rows without country_code are income-group aggregates — dropped.
+2. WHO MH facility indicators have sex/age dims — aggregated to BTSX total.
+3. SDGSUICIDE retains all sex × age combinations for the age-stratified table.
+4. Column names standardised to snake_case across all sources.
+5. All tables joined on (country_code + year) via left join anchored on GDP.
 """
 
 import logging
@@ -57,113 +50,159 @@ SILVER_DIR = os.path.join(os.path.dirname(__file__), "..", "data", "silver")
 def read_bronze(filename: str) -> pd.DataFrame:
     path = os.path.join(BRONZE_DIR, filename)
     df = pd.read_csv(path)
-    log.info("Read  %-40s  %d rows", filename, len(df))
+    log.info("Read  %-45s  %d rows", filename, len(df))
     return df
 
 
 def drop_wb_aggregates(df: pd.DataFrame) -> pd.DataFrame:
-    """
-    The World Bank API includes regional/income-group rows alongside real
-    countries.  These rows have no ISO3 code (country_code is NaN).
-    We only want actual countries, so we drop the others.
-    """
+    """World Bank includes regional/income-group rows with no ISO3 code — drop them."""
     before = len(df)
     df = df.dropna(subset=["country_code"])
-    dropped = before - len(df)
-    log.info("  Dropped %d aggregate rows (no country_code)", dropped)
+    df = df[df["country_code"].str.len() == 3]
+    log.info("  Dropped %d aggregate rows (no country_code)", before - len(df))
     return df
+
+
+def _clean_wb_indicator(df: pd.DataFrame, col_name: str) -> pd.DataFrame:
+    """Generic World Bank cleaner: drop aggregates, keep country_code + year + value."""
+    df = drop_wb_aggregates(df)
+    df = df[["country_code", "year", "value"]].copy()
+    return df.rename(columns={"value": col_name})
+
+
+def _clean_who_facility(df: pd.DataFrame, col_name: str) -> pd.DataFrame:
+    """
+    Generic WHO MH facility cleaner.
+    Filters to BTSX (both-sex total) where available, otherwise takes mean.
+    Drops rows without a valid 3-char country code.
+    """
+    df = df.dropna(subset=["country_code", "year", "value"])
+    df = df[df["country_code"].str.len() == 3]
+    btsx = df[df["sex"].isin(["BTSX"]) | df["sex"].isna()]
+    if len(btsx) == 0:
+        btsx = df
+    btsx = btsx.groupby(["country_code", "year"], as_index=False)["value"].mean()
+    return btsx.rename(columns={"value": col_name})
 
 
 # ---------------------------------------------------------------------------
-# Per-source cleaning functions
+# World Bank cleaning functions
 # ---------------------------------------------------------------------------
 
-def clean_worldbank_gdp(df: pd.DataFrame) -> pd.DataFrame:
+def clean_worldbank_gdp(df):          return _clean_wb_indicator(df, "gdp_per_capita")
+def clean_worldbank_unemployment(df): return _clean_wb_indicator(df, "unemployment_rate")
+def clean_worldbank_unemp_male(df):   return _clean_wb_indicator(df, "unemployment_male")
+def clean_worldbank_unemp_female(df): return _clean_wb_indicator(df, "unemployment_female")
+def clean_worldbank_youth_unemp(df):  return _clean_wb_indicator(df, "youth_unemployment_rate")
+def clean_worldbank_gini(df):         return _clean_wb_indicator(df, "gini_index")
+def clean_worldbank_urban(df):        return _clean_wb_indicator(df, "urban_population_pct")
+def clean_worldbank_suicide(df):      return _clean_wb_indicator(df, "suicide_rate_per_100k")
+def clean_worldbank_suicide_male(df): return _clean_wb_indicator(df, "suicide_rate_male")
+def clean_worldbank_suicide_female(df): return _clean_wb_indicator(df, "suicide_rate_female")
+def clean_worldbank_health_exp(df):   return _clean_wb_indicator(df, "health_expenditure_per_capita")
+def clean_worldbank_health_exp_gdp(df): return _clean_wb_indicator(df, "health_expenditure_gdp_pct")
+def clean_worldbank_life_exp(df):     return _clean_wb_indicator(df, "life_expectancy")
+
+
+# ---------------------------------------------------------------------------
+# World Bank GDP also carries the country name — extract it separately
+# ---------------------------------------------------------------------------
+
+def extract_country_name(df: pd.DataFrame) -> pd.DataFrame:
     df = drop_wb_aggregates(df)
-    df = df[["country_code", "country", "year", "value"]].copy()
-    df = df.rename(columns={"value": "gdp_per_capita"})
-    return df
+    return df[["country_code", "country"]].drop_duplicates(subset="country_code")
 
 
-def clean_worldbank_unemployment(df: pd.DataFrame) -> pd.DataFrame:
-    df = drop_wb_aggregates(df)
-    df = df[["country_code", "year", "value"]].copy()
-    df = df.rename(columns={"value": "unemployment_rate"})
-    return df
+# ---------------------------------------------------------------------------
+# WHO GHO cleaning functions — facility indicators
+# ---------------------------------------------------------------------------
+
+def clean_who_outpatient(df):     return _clean_who_facility(df, "outpatient_facilities")
+def clean_who_hospitals(df):      return _clean_who_facility(df, "mental_hospitals")
+def clean_who_psych_beds(df):     return _clean_who_facility(df, "psychiatric_beds")
+def clean_who_psychiatrists(df):  return _clean_who_facility(df, "psychiatrists_per_100k")
+def clean_who_mh_nurses(df):      return _clean_who_facility(df, "mh_nurses_per_100k")
+def clean_who_psychologists(df):  return _clean_who_facility(df, "psychologists_per_100k")
+def clean_who_day_treatment(df):  return _clean_who_facility(df, "day_treatment_facilities")
+def clean_who_mh_expenditure(df): return _clean_who_facility(df, "mh_expenditure_pct")
 
 
-def clean_worldbank_suicide(df: pd.DataFrame) -> pd.DataFrame:
-    df = drop_wb_aggregates(df)
-    df = df[["country_code", "year", "value"]].copy()
+# ---------------------------------------------------------------------------
+# WHO SDGSUICIDE — age + sex stratified (separate grain)
+# ---------------------------------------------------------------------------
+
+AGE_LABEL_MAP = {
+    "YEARS10-14": "10-14", "YEARS15-19": "15-19", "YEARS20-24": "20-24",
+    "YEARS25-29": "25-29", "YEARS30-34": "30-34", "YEARS35-39": "35-39",
+    "YEARS40-44": "40-44", "YEARS45-49": "45-49", "YEARS50-54": "50-54",
+    "YEARS55-59": "55-59", "YEARS60-64": "60-64", "YEARS65-69": "65-69",
+    "YEARS70-74": "70-74", "YEARS75-79": "75-79", "YEARS80PLUS": "80+",
+    "AGE10-14":   "10-14", "AGE15-19":   "15-19", "AGE20-24":   "20-24",
+    "AGE25-29":   "25-29", "AGE30-34":   "30-34", "AGE35-39":   "35-39",
+    "AGE40-44":   "40-44", "AGE45-49":   "45-49", "AGE50-54":   "50-54",
+    "AGE55-59":   "55-59", "AGE60-64":   "60-64", "AGE65-69":   "65-69",
+    "AGE70-74":   "70-74", "AGE75-79":   "75-79", "AGE80PLUS":  "80+",
+}
+
+SEX_LABEL_MAP = {"BTSX": "Both", "MLE": "Male", "FMLE": "Female"}
+
+
+def clean_who_suicide_by_age(df: pd.DataFrame) -> pd.DataFrame:
+    df = df.dropna(subset=["country_code", "year", "value"])
+    df = df[df["country_code"].str.len() == 3]
+    df = df[df["age_group"].notna() & df["sex"].notna()].copy()
+    df["age_group"] = df["age_group"].map(AGE_LABEL_MAP).fillna(df["age_group"])
+    df["sex"]       = df["sex"].map(SEX_LABEL_MAP).fillna(df["sex"])
+    df = df[["country_code", "year", "age_group", "sex", "value"]].copy()
     df = df.rename(columns={"value": "suicide_rate_per_100k"})
-    return df
-
-
-def clean_who_mental_health(df: pd.DataFrame) -> pd.DataFrame:
-    # `sex` is 100% null for this indicator — drop it
-    df = df[["country_code", "year", "value"]].copy()
-    df = df.rename(columns={"value": "outpatient_facilities"})
-    return df
+    df["year"] = df["year"].astype(int)
+    return df.drop_duplicates(subset=["country_code", "year", "age_group", "sex"])
 
 
 # ---------------------------------------------------------------------------
-# Join
+# Join — main country × year silver table
 # ---------------------------------------------------------------------------
 
-def build_silver(gdp, unemployment, suicide, who) -> pd.DataFrame:
+def build_silver(gdp, country_names, unemp, unemp_male, unemp_female,
+                 youth_unemp, gini, urban, suicide, suicide_male,
+                 suicide_female, health_exp, health_exp_gdp, life_exp,
+                 outpatient, hospitals, psych_beds, psychiatrists,
+                 mh_nurses, psychologists, day_treatment,
+                 mh_expenditure) -> pd.DataFrame:
     """
-    Joins all four cleaned tables on (country_code + year).
-
-    We use a LEFT join anchored on GDP because it has the broadest coverage
-    (all countries, all years 2000-2024).  Columns from sources with narrower
-    coverage (WHO: 2013-2017 only) will be NaN outside their range — that is
-    expected and correct behaviour, not an error.
-
-    Join order:
-      gdp (base)
-        LEFT JOIN unemployment  on country_code + year
-        LEFT JOIN suicide       on country_code + year
-        LEFT JOIN who           on country_code + year
+    Left-join all sources on (country_code + year) anchored on GDP.
+    GDP has the broadest coverage — every country, every year.
+    Sources with narrower coverage produce NaN outside their range.
     """
-    df = gdp.merge(unemployment, on=["country_code", "year"], how="left")
-    df = df.merge(suicide,       on=["country_code", "year"], how="left")
-    df = df.merge(who,           on=["country_code", "year"], how="left")
+    df = gdp.merge(country_names, on="country_code", how="left")
 
-    # Canonical column order
-    df = df[
-        [
-            "country_code",
-            "country",
-            "year",
-            "gdp_per_capita",
-            "unemployment_rate",
-            "suicide_rate_per_100k",
-            "outpatient_facilities",
-        ]
-    ]
+    for right in [unemp, unemp_male, unemp_female, youth_unemp, gini, urban,
+                  suicide, suicide_male, suicide_female, health_exp,
+                  health_exp_gdp, life_exp, outpatient, hospitals,
+                  psych_beds, psychiatrists, mh_nurses, psychologists,
+                  day_treatment, mh_expenditure]:
+        df = df.merge(right, on=["country_code", "year"], how="left")
 
-    # Sort for readability and deterministic output
-    df = df.sort_values(["country_code", "year"]).reset_index(drop=True)
+    df = df[[
+        "country_code", "country", "year",
+        "gdp_per_capita", "unemployment_rate", "unemployment_male",
+        "unemployment_female", "youth_unemployment_rate", "gini_index",
+        "urban_population_pct", "suicide_rate_per_100k", "suicide_rate_male",
+        "suicide_rate_female", "health_expenditure_per_capita",
+        "health_expenditure_gdp_pct", "life_expectancy",
+        "outpatient_facilities", "mental_hospitals", "psychiatric_beds",
+        "psychiatrists_per_100k", "mh_nurses_per_100k", "psychologists_per_100k",
+        "day_treatment_facilities", "mh_expenditure_pct",
+    ]]
 
-    return df
+    return df.sort_values(["country_code", "year"]).reset_index(drop=True)
 
 
 # ---------------------------------------------------------------------------
-# Save to silver
+# Save
 # ---------------------------------------------------------------------------
 
 def save_silver(df: pd.DataFrame, filename: str) -> None:
-    """
-    Saves the unified DataFrame as Parquet.
-
-    Why Parquet instead of CSV?
-    - Columnar format: reading one column doesn't load the others — much
-      faster for analytical queries that touch a few columns at a time.
-    - Stores data types natively (int stays int, float stays float) — no
-      more silent type coercion when re-reading a CSV.
-    - Compressed by default: ~5-10× smaller than equivalent CSV on typical
-      pipeline data.
-    """
     os.makedirs(SILVER_DIR, exist_ok=True)
     path = os.path.join(SILVER_DIR, filename)
     df.to_parquet(path, index=False)
@@ -173,19 +212,20 @@ def save_silver(df: pd.DataFrame, filename: str) -> None:
 
 
 # ---------------------------------------------------------------------------
-# Diagnostics — logged after saving
+# Diagnostics
 # ---------------------------------------------------------------------------
 
-def log_summary(df: pd.DataFrame) -> None:
+def log_summary(df: pd.DataFrame, label: str) -> None:
     log.info("-" * 60)
-    log.info("Silver table summary")
+    log.info("%s summary", label)
     log.info("  Shape:     %d rows × %d columns", *df.shape)
-    log.info("  Countries: %d unique ISO3 codes", df["country_code"].nunique())
+    log.info("  Countries: %d unique", df["country_code"].nunique())
     log.info("  Years:     %d – %d", df["year"].min(), df["year"].max())
-    log.info("  Null counts per column:")
+    log.info("  Null rates:")
     for col, n in df.isnull().sum().items():
         pct = n / len(df) * 100
-        log.info("    %-28s  %5d  (%.1f%%)", col, n, pct)
+        if pct > 0:
+            log.info("    %-35s  %.1f%%", col, pct)
     log.info("-" * 60)
 
 
@@ -195,40 +235,76 @@ def log_summary(df: pd.DataFrame) -> None:
 
 def run() -> None:
     log.info("=" * 60)
-    log.info("Silver transform started  %s",
-             datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+    log.info("Silver transform started  %s", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
     log.info("=" * 60)
 
-    # Read bronze
-    gdp          = read_bronze("worldbank_gdp.csv")
-    unemployment = read_bronze("worldbank_unemployment.csv")
-    suicide      = read_bronze("worldbank_suicide.csv")
-    who          = read_bronze("who_mental_health.csv")
+    # --- Read bronze ---
+    log.info("--- Reading bronze ---")
+    gdp_raw        = read_bronze("worldbank_gdp.csv")
+    unemp_raw      = read_bronze("worldbank_unemployment.csv")
+    unemp_m_raw    = read_bronze("worldbank_unemployment_male.csv")
+    unemp_f_raw    = read_bronze("worldbank_unemployment_female.csv")
+    youth_raw      = read_bronze("worldbank_youth_unemployment.csv")
+    gini_raw       = read_bronze("worldbank_gini.csv")
+    urban_raw      = read_bronze("worldbank_urban.csv")
+    suicide_raw    = read_bronze("worldbank_suicide.csv")
+    suicide_m_raw  = read_bronze("worldbank_suicide_male.csv")
+    suicide_f_raw  = read_bronze("worldbank_suicide_female.csv")
+    health_raw     = read_bronze("worldbank_health_expenditure.csv")
+    health_gdp_raw = read_bronze("worldbank_health_expenditure_gdp.csv")
+    life_raw       = read_bronze("worldbank_life_expectancy.csv")
+    outpatient_raw = read_bronze("who_outpatient_facilities.csv")
+    hospitals_raw  = read_bronze("who_mental_hospitals.csv")
+    psych_beds_raw = read_bronze("who_psychiatric_beds.csv")
+    psychiatrists_raw  = read_bronze("who_psychiatrists.csv")
+    mh_nurses_raw      = read_bronze("who_mh_nurses.csv")
+    psychologists_raw  = read_bronze("who_psychologists.csv")
+    day_treat_raw      = read_bronze("who_day_treatment.csv")
+    mh_exp_raw         = read_bronze("who_mh_expenditure.csv")
+    suicide_age_raw    = read_bronze("who_suicide_by_age.csv")
 
-    # Clean each source
+    # --- Clean ---
     log.info("--- Cleaning ---")
-    gdp          = clean_worldbank_gdp(gdp)
-    unemployment = clean_worldbank_unemployment(unemployment)
-    suicide      = clean_worldbank_suicide(suicide)
-    who          = clean_who_mental_health(who)
+    country_names  = extract_country_name(gdp_raw)
+    gdp            = clean_worldbank_gdp(gdp_raw)
+    unemp          = clean_worldbank_unemployment(unemp_raw)
+    unemp_male     = clean_worldbank_unemp_male(unemp_m_raw)
+    unemp_female   = clean_worldbank_unemp_female(unemp_f_raw)
+    youth_unemp    = clean_worldbank_youth_unemp(youth_raw)
+    gini           = clean_worldbank_gini(gini_raw)
+    urban          = clean_worldbank_urban(urban_raw)
+    suicide        = clean_worldbank_suicide(suicide_raw)
+    suicide_male   = clean_worldbank_suicide_male(suicide_m_raw)
+    suicide_female = clean_worldbank_suicide_female(suicide_f_raw)
+    health_exp     = clean_worldbank_health_exp(health_raw)
+    health_exp_gdp = clean_worldbank_health_exp_gdp(health_gdp_raw)
+    life_exp       = clean_worldbank_life_exp(life_raw)
+    outpatient     = clean_who_outpatient(outpatient_raw)
+    hospitals      = clean_who_hospitals(hospitals_raw)
+    psych_beds     = clean_who_psych_beds(psych_beds_raw)
+    psychiatrists  = clean_who_psychiatrists(psychiatrists_raw)
+    mh_nurses      = clean_who_mh_nurses(mh_nurses_raw)
+    psychologists  = clean_who_psychologists(psychologists_raw)
+    day_treatment  = clean_who_day_treatment(day_treat_raw)
+    mh_expenditure = clean_who_mh_expenditure(mh_exp_raw)
+    suicide_by_age = clean_who_suicide_by_age(suicide_age_raw)
 
-    log.info("After cleaning:")
-    log.info("  gdp:          %d rows", len(gdp))
-    log.info("  unemployment: %d rows", len(unemployment))
-    log.info("  suicide:      %d rows", len(suicide))
-    log.info("  who:          %d rows", len(who))
+    # --- Build and save ---
+    log.info("--- Building silver tables ---")
 
-    # Join
-    log.info("--- Joining ---")
-    silver = build_silver(gdp, unemployment, suicide, who)
+    silver = build_silver(
+        gdp, country_names, unemp, unemp_male, unemp_female, youth_unemp,
+        gini, urban, suicide, suicide_male, suicide_female, health_exp,
+        health_exp_gdp, life_exp, outpatient, hospitals, psych_beds,
+        psychiatrists, mh_nurses, psychologists, day_treatment, mh_expenditure,
+    )
 
-    # Save
     log.info("--- Saving ---")
     save_silver(silver, "mental_health.parquet")
+    save_silver(suicide_by_age, "suicide_by_age.parquet")
 
-    # Diagnostics
-    log_summary(silver)
-
+    log_summary(silver, "mental_health")
+    log.info("  suicide_by_age: %d rows", len(suicide_by_age))
     log.info("Silver layer ready.")
 
 
