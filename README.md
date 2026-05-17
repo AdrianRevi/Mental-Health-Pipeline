@@ -6,6 +6,8 @@ An end-to-end ETL pipeline on public mental health data following the **Medallio
 **Cost:** €0 — fully local, no cloud services required  
 **Data:** World Bank API · WHO Global Health Observatory API
 
+[![Live Dashboard](https://img.shields.io/badge/Power%20BI-Live%20Dashboard-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)](https://app.powerbi.com/view?r=eyJrIjoiNWFjM2M3YjAtOWMwYy00Nzk2LTg5YmItZjNjMGEzZWY3ZjUxIiwidCI6ImI5NmJkNTk4LTAzMGMtNDc3MS1iNzg4LTk0NjU0YzgyYThiZiJ9)
+
 ---
 
 ## Dashboard Preview
