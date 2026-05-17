@@ -113,3 +113,17 @@ The model has **two distinct sources** for the suicide rate:
 - `fact_suicide_by_age[suicide_rate_per_100k]` → WHO SDGSUICIDE, with age and sex breakdown
 
 The numbers are not identical (different methodologies) but are consistent. The Overview uses `fact_suicide_by_age` exclusively for all suicide metrics, as it supports demographic filters. `fact_mental_health` will be used in pages where socioeconomic indicators (GDP, unemployment) are the focus.
+
+---
+
+## World Map Page
+
+### 1. TOPN + ALLSELECTED for highest/lowest country cards
+
+The Highest/Lowest Rate Country cards use `TOPN(1, ALLSELECTED(dim_country), [measure], DESC/ASC)`. `ALLSELECTED` is key — it respects the active filters from the region and income level slicers while ignoring the row context of other visuals. Without it, the measure would always return the global extreme regardless of slicer selection.
+
+The Lowest Rate measure wraps the table in `FILTER(..., [Avg Suicide Rate per 100k] > 0)` to exclude countries with no data, which would otherwise always win as the "lowest".
+
+### 2. Card hierarchy — rate as callout, country name as reference
+
+Initially the country name was the callout (large text) and the rate was the reference label. Countries with long names (e.g. "West Bank and Gaza") overflowed regardless of font size or abbreviation. Fixed by inverting the hierarchy: the rate is the large callout and the country name is the smaller reference label below. The rate is always a short number — it never overflows. The country name at smaller size wraps cleanly.
