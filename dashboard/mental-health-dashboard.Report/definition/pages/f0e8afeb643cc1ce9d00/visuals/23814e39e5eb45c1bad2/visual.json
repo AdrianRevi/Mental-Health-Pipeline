@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.1.0/schema.json",
   "name": "23814e39e5eb45c1bad2",
   "position": {
-    "x": 766.36363636363626,
-    "y": 591.81818181818176,
+    "x": 733.92978167019976,
+    "y": 591.96063564763949,
     "z": 4007,
-    "height": 29.999999999999996,
-    "width": 89.090909090909079,
+    "height": 30.421959861977193,
+    "width": 154.64496263171739,
     "tabOrder": 4007
   },
   "visual": {
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Filter by Sex:",
+                    "value": "Filter by Income Level:",
                     "textStyle": {
                       "fontFamily": "Segoe UI Semibold",
                       "color": "#f8fafc"

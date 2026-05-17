@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "dim_age"
+                      "Entity": "dim_country"
                     }
                   },
-                  "Property": "age_label"
+                  "Property": "region"
                 }
               },
-              "queryRef": "dim_age.age_label",
-              "nativeQueryRef": "age_label",
+              "queryRef": "dim_country.region",
+              "nativeQueryRef": "region",
               "active": true
             }
           ]
@@ -203,7 +203,7 @@
       ]
     },
     "syncGroup": {
-      "groupName": "age_label",
+      "groupName": "region",
       "fieldChanges": true,
       "filterChanges": true
     },
@@ -267,6 +267,7 @@
             }
           ]
         },
+        "howCreated": "User",
         "objects": {
           "general": [
             {
