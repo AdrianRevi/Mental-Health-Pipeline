@@ -8,7 +8,6 @@ Why DuckDB?
   - Reads Parquet natively and very fast (columnar engine)
   - Supports full SQL including window functions and CTEs
   - Power BI Desktop can connect to it via ODBC
-  - Increasingly common in junior DE interviews alongside Spark/BigQuery
 """
 
 import logging

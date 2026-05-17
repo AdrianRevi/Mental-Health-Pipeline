@@ -43,8 +43,6 @@ BRONZE_DIR = os.path.join(os.path.dirname(__file__), "..", "data", "bronze")
 # ---------------------------------------------------------------------------
 
 # World Bank: list of (indicator_code, description, output_filename)
-# The API is free, requires no key, and is extremely well-documented —
-# a great talking point in interviews.
 WB_INDICATORS = [
     # Core economic indicators
     ("NY.GDP.PCAP.CD",    "GDP per capita (current US$)",              "worldbank_gdp.csv"),
@@ -82,10 +80,7 @@ WHO_INDICATORS = [
 
 # Polite User-Agent so servers can identify automated requests
 HEADERS = {
-    "User-Agent": (
-        "MentalHealthPipeline/1.0 "
-        "(portfolio; educational use; adrianreviriego@gmail.com)"
-    )
+    "User-Agent": "MentalHealthPipeline/1.0"
 }
 
 
