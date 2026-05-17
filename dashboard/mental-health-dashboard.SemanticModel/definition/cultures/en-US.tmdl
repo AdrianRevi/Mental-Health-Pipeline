@@ -144,7 +144,8 @@ cultureInfo en-US
 			            "Weight": 0.736
 			          }
 			        }
-			      ]
+			      ],
+			      "SemanticType": "Location"
 			    },
 			    "dim_country.region": {
 			      "Definition": {
@@ -230,7 +231,8 @@ cultureInfo en-US
 			            "Weight": 0.714
 			          }
 			        }
-			      ]
+			      ],
+			      "SemanticType": "Location"
 			    },
 			    "dim_country.income_level": {
 			      "Definition": {
@@ -488,7 +490,8 @@ cultureInfo en-US
 			            "Weight": 0.714
 			          }
 			        }
-			      ]
+			      ],
+			      "SemanticType": "Location"
 			    },
 			    "dim_year": {
 			      "Definition": {
@@ -1018,9 +1021,6 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
-			      "Visibility": {
-			        "Value": "Hidden"
-			      },
 			      "Terms": [
 			        {
 			          "fact mental health": {
@@ -1196,6 +1196,7 @@ cultureInfo en-US
 			      "Terms": [
 			        {
 			          "year": {
+			            "Type": "Noun",
 			            "State": "Generated"
 			          }
 			        },
@@ -1220,9 +1221,6 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
-			      "Visibility": {
-			        "Value": "Hidden"
-			      },
 			      "Terms": [
 			        {
 			          "gdp per capita": {
@@ -1246,9 +1244,6 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
-			      "Visibility": {
-			        "Value": "Hidden"
-			      },
 			      "Terms": [
 			        {
 			          "unemployment rate": {
@@ -1339,16 +1334,6 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "ratio": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.491
-			          }
-			        },
-			        {
 			          "quotient": {
 			            "Type": "Noun",
 			            "State": "Suggested",
@@ -1367,6 +1352,16 @@ cultureInfo en-US
 			            },
 			            "Weight": 0.485
 			          }
+			        },
+			        {
+			          "unemployment proportion": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
 			        }
 			      ]
 			    },
@@ -1378,9 +1373,6 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
-			      "Visibility": {
-			        "Value": "Hidden"
-			      },
 			      "Terms": [
 			        {
 			          "suicide rate per 10 0k": {
@@ -1504,9 +1496,6 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
-			      "Visibility": {
-			        "Value": "Hidden"
-			      },
 			      "Terms": [
 			        {
 			          "outpatient facility": {
@@ -1994,168 +1983,60 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "entity__measure.year_range": {
+			    "entity__measure.latest_year_available": {
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "_Measures",
-			          "ConceptualProperty": "Year Range"
+			          "ConceptualProperty": "Latest Year Available"
 			        }
 			      },
 			      "State": "Generated",
 			      "Terms": [
 			        {
-			          "year range": {
+			          "latest year available": {
 			            "State": "Generated"
 			          }
 			        },
 			        {
-			          "yr range": {
+			          "latest yr available": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
 			              "Agent": "Thesaurus"
 			            },
-			            "Weight": 0.6
-			          }
-			        },
-			        {
-			          "year variety": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.5
-			          }
-			        },
-			        {
-			          "year series": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.5
-			          }
-			        },
-			        {
-			          "year assortment": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.5
-			          }
-			        },
-			        {
-			          "year collection": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.5
-			          }
-			        },
-			        {
-			          "year gamut": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.5
-			          }
-			        },
-			        {
-			          "year selection": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.5
-			          }
-			        },
-			        {
-			          "year choice": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.485
-			          }
-			        },
-			        {
-			          "year array": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.485
-			          }
-			        },
-			        {
-			          "year kind": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.485
-			          }
-			        },
-			        {
-			          "Latest Year Available": {
-			            "State": "Suggested",
-			            "Source": {
-			              "Type": "External",
-			              "Agent": "PowerBI.VisualColumnRename"
-			            },
-			            "Weight": 0.9
+			            "Weight": 0.762
 			          }
 			        }
 			      ]
 			    },
-			    "entity__measure.avg_outpatient_facilities": {
+			    "entity__measure.male_female_ratio": {
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "_Measures",
-			          "ConceptualProperty": "Avg Outpatient Facilities"
+			          "ConceptualProperty": "Male Female Ratio"
 			        }
 			      },
 			      "State": "Generated",
 			      "Terms": [
 			        {
-			          "avg outpatient facilities": {
+			          "male female ratio": {
 			            "State": "Generated"
 			          }
 			        },
 			        {
-			          "average outpatient facility": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.591
+			          "ratio": {
+			            "State": "Generated",
+			            "Weight": 0.97
 			          }
 			        },
 			        {
-			          "avg outpatient amenity": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.508
+			          "female ratio": {
+			            "State": "Generated",
+			            "Weight": 0.97
 			          }
 			        },
 			        {
-			          "avg outpatient convenience": {
+			          "male female relation": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
@@ -2165,7 +2046,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "avg outpatient accommodation": {
+			          "male female percentage": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
@@ -2175,7 +2056,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "avg outpatient toilet": {
+			          "male female quotient": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
@@ -2185,7 +2066,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "avg outpatient bathroom": {
+			          "male female relationship": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
@@ -2195,17 +2076,47 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "avg outpatient lavatory": {
+			          "female relation": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
 			              "Agent": "Thesaurus"
 			            },
-			            "Weight": 0.508
+			            "Weight": 0.5
 			          }
 			        },
 			        {
-			          "avg outpatient service": {
+			          "female percentage": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "female quotient": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "female relationship": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "male female proportion": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
@@ -2215,27 +2126,17 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "avg outpatient ability": {
+			          "male female share": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
 			              "Agent": "Thesaurus"
 			            },
-			            "Weight": 0.482
+			            "Weight": 0.492
 			          }
 			        },
 			        {
-			          "avg outpatient capability": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.482
-			          }
-			        },
-			        {
-			          "Outpatient Facilities per 100k": {
+			          "Male vs Female Rate": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -2628,148 +2529,6 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "entity__measure.avg_GDP_per_capita": {
-			      "Definition": {
-			        "Binding": {
-			          "ConceptualEntity": "_Measures",
-			          "ConceptualProperty": "Avg GDP per Capita"
-			        }
-			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "avg GDP per capita": {
-			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "average gdp per capita": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.599
-			          }
-			        }
-			      ]
-			    },
-			    "entity__measure.avg_unemployment_rate": {
-			      "Definition": {
-			        "Binding": {
-			          "ConceptualEntity": "_Measures",
-			          "ConceptualProperty": "Avg Unemployment Rate"
-			        }
-			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "avg unemployment rate": {
-			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "average unemployment rate": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.591
-			          }
-			        },
-			        {
-			          "avg unemployment degree": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.508
-			          }
-			        },
-			        {
-			          "avg unemployment frequency": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.508
-			          }
-			        },
-			        {
-			          "avg unemployment percentage": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.508
-			          }
-			        },
-			        {
-			          "avg unemployment ratio": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.508
-			          }
-			        },
-			        {
-			          "avg unemployment quotient": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.508
-			          }
-			        },
-			        {
-			          "avg unemployment amount": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.492
-			          }
-			        },
-			        {
-			          "avg unemployment proportion": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.492
-			          }
-			        },
-			        {
-			          "avg unemployment speed": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.492
-			          }
-			        },
-			        {
-			          "avg unemployment level": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.492
-			          }
-			        }
-			      ]
-			    },
 			    "entity__measure.highest_rate_country": {
 			      "Definition": {
 			        "Binding": {
@@ -2959,6 +2718,2549 @@ cultureInfo en-US
 			          }
 			        }
 			      ]
+			    },
+			    "dim_country.latitude": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dim_country",
+			          "ConceptualProperty": "latitude"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "latitude": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "leeway": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "freedom": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "autonomy": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "liberty": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "opportunity": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "room": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "scope": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "space": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "rope": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "location": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.466
+			          }
+			        }
+			      ]
+			    },
+			    "dim_country.longitude": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dim_country",
+			          "ConceptualProperty": "longitude"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "longitude": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "fact_mental_health.unemployment_male": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_mental_health",
+			          "ConceptualProperty": "unemployment_male"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "unemployment male": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "unemployment_male": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "male": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "masculine": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "macho": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "unemployment bloke": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.475
+			          }
+			        },
+			        {
+			          "unemployment boy": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.475
+			          }
+			        },
+			        {
+			          "unemployment fella": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.475
+			          }
+			        },
+			        {
+			          "unemployment gentleman": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.475
+			          }
+			        },
+			        {
+			          "bloke": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.466
+			          }
+			        },
+			        {
+			          "boy": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.466
+			          }
+			        },
+			        {
+			          "fella": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.466
+			          }
+			        },
+			        {
+			          "gentleman": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.466
+			          }
+			        }
+			      ]
+			    },
+			    "fact_mental_health.unemployment_female": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_mental_health",
+			          "ConceptualProperty": "unemployment_female"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "unemployment female": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "unemployment_female": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "female": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "unemployment lady": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.475
+			          }
+			        },
+			        {
+			          "unemployment woman": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.475
+			          }
+			        },
+			        {
+			          "lady": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.466
+			          }
+			        },
+			        {
+			          "woman": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.466
+			          }
+			        }
+			      ]
+			    },
+			    "fact_mental_health.youth_unemployment_rate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_mental_health",
+			          "ConceptualProperty": "youth_unemployment_rate"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "youth unemployment rate": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "youth_unemployment_rate": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "rate": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "youth unemployment degree": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "youth unemployment frequency": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "youth unemployment percentage": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "youth unemployment ratio": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "youth unemployment quotient": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "youth unemployment amount": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "youth unemployment proportion": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "youth unemployment speed": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "youth unemployment level": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "youth unemployment scale": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        }
+			      ]
+			    },
+			    "fact_mental_health.gini_index": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_mental_health",
+			          "ConceptualProperty": "gini_index"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "gini index": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "gini_index": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "gini directory": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "gini catalogue": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "gini catalog": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "gini guide": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "gini file": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "gini key": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "gini table": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "gini manifestation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.475
+			          }
+			        },
+			        {
+			          "gini pointer": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.475
+			          }
+			        },
+			        {
+			          "gini indication": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.475
+			          }
+			        }
+			      ]
+			    },
+			    "fact_mental_health.urban_population_pct": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_mental_health",
+			          "ConceptualProperty": "urban_population_pct"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "urban population pct": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "urban_population_pct": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "fact_mental_health.suicide_rate_male": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_mental_health",
+			          "ConceptualProperty": "suicide_rate_male"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "suicide rate male": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "suicide_rate_male": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "male": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "rate male": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "suicide rate bloke": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.482
+			          }
+			        },
+			        {
+			          "suicide rate boy": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.482
+			          }
+			        },
+			        {
+			          "suicide rate fella": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.482
+			          }
+			        },
+			        {
+			          "suicide rate gentleman": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.482
+			          }
+			        },
+			        {
+			          "masculine": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "macho": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "rate bloke": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.475
+			          }
+			        },
+			        {
+			          "rate boy": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.475
+			          }
+			        },
+			        {
+			          "rate fella": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.475
+			          }
+			        },
+			        {
+			          "rate gentleman": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.475
+			          }
+			        }
+			      ]
+			    },
+			    "fact_mental_health.suicide_rate_female": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_mental_health",
+			          "ConceptualProperty": "suicide_rate_female"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "suicide rate female": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "suicide_rate_female": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "female": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "rate female": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "suicide rate lady": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.482
+			          }
+			        },
+			        {
+			          "suicide rate woman": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.482
+			          }
+			        },
+			        {
+			          "rate lady": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.475
+			          }
+			        },
+			        {
+			          "rate woman": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.475
+			          }
+			        },
+			        {
+			          "lady": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.466
+			          }
+			        },
+			        {
+			          "woman": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.466
+			          }
+			        }
+			      ]
+			    },
+			    "fact_mental_health.health_expenditure_per_capita": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_mental_health",
+			          "ConceptualProperty": "health_expenditure_per_capita"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "health expenditure per capita": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "health_expenditure_per_capita": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "health disbursement per capita": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "health spending per capita": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.499
+			          }
+			        },
+			        {
+			          "health outlay per capita": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.499
+			          }
+			        },
+			        {
+			          "health outflow per capita": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.499
+			          }
+			        }
+			      ]
+			    },
+			    "fact_mental_health.health_expenditure_gdp_pct": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_mental_health",
+			          "ConceptualProperty": "health_expenditure_gdp_pct"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "health expenditure gdp pct": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "health_expenditure_gdp_pct": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "fact_mental_health.life_expectancy": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_mental_health",
+			          "ConceptualProperty": "life_expectancy"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "life expectancy": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "life_expectancy": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "expectancy": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "life expectation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "life anticipation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "life suspense": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "life belief": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "life probability": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "expectation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "anticipation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "suspense": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "belief": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "probability": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        }
+			      ]
+			    },
+			    "fact_mental_health.mental_hospital": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_mental_health",
+			          "ConceptualProperty": "mental_hospitals"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "mental hospital": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "mental_hospitals": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "hospital": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "mental infirmary": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "mental hospice": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "mental sickbay": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "mental sanatorium": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "mental clinic": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "infirmary": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "hospice": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "sickbay": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "sanatorium": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "clinic": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        }
+			      ]
+			    },
+			    "fact_mental_health.psychiatric_bed": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_mental_health",
+			          "ConceptualProperty": "psychiatric_beds"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "psychiatric bed": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "psychiatric_beds": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "bed": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "psychiatric divan": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "psychiatric cot": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "psychiatric bedstead": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "divan": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "cot": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "bedstead": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "psychiatric couch": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "psychiatric cradle": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "psychiatric crib": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "couch": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        }
+			      ]
+			    },
+			    "fact_mental_health.psychiatrist_per_10_0k": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_mental_health",
+			          "ConceptualProperty": "psychiatrists_per_100k"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "psychiatrist per 10 0k": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "psychiatrists_per_100k": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "psychoanalyst per 10 0k": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "therapist per 10 0k": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "counsellor per 10 0k": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "counselor per 10 0k": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "analyst per 10 0k": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "shrink per 10 0k": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.499
+			          }
+			        },
+			        {
+			          "doctor per 10 0k": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.499
+			          }
+			        }
+			      ]
+			    },
+			    "fact_mental_health.mh_nurse_per_10_0k": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_mental_health",
+			          "ConceptualProperty": "mh_nurses_per_100k"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "mh nurse per 10 0k": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "mh_nurses_per_100k": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "fact_mental_health.psychologist_per_10_0k": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_mental_health",
+			          "ConceptualProperty": "psychologists_per_100k"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "psychologist per 10 0k": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "psychologists_per_100k": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "fact_mental_health.day_treatment_facility": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_mental_health",
+			          "ConceptualProperty": "day_treatment_facilities"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "day treatment facility": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "day_treatment_facilities": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "facility": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "treatment facility": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "day treatment ability": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "day treatment capability": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "day treatment talent": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "day treatment flair": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "day treatment competence": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "day treatment skill": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "day treatment aptitude": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "day treatment knack": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "day treatment proficiency": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "day treatment efficiency": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        }
+			      ]
+			    },
+			    "fact_mental_health.mh_expenditure_pct": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_mental_health",
+			          "ConceptualProperty": "mh_expenditure_pct"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "mh expenditure pct": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "mh_expenditure_pct": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "fact_suicide_by_age": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_suicide_by_age"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "fact suicide by age": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "fact_suicide_by_age": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "suicide": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "fact suicide": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "fact recklessness by age": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "fact perversity by age": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "fact irresponsibility by age": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "fact madness by age": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "fact recklessness": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "fact perversity": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "fact irresponsibility": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "fact madness": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "fact rashness by age": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.499
+			          }
+			        },
+			        {
+			          "recklessness": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        }
+			      ]
+			    },
+			    "fact_suicide_by_age.country_code": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_suicide_by_age",
+			          "ConceptualProperty": "country_code"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "country code": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "country_code": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "country id": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "country key": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "nation code": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "location code": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        }
+			      ]
+			    },
+			    "fact_suicide_by_age.year": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_suicide_by_age",
+			          "ConceptualProperty": "year"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "year": {
+			            "Type": "Noun",
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "yr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "fact_suicide_by_age.age_group": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_suicide_by_age",
+			          "ConceptualProperty": "age_group"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "age group": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "age_group": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "age category": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "age organization": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "age bracket": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "age class": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "age crew": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "age team": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        }
+			      ]
+			    },
+			    "fact_suicide_by_age.sex": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_suicide_by_age",
+			          "ConceptualProperty": "sex"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "sex": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "masculinity": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "femininity": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "gender": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        }
+			      ]
+			    },
+			    "fact_suicide_by_age.suicide_rate_per_10_0k": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_suicide_by_age",
+			          "ConceptualProperty": "suicide_rate_per_100k"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "suicide rate per 10 0k": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "suicide_rate_per_100k": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "suicide degree per 10 0k": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.52
+			          }
+			        },
+			        {
+			          "suicide frequency per 10 0k": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.52
+			          }
+			        },
+			        {
+			          "suicide percentage per 10 0k": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.52
+			          }
+			        },
+			        {
+			          "suicide ratio per 10 0k": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.52
+			          }
+			        },
+			        {
+			          "suicide quotient per 10 0k": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.52
+			          }
+			        },
+			        {
+			          "suicide amount per 10 0k": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.504
+			          }
+			        },
+			        {
+			          "suicide proportion per 10 0k": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.504
+			          }
+			        },
+			        {
+			          "suicide speed per 10 0k": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.504
+			          }
+			        },
+			        {
+			          "suicide level per 10 0k": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.504
+			          }
+			        },
+			        {
+			          "suicide scale per 10 0k": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.504
+			          }
+			        }
+			      ]
+			    },
+			    "dim_age": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dim_age"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "dim age": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "dim_age": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "age": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "dim oldness": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "oldness": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "dim stage": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "dim phase": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "stage": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "phase": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "dim era": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.475
+			          }
+			        },
+			        {
+			          "dim epoch": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.475
+			          }
+			        },
+			        {
+			          "era": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.466
+			          }
+			        },
+			        {
+			          "epoch": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.466
+			          }
+			        }
+			      ]
+			    },
+			    "dim_age.age_group": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dim_age",
+			          "ConceptualProperty": "age_group"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "age group": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "age_group": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "age category": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "age organization": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "age bracket": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "age class": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "age crew": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "age team": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        }
+			      ]
+			    },
+			    "dim_age.age_order": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dim_age",
+			          "ConceptualProperty": "age_order"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "age order": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "age_order": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "order": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "age instruction": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "age direction": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "age edict": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "instruction": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "direction": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "edict": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "age command": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "age directive": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "age demand": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "age mandate": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        }
+			      ]
+			    },
+			    "dim_age.age_label": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dim_age",
+			          "ConceptualProperty": "age_label"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "age label": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "age_label": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "label": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "age sticker": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "sticker": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "age tag": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "age decal": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "tag": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "decal": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "age name tag": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.589
+			          }
+			        },
+			        {
+			          "name tag": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.571
+			          }
+			        }
+			      ]
 			    }
 			  },
 			  "Relationships": {
@@ -3127,6 +5429,151 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
+			    "fact_suicide_by_age_has_dim_age": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_suicide_by_age"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_suicide_by_age": {
+			          "Target": {
+			            "Entity": "fact_suicide_by_age"
+			          }
+			        },
+			        "dim_age": {
+			          "Target": {
+			            "Entity": "dim_age"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_suicide_by_age"
+			            },
+			            "Object": {
+			              "Role": "dim_age"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_suicide_by_age_have_dim_ages"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_age"
+			            },
+			            "Object": {
+			              "Role": "fact_suicide_by_age"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_ages_have_fact_suicide_by_age"
+			        }
+			      ]
+			    },
+			    "fact_suicide_by_age_has_dim_year": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_suicide_by_age"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_suicide_by_age": {
+			          "Target": {
+			            "Entity": "fact_suicide_by_age"
+			          }
+			        },
+			        "dim_year": {
+			          "Target": {
+			            "Entity": "dim_year"
+			          },
+			          "Nouns": [
+			            {
+			              "year": {
+			                "State": "Generated"
+			              }
+			            }
+			          ]
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_suicide_by_age"
+			            },
+			            "Object": {
+			              "Role": "dim_year"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_suicide_by_age_have_dim_years"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_year"
+			            },
+			            "Object": {
+			              "Role": "fact_suicide_by_age"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_years_have_fact_suicide_by_age"
+			        }
+			      ]
+			    },
+			    "fact_suicide_by_age_has_dim_country": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_suicide_by_age"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_suicide_by_age": {
+			          "Target": {
+			            "Entity": "fact_suicide_by_age"
+			          }
+			        },
+			        "dim_country": {
+			          "Target": {
+			            "Entity": "dim_country"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_suicide_by_age"
+			            },
+			            "Object": {
+			              "Role": "dim_country"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_suicide_by_age_have_dim_countries"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_country"
+			            },
+			            "Object": {
+			              "Role": "fact_suicide_by_age"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_countries_have_fact_suicide_by_age"
+			        }
+			      ]
+			    },
 			    "fact_mental_health_has_dim_year": {
 			      "Binding": {
 			        "ConceptualEntity": "fact_mental_health"
@@ -3141,9 +5588,44 @@ cultureInfo en-US
 			        "dim_year": {
 			          "Target": {
 			            "Entity": "dim_year"
-			          }
+			          },
+			          "Nouns": [
+			            {
+			              "year": {
+			                "State": "Generated"
+			              }
+			            }
+			          ]
 			        }
-			      }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_mental_health"
+			            },
+			            "Object": {
+			              "Role": "dim_year"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_mental_health_have_dim_years"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_year"
+			            },
+			            "Object": {
+			              "Role": "fact_mental_health"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_years_have_fact_mental_health"
+			        }
+			      ]
 			    },
 			    "fact_mental_health_has_dim_country": {
 			      "Binding": {
@@ -3161,9 +5643,169 @@ cultureInfo en-US
 			            "Entity": "dim_country"
 			          }
 			        }
-			      }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_mental_health"
+			            },
+			            "Object": {
+			              "Role": "dim_country"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_mental_health_have_dim_countries"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_country"
+			            },
+			            "Object": {
+			              "Role": "fact_mental_health"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_countries_have_fact_mental_health"
+			        }
+			      ]
 			    },
-			    "fact_mental_health_has_entity__measure_YoY_change_label": {
+			    "dim_age_has_age_label": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_age"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_age": {
+			          "Target": {
+			            "Entity": "dim_age"
+			          }
+			        },
+			        "dim_age.age_label": {
+			          "Target": {
+			            "Entity": "dim_age.age_label"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_age"
+			            },
+			            "Object": {
+			              "Role": "dim_age.age_label"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_ages_have_age_labels"
+			        }
+			      ]
+			    },
+			    "dim_age_has_age_group": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_age"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_age": {
+			          "Target": {
+			            "Entity": "dim_age"
+			          }
+			        },
+			        "dim_age.age_group": {
+			          "Target": {
+			            "Entity": "dim_age.age_group"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_age"
+			            },
+			            "Object": {
+			              "Role": "dim_age.age_group"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_ages_have_age_groups"
+			        }
+			      ]
+			    },
+			    "fact_suicide_by_age_has_suicide_rate_per_10_0k": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_suicide_by_age"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_suicide_by_age": {
+			          "Target": {
+			            "Entity": "fact_suicide_by_age"
+			          }
+			        },
+			        "fact_suicide_by_age.suicide_rate_per_10_0k": {
+			          "Target": {
+			            "Entity": "fact_suicide_by_age.suicide_rate_per_10_0k"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_suicide_by_age"
+			            },
+			            "Object": {
+			              "Role": "fact_suicide_by_age.suicide_rate_per_10_0k"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_suicide_by_age_have_suicide_rate_per_10_0k"
+			        }
+			      ]
+			    },
+			    "fact_suicide_by_age_has_sex": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_suicide_by_age"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_suicide_by_age": {
+			          "Target": {
+			            "Entity": "fact_suicide_by_age"
+			          }
+			        },
+			        "fact_suicide_by_age.sex": {
+			          "Target": {
+			            "Entity": "fact_suicide_by_age.sex"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_suicide_by_age"
+			            },
+			            "Object": {
+			              "Role": "fact_suicide_by_age.sex"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_suicide_by_age_have_sexes"
+			        }
+			      ]
+			    },
+			    "fact_mental_health_has_mh_expenditure_pct": {
 			      "Binding": {
 			        "ConceptualEntity": "fact_mental_health"
 			      },
@@ -3174,12 +5816,687 @@ cultureInfo en-US
 			            "Entity": "fact_mental_health"
 			          }
 			        },
+			        "fact_mental_health.mh_expenditure_pct": {
+			          "Target": {
+			            "Entity": "fact_mental_health.mh_expenditure_pct"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_mental_health"
+			            },
+			            "Object": {
+			              "Role": "fact_mental_health.mh_expenditure_pct"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_mental_health_have_mh_expenditure_pcts"
+			        }
+			      ]
+			    },
+			    "fact_mental_health_has_day_treatment_facility": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_mental_health"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_mental_health": {
+			          "Target": {
+			            "Entity": "fact_mental_health"
+			          }
+			        },
+			        "fact_mental_health.day_treatment_facility": {
+			          "Target": {
+			            "Entity": "fact_mental_health.day_treatment_facility"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_mental_health"
+			            },
+			            "Object": {
+			              "Role": "fact_mental_health.day_treatment_facility"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_mental_health_have_day_treatment_facilities"
+			        }
+			      ]
+			    },
+			    "fact_mental_health_has_psychologist_per_10_0k": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_mental_health"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_mental_health": {
+			          "Target": {
+			            "Entity": "fact_mental_health"
+			          }
+			        },
+			        "fact_mental_health.psychologist_per_10_0k": {
+			          "Target": {
+			            "Entity": "fact_mental_health.psychologist_per_10_0k"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_mental_health"
+			            },
+			            "Object": {
+			              "Role": "fact_mental_health.psychologist_per_10_0k"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_mental_health_have_psychologist_per_10_0k"
+			        }
+			      ]
+			    },
+			    "fact_mental_health_has_mh_nurse_per_10_0k": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_mental_health"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_mental_health": {
+			          "Target": {
+			            "Entity": "fact_mental_health"
+			          }
+			        },
+			        "fact_mental_health.mh_nurse_per_10_0k": {
+			          "Target": {
+			            "Entity": "fact_mental_health.mh_nurse_per_10_0k"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_mental_health"
+			            },
+			            "Object": {
+			              "Role": "fact_mental_health.mh_nurse_per_10_0k"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_mental_health_have_mh_nurse_per_10_0k"
+			        }
+			      ]
+			    },
+			    "fact_mental_health_has_psychiatrist_per_10_0k": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_mental_health"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_mental_health": {
+			          "Target": {
+			            "Entity": "fact_mental_health"
+			          }
+			        },
+			        "fact_mental_health.psychiatrist_per_10_0k": {
+			          "Target": {
+			            "Entity": "fact_mental_health.psychiatrist_per_10_0k"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_mental_health"
+			            },
+			            "Object": {
+			              "Role": "fact_mental_health.psychiatrist_per_10_0k"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_mental_health_have_psychiatrist_per_10_0k"
+			        }
+			      ]
+			    },
+			    "fact_mental_health_has_psychiatric_bed": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_mental_health"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_mental_health": {
+			          "Target": {
+			            "Entity": "fact_mental_health"
+			          }
+			        },
+			        "fact_mental_health.psychiatric_bed": {
+			          "Target": {
+			            "Entity": "fact_mental_health.psychiatric_bed"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_mental_health"
+			            },
+			            "Object": {
+			              "Role": "fact_mental_health.psychiatric_bed"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_mental_health_have_psychiatric_beds"
+			        }
+			      ]
+			    },
+			    "fact_mental_health_has_mental_hospital": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_mental_health"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_mental_health": {
+			          "Target": {
+			            "Entity": "fact_mental_health"
+			          }
+			        },
+			        "fact_mental_health.mental_hospital": {
+			          "Target": {
+			            "Entity": "fact_mental_health.mental_hospital"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_mental_health"
+			            },
+			            "Object": {
+			              "Role": "fact_mental_health.mental_hospital"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_mental_health_have_mental_hospitals"
+			        }
+			      ]
+			    },
+			    "fact_mental_health_has_life_expectancy": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_mental_health"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_mental_health": {
+			          "Target": {
+			            "Entity": "fact_mental_health"
+			          }
+			        },
+			        "fact_mental_health.life_expectancy": {
+			          "Target": {
+			            "Entity": "fact_mental_health.life_expectancy"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_mental_health"
+			            },
+			            "Object": {
+			              "Role": "fact_mental_health.life_expectancy"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_mental_health_have_life_expectancies"
+			        }
+			      ]
+			    },
+			    "fact_mental_health_has_health_expenditure_gdp_pct": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_mental_health"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_mental_health": {
+			          "Target": {
+			            "Entity": "fact_mental_health"
+			          }
+			        },
+			        "fact_mental_health.health_expenditure_gdp_pct": {
+			          "Target": {
+			            "Entity": "fact_mental_health.health_expenditure_gdp_pct"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_mental_health"
+			            },
+			            "Object": {
+			              "Role": "fact_mental_health.health_expenditure_gdp_pct"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_mental_health_have_health_expenditure_gdp_pcts"
+			        }
+			      ]
+			    },
+			    "fact_mental_health_has_health_expenditure_per_capita": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_mental_health"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_mental_health": {
+			          "Target": {
+			            "Entity": "fact_mental_health"
+			          }
+			        },
+			        "fact_mental_health.health_expenditure_per_capita": {
+			          "Target": {
+			            "Entity": "fact_mental_health.health_expenditure_per_capita"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_mental_health"
+			            },
+			            "Object": {
+			              "Role": "fact_mental_health.health_expenditure_per_capita"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_mental_health_have_health_expenditure_per_capita"
+			        }
+			      ]
+			    },
+			    "fact_mental_health_has_suicide_rate_female": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_mental_health"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_mental_health": {
+			          "Target": {
+			            "Entity": "fact_mental_health"
+			          }
+			        },
+			        "fact_mental_health.suicide_rate_female": {
+			          "Target": {
+			            "Entity": "fact_mental_health.suicide_rate_female"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_mental_health"
+			            },
+			            "Object": {
+			              "Role": "fact_mental_health.suicide_rate_female"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_mental_health_have_suicide_rate_females"
+			        }
+			      ]
+			    },
+			    "fact_mental_health_has_suicide_rate_male": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_mental_health"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_mental_health": {
+			          "Target": {
+			            "Entity": "fact_mental_health"
+			          }
+			        },
+			        "fact_mental_health.suicide_rate_male": {
+			          "Target": {
+			            "Entity": "fact_mental_health.suicide_rate_male"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_mental_health"
+			            },
+			            "Object": {
+			              "Role": "fact_mental_health.suicide_rate_male"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_mental_health_have_suicide_rate_males"
+			        }
+			      ]
+			    },
+			    "fact_mental_health_has_urban_population_pct": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_mental_health"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_mental_health": {
+			          "Target": {
+			            "Entity": "fact_mental_health"
+			          }
+			        },
+			        "fact_mental_health.urban_population_pct": {
+			          "Target": {
+			            "Entity": "fact_mental_health.urban_population_pct"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_mental_health"
+			            },
+			            "Object": {
+			              "Role": "fact_mental_health.urban_population_pct"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_mental_health_have_urban_population_pcts"
+			        }
+			      ]
+			    },
+			    "fact_mental_health_has_gini_index": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_mental_health"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_mental_health": {
+			          "Target": {
+			            "Entity": "fact_mental_health"
+			          }
+			        },
+			        "fact_mental_health.gini_index": {
+			          "Target": {
+			            "Entity": "fact_mental_health.gini_index"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_mental_health"
+			            },
+			            "Object": {
+			              "Role": "fact_mental_health.gini_index"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_mental_health_have_gini_indices"
+			        }
+			      ]
+			    },
+			    "fact_mental_health_has_youth_unemployment_rate": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_mental_health"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_mental_health": {
+			          "Target": {
+			            "Entity": "fact_mental_health"
+			          }
+			        },
+			        "fact_mental_health.youth_unemployment_rate": {
+			          "Target": {
+			            "Entity": "fact_mental_health.youth_unemployment_rate"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_mental_health"
+			            },
+			            "Object": {
+			              "Role": "fact_mental_health.youth_unemployment_rate"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_mental_health_have_youth_unemployment_rates"
+			        }
+			      ]
+			    },
+			    "fact_mental_health_has_unemployment_female": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_mental_health"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_mental_health": {
+			          "Target": {
+			            "Entity": "fact_mental_health"
+			          }
+			        },
+			        "fact_mental_health.unemployment_female": {
+			          "Target": {
+			            "Entity": "fact_mental_health.unemployment_female"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_mental_health"
+			            },
+			            "Object": {
+			              "Role": "fact_mental_health.unemployment_female"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_mental_health_have_unemployment_females"
+			        }
+			      ]
+			    },
+			    "fact_mental_health_has_unemployment_male": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_mental_health"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_mental_health": {
+			          "Target": {
+			            "Entity": "fact_mental_health"
+			          }
+			        },
+			        "fact_mental_health.unemployment_male": {
+			          "Target": {
+			            "Entity": "fact_mental_health.unemployment_male"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_mental_health"
+			            },
+			            "Object": {
+			              "Role": "fact_mental_health.unemployment_male"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_mental_health_have_unemployment_males"
+			        }
+			      ]
+			    },
+			    "dim_country_has_longitude": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_country"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_country": {
+			          "Target": {
+			            "Entity": "dim_country"
+			          }
+			        },
+			        "dim_country.longitude": {
+			          "Target": {
+			            "Entity": "dim_country.longitude"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_country"
+			            },
+			            "Object": {
+			              "Role": "dim_country.longitude"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_countries_have_longitudes"
+			        }
+			      ]
+			    },
+			    "dim_country_has_latitude": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_country"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_country": {
+			          "Target": {
+			            "Entity": "dim_country"
+			          }
+			        },
+			        "dim_country.latitude": {
+			          "Target": {
+			            "Entity": "dim_country.latitude"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_country"
+			            },
+			            "Object": {
+			              "Role": "dim_country.latitude"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_countries_have_latitudes"
+			        }
+			      ]
+			    },
+			    "fact_suicide_by_age_has_entity__measure_YoY_change_label": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_suicide_by_age"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_suicide_by_age": {
+			          "Target": {
+			            "Entity": "fact_suicide_by_age"
+			          }
+			        },
 			        "entity__measure.YoY_change_label": {
 			          "Target": {
 			            "Entity": "entity__measure.YoY_change_label"
 			          }
 			        }
-			      }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_suicide_by_age"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.YoY_change_label"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_suicide_by_age_have_YoY_change_label"
+			        }
+			      ]
+			    },
+			    "dim_age_has_entity__measure_YoY_change_label": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_age"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_age": {
+			          "Target": {
+			            "Entity": "dim_age"
+			          }
+			        },
+			        "entity__measure.YoY_change_label": {
+			          "Target": {
+			            "Entity": "entity__measure.YoY_change_label"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_age"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.YoY_change_label"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_ages_have_YoY_change_label"
+			        }
+			      ]
 			    },
 			    "dim_country_has_entity__measure_lowest_rate_country": {
 			      "Binding": {
@@ -3247,51 +6564,15 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "fact_mental_health_has_entity__measure_avg_unemployment_rate": {
+			    "fact_suicide_by_age_has_entity__measure_YoY_change_suicide_rate": {
 			      "Binding": {
-			        "ConceptualEntity": "fact_mental_health"
+			        "ConceptualEntity": "fact_suicide_by_age"
 			      },
 			      "State": "Generated",
 			      "Roles": {
-			        "fact_mental_health": {
+			        "fact_suicide_by_age": {
 			          "Target": {
-			            "Entity": "fact_mental_health"
-			          }
-			        },
-			        "entity__measure.avg_unemployment_rate": {
-			          "Target": {
-			            "Entity": "entity__measure.avg_unemployment_rate"
-			          }
-			        }
-			      }
-			    },
-			    "fact_mental_health_has_entity__measure_avg_GDP_per_capita": {
-			      "Binding": {
-			        "ConceptualEntity": "fact_mental_health"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "fact_mental_health": {
-			          "Target": {
-			            "Entity": "fact_mental_health"
-			          }
-			        },
-			        "entity__measure.avg_GDP_per_capita": {
-			          "Target": {
-			            "Entity": "entity__measure.avg_GDP_per_capita"
-			          }
-			        }
-			      }
-			    },
-			    "fact_mental_health_has_entity__measure_YoY_change_suicide_rate": {
-			      "Binding": {
-			        "ConceptualEntity": "fact_mental_health"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "fact_mental_health": {
-			          "Target": {
-			            "Entity": "fact_mental_health"
+			            "Entity": "fact_suicide_by_age"
 			          }
 			        },
 			        "entity__measure.YoY_change_suicide_rate": {
@@ -3299,17 +6580,65 @@ cultureInfo en-US
 			            "Entity": "entity__measure.YoY_change_suicide_rate"
 			          }
 			        }
-			      }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_suicide_by_age"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.YoY_change_suicide_rate"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_suicide_by_age_have_YoY_change_suicide_rate"
+			        }
+			      ]
 			    },
-			    "fact_mental_health_has_entity__measure_top_country_rate": {
+			    "dim_age_has_entity__measure_YoY_change_suicide_rate": {
 			      "Binding": {
-			        "ConceptualEntity": "fact_mental_health"
+			        "ConceptualEntity": "dim_age"
 			      },
 			      "State": "Generated",
 			      "Roles": {
-			        "fact_mental_health": {
+			        "dim_age": {
 			          "Target": {
-			            "Entity": "fact_mental_health"
+			            "Entity": "dim_age"
+			          }
+			        },
+			        "entity__measure.YoY_change_suicide_rate": {
+			          "Target": {
+			            "Entity": "entity__measure.YoY_change_suicide_rate"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_age"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.YoY_change_suicide_rate"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_ages_have_YoY_change_suicide_rate"
+			        }
+			      ]
+			    },
+			    "fact_suicide_by_age_has_entity__measure_top_country_rate": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_suicide_by_age"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_suicide_by_age": {
+			          "Target": {
+			            "Entity": "fact_suicide_by_age"
 			          }
 			        },
 			        "entity__measure.top_country_rate": {
@@ -3317,7 +6646,22 @@ cultureInfo en-US
 			            "Entity": "entity__measure.top_country_rate"
 			          }
 			        }
-			      }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_suicide_by_age"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.top_country_rate"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_suicide_by_age_have_top_country_rate"
+			        }
+			      ]
 			    },
 			    "dim_country_has_entity__measure_top_country_rate": {
 			      "Binding": {
@@ -3349,6 +6693,39 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "dim_countries_have_top_country_rate"
+			        }
+			      ]
+			    },
+			    "dim_age_has_entity__measure_top_country_rate": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_age"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_age": {
+			          "Target": {
+			            "Entity": "dim_age"
+			          }
+			        },
+			        "entity__measure.top_country_rate": {
+			          "Target": {
+			            "Entity": "entity__measure.top_country_rate"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_age"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.top_country_rate"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_ages_have_top_country_rate"
 			        }
 			      ]
 			    },
@@ -3385,7 +6762,40 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "fact_mental_health_has_entity__measure_avg_outpatient_facilities": {
+			    "fact_suicide_by_age_has_entity__measure_male_female_ratio": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_suicide_by_age"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_suicide_by_age": {
+			          "Target": {
+			            "Entity": "fact_suicide_by_age"
+			          }
+			        },
+			        "entity__measure.male_female_ratio": {
+			          "Target": {
+			            "Entity": "entity__measure.male_female_ratio"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_suicide_by_age"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.male_female_ratio"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_suicide_by_age_have_male_female_ratio"
+			        }
+			      ]
+			    },
+			    "fact_mental_health_has_entity__measure_latest_year_available": {
 			      "Binding": {
 			        "ConceptualEntity": "fact_mental_health"
 			      },
@@ -3396,27 +6806,9 @@ cultureInfo en-US
 			            "Entity": "fact_mental_health"
 			          }
 			        },
-			        "entity__measure.avg_outpatient_facilities": {
+			        "entity__measure.latest_year_available": {
 			          "Target": {
-			            "Entity": "entity__measure.avg_outpatient_facilities"
-			          }
-			        }
-			      }
-			    },
-			    "dim_year_has_entity__measure_year_range": {
-			      "Binding": {
-			        "ConceptualEntity": "dim_year"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "dim_year": {
-			          "Target": {
-			            "Entity": "dim_year"
-			          }
-			        },
-			        "entity__measure.year_range": {
-			          "Target": {
-			            "Entity": "entity__measure.year_range"
+			            "Entity": "entity__measure.latest_year_available"
 			          }
 			        }
 			      },
@@ -3424,15 +6816,15 @@ cultureInfo en-US
 			        {
 			          "Attribute": {
 			            "Subject": {
-			              "Role": "dim_year"
+			              "Role": "fact_mental_health"
 			            },
 			            "Object": {
-			              "Role": "entity__measure.year_range"
+			              "Role": "entity__measure.latest_year_available"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "dim_years_have_year_range"
+			          "ID": "fact_mental_health_have_latest_year_available"
 			        }
 			      ]
 			    },
@@ -3469,7 +6861,73 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "fact_mental_health_has_entity__measure_avg_suicide_rate_per_100k": {
+			    "fact_suicide_by_age_has_entity__measure_avg_suicide_rate_per_100k": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_suicide_by_age"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_suicide_by_age": {
+			          "Target": {
+			            "Entity": "fact_suicide_by_age"
+			          }
+			        },
+			        "entity__measure.avg_suicide_rate_per_100k": {
+			          "Target": {
+			            "Entity": "entity__measure.avg_suicide_rate_per_100k"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_suicide_by_age"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.avg_suicide_rate_per_100k"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_suicide_by_age_have_avg_suicide_rate_per_100k"
+			        }
+			      ]
+			    },
+			    "dim_age_has_entity__measure_avg_suicide_rate_per_100k": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_age"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_age": {
+			          "Target": {
+			            "Entity": "dim_age"
+			          }
+			        },
+			        "entity__measure.avg_suicide_rate_per_100k": {
+			          "Target": {
+			            "Entity": "entity__measure.avg_suicide_rate_per_100k"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_age"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.avg_suicide_rate_per_100k"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_ages_have_avg_suicide_rate_per_100k"
+			        }
+			      ]
+			    },
+			    "fact_mental_health_has_outpatient_facility": {
 			      "Binding": {
 			        "ConceptualEntity": "fact_mental_health"
 			      },
@@ -3480,12 +6938,126 @@ cultureInfo en-US
 			            "Entity": "fact_mental_health"
 			          }
 			        },
-			        "entity__measure.avg_suicide_rate_per_100k": {
+			        "fact_mental_health.outpatient_facility": {
 			          "Target": {
-			            "Entity": "entity__measure.avg_suicide_rate_per_100k"
+			            "Entity": "fact_mental_health.outpatient_facility"
 			          }
 			        }
-			      }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_mental_health"
+			            },
+			            "Object": {
+			              "Role": "fact_mental_health.outpatient_facility"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_mental_health_have_outpatient_facilities"
+			        }
+			      ]
+			    },
+			    "fact_mental_health_has_suicide_rate_per_10_0k": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_mental_health"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_mental_health": {
+			          "Target": {
+			            "Entity": "fact_mental_health"
+			          }
+			        },
+			        "fact_mental_health.suicide_rate_per_10_0k": {
+			          "Target": {
+			            "Entity": "fact_mental_health.suicide_rate_per_10_0k"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_mental_health"
+			            },
+			            "Object": {
+			              "Role": "fact_mental_health.suicide_rate_per_10_0k"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_mental_health_have_suicide_rate_per_10_0k"
+			        }
+			      ]
+			    },
+			    "fact_mental_health_has_unemployment_rate": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_mental_health"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_mental_health": {
+			          "Target": {
+			            "Entity": "fact_mental_health"
+			          }
+			        },
+			        "fact_mental_health.unemployment_rate": {
+			          "Target": {
+			            "Entity": "fact_mental_health.unemployment_rate"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_mental_health"
+			            },
+			            "Object": {
+			              "Role": "fact_mental_health.unemployment_rate"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_mental_health_have_unemployment_rates"
+			        }
+			      ]
+			    },
+			    "fact_mental_health_has_gdp_per_capita": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_mental_health"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_mental_health": {
+			          "Target": {
+			            "Entity": "fact_mental_health"
+			          }
+			        },
+			        "fact_mental_health.gdp_per_capita": {
+			          "Target": {
+			            "Entity": "fact_mental_health.gdp_per_capita"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_mental_health"
+			            },
+			            "Object": {
+			              "Role": "fact_mental_health.gdp_per_capita"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_mental_health_have_gdp_per_capita"
+			        }
+			      ]
 			    },
 			    "dim_year_has_date": {
 			      "Binding": {
@@ -3781,6 +7353,96 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "dim_countries_have_country_codes"
+			        }
+			      ]
+			    },
+			    "fact_suicide_by_age_in_dim_country": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_suicide_by_age"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_suicide_by_age": {
+			          "Target": {
+			            "Entity": "fact_suicide_by_age"
+			          }
+			        },
+			        "dim_country": {
+			          "Target": {
+			            "Entity": "dim_country"
+			          }
+			        }
+			      },
+			      "SemanticSlots": {
+			        "Where": {
+			          "Role": "dim_country"
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "fact_suicide_by_age"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "dim_country"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_suicide_by_age_are_in_dim_countries"
+			        }
+			      ]
+			    },
+			    "fact_mental_health_in_dim_country": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_mental_health"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_mental_health": {
+			          "Target": {
+			            "Entity": "fact_mental_health"
+			          }
+			        },
+			        "dim_country": {
+			          "Target": {
+			            "Entity": "dim_country"
+			          }
+			        }
+			      },
+			      "SemanticSlots": {
+			        "Where": {
+			          "Role": "dim_country"
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "fact_mental_health"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "dim_country"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_mental_health_are_in_dim_countries"
 			        }
 			      ]
 			    },

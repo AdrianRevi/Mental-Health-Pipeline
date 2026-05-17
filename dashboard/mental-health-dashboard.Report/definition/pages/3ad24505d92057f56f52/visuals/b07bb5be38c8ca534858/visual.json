@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.1.0/schema.json",
   "name": "b07bb5be38c8ca534858",
   "position": {
-    "x": 161.93826347001877,
-    "y": 499.655667629716,
+    "x": 287.74103702786761,
+    "y": 443.65358132050073,
     "z": 7000,
-    "height": 113.49519320120973,
-    "width": 314.18791288627574,
+    "height": 87.463134603184429,
+    "width": 192.67241245918888,
     "tabOrder": 6000
   },
   "visual": {
@@ -78,6 +78,13 @@
       "data": [
         {
           "properties": {
+            "numericEnd": {
+              "expr": {
+                "Literal": {
+                  "Value": "2021D"
+                }
+              }
+            },
             "mode": {
               "expr": {
                 "Literal": {
@@ -144,7 +151,55 @@
       ],
       "general": [
         {
-          "properties": {}
+          "properties": {
+            "filter": {
+              "filter": {
+                "Version": 2,
+                "From": [
+                  {
+                    "Name": "d",
+                    "Entity": "dim_year",
+                    "Type": 0
+                  }
+                ],
+                "Where": [
+                  {
+                    "Condition": {
+                      "Comparison": {
+                        "ComparisonKind": 4,
+                        "Left": {
+                          "HierarchyLevel": {
+                            "Expression": {
+                              "Hierarchy": {
+                                "Expression": {
+                                  "PropertyVariationSource": {
+                                    "Expression": {
+                                      "SourceRef": {
+                                        "Source": "d"
+                                      }
+                                    },
+                                    "Name": "Variation",
+                                    "Property": "date"
+                                  }
+                                },
+                                "Hierarchy": "Date Hierarchy"
+                              }
+                            },
+                            "Level": "Year"
+                          }
+                        },
+                        "Right": {
+                          "Literal": {
+                            "Value": "2021D"
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
         }
       ]
     },
@@ -168,7 +223,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             },

@@ -11,10 +11,13 @@ table dim_age
 
 	column age_order
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: dd596bc9-5ec0-478c-9f60-72bd9dd1a5bb
 		summarizeBy: none
 		sourceColumn: age_order
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -23,6 +26,9 @@ table dim_age
 		lineageTag: 7842a12e-076f-4bb3-9efb-cebeab91b6ea
 		summarizeBy: none
 		sourceColumn: age_label
+		sortByColumn: age_order
+
+		changedProperty = SortByColumn
 
 		annotation SummarizationSetBy = Automatic
 

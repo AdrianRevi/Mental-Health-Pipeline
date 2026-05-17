@@ -23,12 +23,13 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Year Range"
+                  "Property": "Latest Year Available"
                 }
               },
               "queryRef": "_Measures.Year Range",
               "nativeQueryRef": "Latest Year Available",
-              "displayName": "Latest Year Available"
+              "displayName": "Latest Year Available",
+              "format": "0"
             }
           ]
         }
@@ -43,7 +44,7 @@
                     "Entity": "_Measures"
                   }
                 },
-                "Property": "Year Range"
+                "Property": "Latest Year Available"
               }
             },
             "direction": "Ascending"

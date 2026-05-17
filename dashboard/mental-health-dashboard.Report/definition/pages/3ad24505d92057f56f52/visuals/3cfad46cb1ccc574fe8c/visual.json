@@ -3,7 +3,7 @@
   "name": "3cfad46cb1ccc574fe8c",
   "position": {
     "x": 1060.2111950259348,
-    "y": 256.05622856370485,
+    "y": 95,
     "z": 6000,
     "height": 150.865561694291,
     "width": 199.3086319631,
@@ -23,12 +23,13 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Avg Outpatient Facilities"
+                  "Property": "Male Female Ratio"
                 }
               },
               "queryRef": "_Measures.Avg Outpatient Facilities",
-              "nativeQueryRef": "Outpatient Facilities per 100k",
-              "displayName": "Outpatient Facilities per 100k"
+              "nativeQueryRef": "Male vs Female Rate",
+              "displayName": "Male vs Female Rate",
+              "format": "0.0\"x\""
             }
           ]
         }
@@ -43,7 +44,7 @@
                     "Entity": "_Measures"
                   }
                 },
-                "Property": "Avg Outpatient Facilities"
+                "Property": "Male Female Ratio"
               }
             },
             "direction": "Descending"

@@ -152,7 +152,6 @@ def clean_who_suicide_by_age(df: pd.DataFrame) -> pd.DataFrame:
     df = df[["country_code", "year", "age_group", "sex", "value"]].copy()
     df = df.rename(columns={"value": "suicide_rate_per_100k"})
     df["year"] = df["year"].astype(int)
-    df = df[df["sex"] != "Both"]
     return df.drop_duplicates(subset=["country_code", "year", "age_group", "sex"])
 
 

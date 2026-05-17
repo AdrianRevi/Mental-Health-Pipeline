@@ -53,11 +53,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Avg Suicide Rate per 100k"
+                  "Property": "Avg Suicide Rate Trend per 100k"
                 }
               },
-              "queryRef": "_Measures.Avg Suicide Rate per 100k",
-              "nativeQueryRef": "Avg Suicide Rate per 100k"
+              "queryRef": "_Measures.Avg Suicide Rate Trend per 100k",
+              "nativeQueryRef": "Avg Suicide Rate Trend per 100k"
             }
           ]
         }
@@ -120,7 +120,7 @@
             }
           },
           "selector": {
-            "metadata": "_Measures.Avg Suicide Rate per 100k"
+            "metadata": "_Measures.Avg Suicide Rate Trend per 100k"
           }
         }
       ],

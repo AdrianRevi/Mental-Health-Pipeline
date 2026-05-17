@@ -23,7 +23,7 @@
                   "ResourcePackageItem": {
                     "PackageName": "RegisteredResources",
                     "PackageType": 1,
-                    "ItemName": "PBI_Background7948664786861951.png"
+                    "ItemName": "PBI_Background26590269667475286.png"
                   }
                 }
               },
@@ -46,5 +46,17 @@
         }
       }
     ]
-  }
+  },
+  "visualInteractions": [
+    {
+      "source": "b7ba8d917dc3dc42dde7",
+      "target": "dabbeeb8f753e9075852",
+      "type": "DataFilter"
+    },
+    {
+      "source": "c8531d28651e8159edd2",
+      "target": "dabbeeb8f753e9075852",
+      "type": "DataFilter"
+    }
+  ]
 }
