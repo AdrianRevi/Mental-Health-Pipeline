@@ -1,6 +1,6 @@
 # Mental Health Pipeline
 
-An end-to-end ETL pipeline on public mental health data following the **Medallion Architecture** (Bronze → Silver → Gold). Built as a portfolio project for junior Data Engineer roles.
+An end-to-end ETL pipeline on public mental health data following the **Medallion Architecture** (Bronze → Silver → Gold).
 
 **Stack:** Python · pandas · Great Expectations · DuckDB · GitHub Actions · Power BI  
 **Cost:** €0 — fully local, no cloud services required  
