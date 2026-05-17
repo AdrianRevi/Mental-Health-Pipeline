@@ -127,3 +127,69 @@ The Lowest Rate measure wraps the table in `FILTER(..., [Avg Suicide Rate per 10
 ### 2. Card hierarchy — rate as callout, country name as reference
 
 Initially the country name was the callout (large text) and the rate was the reference label. Countries with long names (e.g. "West Bank and Gaza") overflowed regardless of font size or abbreviation. Fixed by inverting the hierarchy: the rate is the large callout and the country name is the smaller reference label below. The rate is always a short number — it never overflows. The country name at smaller size wraps cleanly.
+
+---
+
+## Correlations Page
+
+### 1. World Bank suicide rate instead of WHO for scatter plots
+
+The Correlations page uses `Suicide Rate (WB) = AVERAGE(fact_mental_health[suicide_rate_per_100k])` instead of the `Avg Suicide Rate per 100k` measure used on the Overview page.
+
+**Why:** all socioeconomic metrics on this page (GDP, unemployment, health expenditure) come from `fact_mental_health`. Using the same table for the Y axis avoids cross-table joins and keeps the correlation analysis consistent within a single source. The `Avg Suicide Rate per 100k` measure was designed for demographic filtering on the Overview page — that complexity adds no value here.
+
+This was anticipated in Decision #10 of the Overview page: *"fact_mental_health will be used in pages where socioeconomic indicators are the focus."*
+
+---
+
+### 2. Metric selection — coverage-driven
+
+Several candidate metrics were evaluated for the scatter plots and discarded due to insufficient data coverage:
+
+| Metric | Null rate | Decision |
+|---|---|---|
+| `gini_index` | 72.6% | Discarded — too sparse for a scatter |
+| WHO facility indicators | ~97% | Discarded — almost no data |
+| `gdp_per_capita` | ~0% | Selected |
+| `youth_unemployment_rate` | ~17% | Selected |
+| `health_expenditure_gdp_pct` | ~15% | Selected |
+
+A scatter plot with >30% nulls produces a misleading visual — the visible points are a biased sample. Coverage was the primary selection criterion.
+
+---
+
+### 3. No trend line on Youth Unemployment scatter
+
+The GDP and Health Expenditure scatter plots have a trend line. The Youth Unemployment scatter does not.
+
+**Why:** the relationship between youth unemployment and suicide rate is not linear in the data — countries with high unemployment and low rates coexist with the inverse. A trend line would imply a global direction that the data does not support. The analytical value of that visual lies in the **clusters by income level**, not in a global trend.
+
+---
+
+### 4. Bar chart uses fact_suicide_by_age — only table with demographic breakdown
+
+The Male vs Female by Age Group bar chart is the only visual on this page that uses `fact_suicide_by_age`. `fact_mental_health` has `suicide_rate_male` and `suicide_rate_female` columns but no age breakdown. `fact_suicide_by_age` is the only source that combines sex × age group.
+
+Two dedicated measures were created for this visual:
+
+```dax
+Male Suicide Rate =
+CALCULATE(
+    AVERAGE(fact_suicide_by_age[suicide_rate_per_100k]),
+    fact_suicide_by_age[sex] = "Male"
+)
+
+Female Suicide Rate =
+CALCULATE(
+    AVERAGE(fact_suicide_by_age[suicide_rate_per_100k]),
+    fact_suicide_by_age[sex] = "Female"
+)
+```
+
+"All Ages" is excluded from the Y axis via a visual-level filter so only the individual age groups appear.
+
+---
+
+### 5. Average as the standard aggregation for fact table columns
+
+All continuous metric columns from fact tables (`gdp_per_capita`, `youth_unemployment_rate`, `health_expenditure_gdp_pct`, etc.) use **Average** aggregation in all visuals. Sum is never used — summing GDP or unemployment rates across countries produces a meaningless number. Average gives the representative value for the selected filter context (year, region, income level).

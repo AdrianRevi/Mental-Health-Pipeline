@@ -87,10 +87,10 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Avg Suicide Rate per 100k"
+                  "Property": "Avg Suicide Rate per 100k (WB)"
                 }
               },
-              "queryRef": "_Measures.Avg Suicide Rate per 100k",
+              "queryRef": "_Measures.Avg Suicide Rate per 100k (WB)",
               "nativeQueryRef": "Suicide Rate per 100k",
               "displayName": "Suicide Rate per 100k"
             }
@@ -339,5 +339,70 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "05db7b1e4c36a4c6f0c6",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fact_mental_health"
+                  }
+                },
+                "Property": "youth_unemployment_rate"
+              }
+            },
+            "Function": 1
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "288c77c13c49bd158a5a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_country"
+              }
+            },
+            "Property": "country"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "bc5ad63a54397dcc93ad",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_country"
+              }
+            },
+            "Property": "income_level"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "c78128dc30b50fa16f39",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Avg Suicide Rate per 100k (WB)"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

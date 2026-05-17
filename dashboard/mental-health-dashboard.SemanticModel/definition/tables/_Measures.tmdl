@@ -170,6 +170,17 @@ table _Measures
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	measure 'Filter Fact Has Values' = INT(NOT(ISEMPTY(fact_suicide_by_age)))
+		formatString: 0
+		lineageTag: 8b058294-9b8e-46f5-abea-6d92a2ed2c96
+
+	measure 'Avg Suicide Rate per 100k (WB)' =
+			
+			AVERAGE(fact_mental_health[suicide_rate_per_100k])
+		lineageTag: 6ed4a4e0-d809-4756-a2f9-c7e7e75d0964
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column Value
 		isHidden
 		lineageTag: 815d2f43-d410-4798-befd-3fa9e71ebe7a

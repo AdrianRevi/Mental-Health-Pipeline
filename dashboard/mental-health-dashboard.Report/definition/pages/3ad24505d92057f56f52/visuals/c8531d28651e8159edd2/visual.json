@@ -213,7 +213,58 @@
   "filterConfig": {
     "filters": [
       {
+        "name": "3b3208457a5ef9356c1e",
+        "ordinal": 0,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Filter Fact Has Values"
+          }
+        },
+        "type": "Advanced",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "_",
+              "Entity": "_Measures",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Comparison": {
+                  "ComparisonKind": 0,
+                  "Left": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Source": "_"
+                        }
+                      },
+                      "Property": "Filter Fact Has Values"
+                    }
+                  },
+                  "Right": {
+                    "Literal": {
+                      "Value": "1L"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User"
+      },
+      {
         "name": "71bd54862018c5d96200",
+        "ordinal": 1,
         "field": {
           "Column": {
             "Expression": {
@@ -284,6 +335,7 @@
           ]
         }
       }
-    ]
+    ],
+    "filterSortOrder": "Custom"
   }
 }

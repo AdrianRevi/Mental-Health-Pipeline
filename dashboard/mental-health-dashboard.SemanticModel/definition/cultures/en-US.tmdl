@@ -1944,16 +1944,6 @@ cultureInfo en-US
 			            },
 			            "Weight": 0.504
 			          }
-			        },
-			        {
-			          "Suicide Rate per 100k": {
-			            "State": "Suggested",
-			            "Source": {
-			              "Type": "External",
-			              "Agent": "PowerBI.VisualColumnRename"
-			            },
-			            "Weight": 0.9
-			          }
 			        }
 			      ]
 			    },
@@ -5681,6 +5671,154 @@ cultureInfo en-US
 			          }
 			        }
 			      ]
+			    },
+			    "entity__measure.filter_fact_has_values": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Filter Fact Has Values"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "filter fact has values": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "filter statistic has value": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "filter element has value": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "filter information has value": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "filter statement has value": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "filter detail has value": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.499
+			          }
+			        },
+			        {
+			          "filter circumstance has value": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.499
+			          }
+			        },
+			        {
+			          "filter point has value": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.499
+			          }
+			        },
+			        {
+			          "filter occurrence has value": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.489
+			          }
+			        },
+			        {
+			          "filter happening has value": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.474
+			          }
+			        },
+			        {
+			          "filter deed has value": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.474
+			          }
+			        }
+			      ]
+			    },
+			    "entity__measure.avg_suicide_rate_per_100k_WB": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Avg Suicide Rate per 100k (WB)"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "avg suicide rate per 100k (WB)": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "avg suicide rate per 100k": {
+			            "State": "Generated",
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "Suicide Rate per 100k": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
 			    }
 			  },
 			  "Relationships": {
@@ -6090,6 +6228,72 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "dim_countries_have_fact_mental_health"
+			        }
+			      ]
+			    },
+			    "fact_mental_health_has_entity__measure_avg_suicide_rate_per_100k_WB": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_mental_health"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_mental_health": {
+			          "Target": {
+			            "Entity": "fact_mental_health"
+			          }
+			        },
+			        "entity__measure.avg_suicide_rate_per_100k_WB": {
+			          "Target": {
+			            "Entity": "entity__measure.avg_suicide_rate_per_100k_WB"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_mental_health"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.avg_suicide_rate_per_100k_WB"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_mental_health_have_avg_suicide_rate_per_100k_WB"
+			        }
+			      ]
+			    },
+			    "fact_suicide_by_age_has_entity__measure_filter_fact_has_values": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_suicide_by_age"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_suicide_by_age": {
+			          "Target": {
+			            "Entity": "fact_suicide_by_age"
+			          }
+			        },
+			        "entity__measure.filter_fact_has_values": {
+			          "Target": {
+			            "Entity": "entity__measure.filter_fact_has_values"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_suicide_by_age"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.filter_fact_has_values"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_suicide_by_age_have_filter_fact_has_values"
 			        }
 			      ]
 			    },
