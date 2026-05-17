@@ -11,3 +11,15 @@ relationship AutoDetected_d1129741-f7d0-45ed-a806-5e5fb4055d85
 	fromColumn: fact_mental_health.year
 	toColumn: dim_year.year
 
+relationship AutoDetected_b474acc5-d3c0-44f5-bee3-e9a01d61f8df
+	fromColumn: fact_suicide_by_age.country_code
+	toColumn: dim_country.country_code
+
+relationship AutoDetected_5f9d9395-445e-443c-8b27-79ff2305cd12
+	fromColumn: fact_suicide_by_age.year
+	toColumn: dim_year.year
+
+relationship AutoDetected_82496c32-826f-45e5-8684-793cb5cd65cb
+	fromColumn: fact_suicide_by_age.age_group
+	toColumn: dim_age.age_group
+

@@ -3,7 +3,6 @@ table fact_mental_health
 
 	column country_code
 		dataType: string
-		isHidden
 		lineageTag: ad894ac7-3e87-4917-8f9c-917422d3337e
 		summarizeBy: none
 		sourceColumn: country_code
@@ -14,7 +13,6 @@ table fact_mental_health
 
 	column year
 		dataType: int64
-		isHidden
 		formatString: 0
 		lineageTag: 1748a390-50cd-4bb9-898f-887135c9b544
 		summarizeBy: none
@@ -26,7 +24,6 @@ table fact_mental_health
 
 	column gdp_per_capita
 		dataType: double
-		isHidden
 		lineageTag: a9e4ec73-7cbe-4e5c-bd02-d86b084175b2
 		summarizeBy: sum
 		sourceColumn: gdp_per_capita
@@ -51,7 +48,6 @@ table fact_mental_health
 
 	column suicide_rate_per_100k
 		dataType: double
-		isHidden
 		lineageTag: bb97855d-82fb-4a44-bf4c-028a26c1cf00
 		summarizeBy: sum
 		sourceColumn: suicide_rate_per_100k
@@ -64,7 +60,6 @@ table fact_mental_health
 
 	column outpatient_facilities
 		dataType: double
-		isHidden
 		lineageTag: 106e981d-2591-4b8d-93e6-748f17128de9
 		summarizeBy: sum
 		sourceColumn: outpatient_facilities

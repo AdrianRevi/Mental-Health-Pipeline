@@ -132,19 +132,15 @@ def clean_who_mh_expenditure(df): return _clean_who_facility(df, "mh_expenditure
 # ---------------------------------------------------------------------------
 
 AGE_LABEL_MAP = {
-    "YEARS10-14": "10-14", "YEARS15-19": "15-19", "YEARS20-24": "20-24",
-    "YEARS25-29": "25-29", "YEARS30-34": "30-34", "YEARS35-39": "35-39",
-    "YEARS40-44": "40-44", "YEARS45-49": "45-49", "YEARS50-54": "50-54",
-    "YEARS55-59": "55-59", "YEARS60-64": "60-64", "YEARS65-69": "65-69",
-    "YEARS70-74": "70-74", "YEARS75-79": "75-79", "YEARS80PLUS": "80+",
-    "AGE10-14":   "10-14", "AGE15-19":   "15-19", "AGE20-24":   "20-24",
-    "AGE25-29":   "25-29", "AGE30-34":   "30-34", "AGE35-39":   "35-39",
-    "AGE40-44":   "40-44", "AGE45-49":   "45-49", "AGE50-54":   "50-54",
-    "AGE55-59":   "55-59", "AGE60-64":   "60-64", "AGE65-69":   "65-69",
-    "AGE70-74":   "70-74", "AGE75-79":   "75-79", "AGE80PLUS":  "80+",
+    "AGEGROUP_YEARS10-19": "10-19", "AGEGROUP_YEARS15-19": "15-19",
+    "AGEGROUP_YEARS15-29": "15-29", "AGEGROUP_YEARS20-29": "20-29",
+    "AGEGROUP_YEARS30-39": "30-39", "AGEGROUP_YEARS30-49": "30-49",
+    "AGEGROUP_YEARS40-49": "40-49", "AGEGROUP_YEARS50-59": "50-59",
+    "AGEGROUP_YEARS50-69": "50-69", "AGEGROUP_YEARS60-69": "60-69",
+    "AGEGROUP_YEARS70PLUS": "70+",  "AGEGROUP_YEARSALL":   "All Ages",
 }
 
-SEX_LABEL_MAP = {"BTSX": "Both", "MLE": "Male", "FMLE": "Female"}
+SEX_LABEL_MAP = {"SEX_BTSX": "Both", "SEX_MLE": "Male", "SEX_FMLE": "Female"}
 
 
 def clean_who_suicide_by_age(df: pd.DataFrame) -> pd.DataFrame:
@@ -156,6 +152,7 @@ def clean_who_suicide_by_age(df: pd.DataFrame) -> pd.DataFrame:
     df = df[["country_code", "year", "age_group", "sex", "value"]].copy()
     df = df.rename(columns={"value": "suicide_rate_per_100k"})
     df["year"] = df["year"].astype(int)
+    df = df[df["sex"] != "Both"]
     return df.drop_duplicates(subset=["country_code", "year", "age_group", "sex"])
 
 

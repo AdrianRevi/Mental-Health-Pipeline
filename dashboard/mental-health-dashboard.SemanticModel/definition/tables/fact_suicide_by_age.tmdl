@@ -1,0 +1,61 @@
+table fact_suicide_by_age
+	lineageTag: 558b40eb-af16-4ed9-8545-44ccebb85505
+
+	column country_code
+		dataType: string
+		lineageTag: a47e301b-4b49-4983-a76b-c948aff6acea
+		summarizeBy: none
+		sourceColumn: country_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column year
+		dataType: int64
+		formatString: 0
+		lineageTag: da3487f2-1b47-4b4d-aa6c-bba4d7efee6f
+		summarizeBy: none
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	column age_group
+		dataType: string
+		lineageTag: 83bc1a64-19d7-4f1f-9445-a83ff1d7318f
+		summarizeBy: none
+		sourceColumn: age_group
+
+		annotation SummarizationSetBy = Automatic
+
+	column sex
+		dataType: string
+		lineageTag: 56a15ae4-3c1f-42c3-bbfc-ba61a4ba2fc5
+		summarizeBy: none
+		sourceColumn: sex
+
+		annotation SummarizationSetBy = Automatic
+
+	column suicide_rate_per_100k
+		dataType: double
+		lineageTag: 882eefe1-5af6-4e2c-95eb-f9f530b772ec
+		summarizeBy: sum
+		sourceColumn: suicide_rate_per_100k
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition fact_suicide_by_age = m
+		mode: import
+		source =
+				let
+				    Source = Odbc.DataSource("access_mode=read_only;dsn=mental_health_duckdb", [HierarchicalNavigation=true]),
+				    mental_health_Database = Source{[Name="mental_health",Kind="Database"]}[Data],
+				    main_Schema = mental_health_Database{[Name="main",Kind="Schema"]}[Data],
+				    fact_mental_health_Table = main_Schema{[Name="fact_suicide_by_age",Kind="Table"]}[Data]
+				in
+				    fact_mental_health_Table
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

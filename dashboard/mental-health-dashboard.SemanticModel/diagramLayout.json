@@ -4,14 +4,14 @@
     {
       "ordinal": 0,
       "scrollPosition": {
-        "x": 306.39999389648438,
+        "x": 0,
         "y": 0
       },
       "nodes": [
         {
           "location": {
             "x": 722.38305001469382,
-            "y": 16
+            "y": 26.42234897992256
           },
           "nodeIndex": "dim_country",
           "nodeLineageTag": "7a0c04f6-703f-45c6-88a6-0077b4f997b9",
@@ -23,8 +23,8 @@
         },
         {
           "location": {
-            "x": 0,
-            "y": 1
+            "x": 160.88381351240906,
+            "y": 15.394788819735126
           },
           "nodeIndex": "dim_year",
           "nodeLineageTag": "8db97382-4b5c-4dd1-b1d8-1ecbda822696",
@@ -36,8 +36,8 @@
         },
         {
           "location": {
-            "x": 334.20156119318528,
-            "y": -29.155302040154879
+            "x": 338.17400103299786,
+            "y": 492.58254013675861
           },
           "nodeIndex": "fact_mental_health",
           "nodeLineageTag": "bc3ffce8-1202-4cd4-b605-84306931116d",
@@ -49,10 +49,37 @@
         },
         {
           "location": {
-            "x": 1006.3830500146938,
-            "y": 22.57765102007744
+            "x": 1338.0817766390433,
+            "y": 25.055120320374861
           },
           "nodeIndex": "_Measures",
+          "nodeLineageTag": "37dcb400-2dec-4b80-95f8-88d2bcc4ee43",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1011.0383296080847,
+            "y": 44.054564148445557
+          },
+          "nodeIndex": "dim_age",
+          "nodeLineageTag": "044e1315-ff4d-4d07-8d9d-4ecabfe610c0",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 734.58597444327688,
+            "y": 480.66522061732093
+          },
+          "nodeIndex": "fact_suicide_by_age",
+          "nodeLineageTag": "558b40eb-af16-4ed9-8545-44ccebb85505",
           "size": {
             "height": 200,
             "width": 234
@@ -61,7 +88,7 @@
         }
       ],
       "name": "All tables",
-      "zoomValue": 100,
+      "zoomValue": 50.346892102823269,
       "pinKeyFieldsToTop": false,
       "showExtraHeaderInfo": false,
       "hideKeyFieldsWhenCollapsed": false,

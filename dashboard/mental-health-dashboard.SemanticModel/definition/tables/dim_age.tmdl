@@ -1,0 +1,43 @@
+table dim_age
+	lineageTag: 044e1315-ff4d-4d07-8d9d-4ecabfe610c0
+
+	column age_group
+		dataType: string
+		lineageTag: 1291a86d-5af6-4529-a5a4-352de0552dde
+		summarizeBy: none
+		sourceColumn: age_group
+
+		annotation SummarizationSetBy = Automatic
+
+	column age_order
+		dataType: int64
+		formatString: 0
+		lineageTag: dd596bc9-5ec0-478c-9f60-72bd9dd1a5bb
+		summarizeBy: none
+		sourceColumn: age_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column age_label
+		dataType: string
+		lineageTag: 7842a12e-076f-4bb3-9efb-cebeab91b6ea
+		summarizeBy: none
+		sourceColumn: age_label
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_age = m
+		mode: import
+		source =
+				let
+				    Source = Odbc.DataSource("access_mode=read_only;dsn=mental_health_duckdb", [HierarchicalNavigation=true]),
+				    mental_health_Database = Source{[Name="mental_health",Kind="Database"]}[Data],
+				    main_Schema = mental_health_Database{[Name="main",Kind="Schema"]}[Data],
+				    dim_country_Table = main_Schema{[Name="dim_age",Kind="Table"]}[Data]
+				in
+				    dim_country_Table
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
