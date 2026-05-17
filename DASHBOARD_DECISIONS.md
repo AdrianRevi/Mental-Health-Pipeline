@@ -193,3 +193,49 @@ CALCULATE(
 ### 5. Average as the standard aggregation for fact table columns
 
 All continuous metric columns from fact tables (`gdp_per_capita`, `youth_unemployment_rate`, `health_expenditure_gdp_pct`, etc.) use **Average** aggregation in all visuals. Sum is never used — summing GDP or unemployment rates across countries produces a meaningless number. Average gives the representative value for the selected filter context (year, region, income level).
+
+---
+
+## Resources Page
+
+### 1. WHO facility indicators replaced with health_expenditure_per_capita
+
+The original plan for this page used WHO facility indicators (`psychiatrists_per_100k`, `psychiatric_beds`, `outpatient_facilities`, etc.). At build time, a Card visual confirmed these fields return blank — ~97% null rate means no usable data exists in the dataset.
+
+All four visuals on this page use `health_expenditure_per_capita` (World Bank, ~100% coverage) as the primary resource metric. The page narrative shifts from "mental health infrastructure" to "health investment by country" — still a valid resources story and fully supported by the data.
+
+---
+
+### 2. health_expenditure_per_capita vs health_expenditure_gdp_pct — two distinct metrics
+
+The Correlations page already uses `health_expenditure_gdp_pct` (health spending as % of GDP). This page uses `health_expenditure_per_capita` (absolute USD spending per person). They are not interchangeable:
+
+- `gdp_pct` measures **relative effort** — a poor country spending 8% of a small GDP and a rich country spending 8% of a large GDP look identical
+- `per_capita` measures **absolute capacity** — how many dollars are actually available per person for health services
+
+For a Resources page focused on access inequality, `per_capita` is the more meaningful metric.
+
+---
+
+### 3. Table visual with Top N filter for bottom 20 countries
+
+The fourth card uses a Table visual filtered to the bottom 20 countries by `health_expenditure_per_capita` using Power BI's **Top N filter** (Bottom · 20 · by field). This is preferable to a DAX BOTTOMN approach because:
+
+- No new measure required
+- The filter responds dynamically to the page slicers (year, region, income level)
+- The table provides country-level drill-down not available in the bar/scatter visuals
+
+---
+
+### 4. Filter Fact Has Values — extended to both fact tables
+
+The `Filter Fact Has Values` measure was updated to return 1 if either fact table has rows in the current filter context:
+
+```dax
+Filter Fact Has Values = 
+INT(
+    NOT(ISEMPTY(fact_suicide_by_age)) || NOT(ISEMPTY(fact_mental_health))
+)
+```
+
+The original measure only checked `fact_suicide_by_age`. Since the Resources page visuals draw exclusively from `fact_mental_health`, the OR condition ensures the measure works correctly across all pages regardless of which fact table is populated.
