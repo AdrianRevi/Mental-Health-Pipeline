@@ -37,10 +37,10 @@ table fact_suicide_by_age
 	column suicide_rate_per_100k
 		dataType: double
 		lineageTag: 882eefe1-5af6-4e2c-95eb-f9f530b772ec
-		summarizeBy: sum
+		summarizeBy: average
 		sourceColumn: suicide_rate_per_100k
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 

@@ -1,16 +1,16 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.1.0/schema.json",
-  "name": "5d14785b7c3446481f51",
+  "name": "bfec49cc6ca1527bebd2",
   "position": {
-    "x": 162.5,
-    "y": 100,
-    "z": 3001,
-    "height": 218.75,
-    "width": 537.5,
-    "tabOrder": 3001
+    "x": 162.66666666666666,
+    "y": 342,
+    "z": 3003,
+    "height": 220,
+    "width": 537.33333333333337,
+    "tabOrder": 3003
   },
   "visual": {
-    "visualType": "scatterChart",
+    "visualType": "clusteredBarChart",
     "query": {
       "queryState": {
         "Category": {
@@ -20,60 +20,16 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "dim_country"
+                      "Entity": "dim_age"
                     }
                   },
-                  "Property": "country"
+                  "Property": "age_label"
                 }
               },
-              "queryRef": "dim_country.country",
-              "nativeQueryRef": "Country",
+              "queryRef": "dim_age.age_label",
+              "nativeQueryRef": "Age Group",
               "active": true,
-              "displayName": "Country"
-            }
-          ]
-        },
-        "Series": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "dim_country"
-                    }
-                  },
-                  "Property": "region"
-                }
-              },
-              "queryRef": "dim_country.region",
-              "nativeQueryRef": "Region",
-              "displayName": "Region"
-            }
-          ]
-        },
-        "X": {
-          "projections": [
-            {
-              "field": {
-                "Aggregation": {
-                  "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "fact_mental_health"
-                        }
-                      },
-                      "Property": "gdp_per_capita"
-                    }
-                  },
-                  "Function": 1
-                }
-              },
-              "queryRef": "fact_mental_health.gdp_per_capita",
-              "nativeQueryRef": "GDP per Capita (USD)",
-              "active": true,
-              "displayName": "GDP per Capita (USD)"
+              "displayName": "Age Group"
             }
           ]
         },
@@ -87,128 +43,83 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Avg Suicide Rate per 100k"
+                  "Property": "Male Suicide Rate"
                 }
               },
-              "queryRef": "_Measures.Avg Suicide Rate per 100k",
-              "nativeQueryRef": "Suicide Rate per 100k",
-              "displayName": "Suicide Rate per 100k"
+              "queryRef": "_Measures.Male Suicide Rate",
+              "nativeQueryRef": "Male Suicide Rate"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Female Suicide Rate"
+                }
+              },
+              "queryRef": "_Measures.Female Suicide Rate",
+              "nativeQueryRef": "Female Suicide Rate"
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "dim_age"
+                  }
+                },
+                "Property": "age_label"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
       }
     },
     "objects": {
-      "zoom": [
+      "dataPoint": [
         {
           "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "bubbles": [
-        {
-          "properties": {
-            "bubbleSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "-20L"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "trend": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "displayName": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Trend line 1'"
-                }
-              }
-            },
-            "lineColor": {
+            "fill": {
               "solid": {
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#6366F1'"
+                      "Value": "'#06B6D4'"
                     }
                   }
                 }
               }
-            },
-            "transparency": {
-              "expr": {
-                "Literal": {
-                  "Value": "40D"
-                }
-              }
             }
+          },
+          "selector": {
+            "metadata": "_Measures.Male Suicide Rate"
           }
-        }
-      ],
-      "categoryAxis": [
+        },
         {
           "properties": {
-            "titleText": {
-              "expr": {
-                "Literal": {
-                  "Value": "'GDP per Capita (USD)'"
-                }
-              }
-            },
-            "titleColor": {
+            "fill": {
               "solid": {
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#9CA3AF'"
+                      "Value": "'#8B5CF6'"
                     }
                   }
-                }
-              }
-            },
-            "labelColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#9CA3AF'"
-                    }
-                  }
-                }
-              }
-            },
-            "titleFontFamily": {
-              "expr": {
-                "Literal": {
-                  "Value": "'wf_standard-font, helvetica, arial, sans-serif'"
-                }
-              }
-            },
-            "gridlineShow": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
                 }
               }
             }
+          },
+          "selector": {
+            "metadata": "_Measures.Female Suicide Rate"
           }
         }
       ],
@@ -250,15 +161,39 @@
                   }
                 }
               }
-            },
-            "gridlineColor": {
+            }
+          }
+        }
+      ],
+      "categoryAxis": [
+        {
+          "properties": {
+            "labelColor": {
               "solid": {
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#1E1E2A'"
+                      "Value": "'#9CA3AF'"
                     }
                   }
+                }
+              }
+            },
+            "titleColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#9CA3AF'"
+                    }
+                  }
+                }
+              }
+            },
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
@@ -311,26 +246,13 @@
           }
         }
       ],
-      "visualHeader": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          }
-        }
-      ],
       "title": [
         {
           "properties": {
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'GDP per Capita vs Suicide Rate'"
+                  "Value": "'Suicide Rate by Age Group and Sex'"
                 }
               }
             },
@@ -338,13 +260,6 @@
               "expr": {
                 "Literal": {
                   "Value": "'''Segoe UI'', wf_segoe-ui_normal, helvetica, arial, sans-serif'"
-                }
-              }
-            },
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "11D"
                 }
               }
             },
@@ -358,11 +273,94 @@
                   }
                 }
               }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "11D"
+                }
+              }
             }
           }
         }
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "f7af7e4817791dcca4b5",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_age"
+              }
+            },
+            "Property": "age_label"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "d",
+              "Entity": "dim_age",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Not": {
+                  "Expression": {
+                    "In": {
+                      "Expressions": [
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "d"
+                              }
+                            },
+                            "Property": "age_label"
+                          }
+                        }
+                      ],
+                      "Values": [
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'All Ages'"
+                            }
+                          }
+                        ]
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "objects": {
+          "general": [
+            {
+              "properties": {
+                "isInvertedSelectionMode": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "true"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
   }
 }

@@ -25,7 +25,7 @@ table fact_mental_health
 	column gdp_per_capita
 		dataType: double
 		lineageTag: a9e4ec73-7cbe-4e5c-bd02-d86b084175b2
-		summarizeBy: none
+		summarizeBy: average
 		sourceColumn: gdp_per_capita
 
 		changedProperty = IsHidden
@@ -37,206 +37,240 @@ table fact_mental_health
 	column unemployment_rate
 		dataType: double
 		lineageTag: 6cb8a35b-5f70-4f71-aebd-1c479d723634
-		summarizeBy: sum
+		summarizeBy: average
 		sourceColumn: unemployment_rate
 
 		changedProperty = IsHidden
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column suicide_rate_per_100k
 		dataType: double
 		lineageTag: bb97855d-82fb-4a44-bf4c-028a26c1cf00
-		summarizeBy: sum
+		summarizeBy: average
 		sourceColumn: suicide_rate_per_100k
 
 		changedProperty = IsHidden
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column outpatient_facilities
 		dataType: double
 		lineageTag: 106e981d-2591-4b8d-93e6-748f17128de9
-		summarizeBy: sum
+		summarizeBy: average
 		sourceColumn: outpatient_facilities
 
 		changedProperty = IsHidden
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column unemployment_male
 		dataType: double
 		lineageTag: 2f43ab4a-f4fc-4a82-bce3-593574ca0aac
-		summarizeBy: sum
+		summarizeBy: average
 		sourceColumn: unemployment_male
 
-		annotation SummarizationSetBy = Automatic
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column unemployment_female
 		dataType: double
 		lineageTag: 24a73abf-915b-4a80-84ca-443e5ee5743d
-		summarizeBy: sum
+		summarizeBy: average
 		sourceColumn: unemployment_female
 
-		annotation SummarizationSetBy = Automatic
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column youth_unemployment_rate
 		dataType: double
 		lineageTag: 53dee475-45d1-4845-bbe8-c9e9cd7af7e0
-		summarizeBy: sum
+		summarizeBy: average
 		sourceColumn: youth_unemployment_rate
 
-		annotation SummarizationSetBy = Automatic
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column gini_index
 		dataType: double
 		lineageTag: 3b9904d2-e52e-4fdf-a52e-8e82a709ff9c
-		summarizeBy: sum
+		summarizeBy: average
 		sourceColumn: gini_index
 
-		annotation SummarizationSetBy = Automatic
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column urban_population_pct
 		dataType: double
 		lineageTag: bb0c72c2-3144-44c8-b0f6-3f091fcffa10
-		summarizeBy: sum
+		summarizeBy: average
 		sourceColumn: urban_population_pct
 
-		annotation SummarizationSetBy = Automatic
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column suicide_rate_male
 		dataType: double
 		lineageTag: a9e2a752-a06f-42df-a7ee-4f3f0d45dabf
-		summarizeBy: sum
+		summarizeBy: average
 		sourceColumn: suicide_rate_male
 
-		annotation SummarizationSetBy = Automatic
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column suicide_rate_female
 		dataType: double
 		lineageTag: 1579a1c7-0e80-4f94-871a-f852ed959130
-		summarizeBy: sum
+		summarizeBy: average
 		sourceColumn: suicide_rate_female
 
-		annotation SummarizationSetBy = Automatic
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column health_expenditure_per_capita
 		dataType: double
 		lineageTag: e37d56f2-d3ce-4455-a375-91aac4d6a989
-		summarizeBy: sum
+		summarizeBy: average
 		sourceColumn: health_expenditure_per_capita
 
-		annotation SummarizationSetBy = Automatic
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column health_expenditure_gdp_pct
 		dataType: double
 		lineageTag: 8a82ff17-34df-44ef-9847-412408123507
-		summarizeBy: sum
+		summarizeBy: average
 		sourceColumn: health_expenditure_gdp_pct
 
-		annotation SummarizationSetBy = Automatic
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column life_expectancy
 		dataType: double
 		lineageTag: fd77dc5e-9a9b-417a-b233-fc78f12d167a
-		summarizeBy: sum
+		summarizeBy: average
 		sourceColumn: life_expectancy
 
-		annotation SummarizationSetBy = Automatic
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column mental_hospitals
 		dataType: double
 		lineageTag: d5895b6d-f065-4be9-be98-0542850f3250
-		summarizeBy: sum
+		summarizeBy: average
 		sourceColumn: mental_hospitals
 
-		annotation SummarizationSetBy = Automatic
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column psychiatric_beds
 		dataType: double
 		lineageTag: bc0eb592-35ab-4540-8f82-a70c33654c29
-		summarizeBy: sum
+		summarizeBy: average
 		sourceColumn: psychiatric_beds
 
-		annotation SummarizationSetBy = Automatic
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column psychiatrists_per_100k
 		dataType: double
 		lineageTag: d679fbe1-ed2a-4872-a06b-0ee612750906
-		summarizeBy: sum
+		summarizeBy: average
 		sourceColumn: psychiatrists_per_100k
 
-		annotation SummarizationSetBy = Automatic
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column mh_nurses_per_100k
 		dataType: double
 		lineageTag: 8124bb6e-522e-4f20-859a-59c786bba491
-		summarizeBy: sum
+		summarizeBy: average
 		sourceColumn: mh_nurses_per_100k
 
-		annotation SummarizationSetBy = Automatic
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column psychologists_per_100k
 		dataType: double
 		lineageTag: 09716144-4465-430a-9a68-90cbcd0ec8be
-		summarizeBy: sum
+		summarizeBy: average
 		sourceColumn: psychologists_per_100k
 
-		annotation SummarizationSetBy = Automatic
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column day_treatment_facilities
 		dataType: double
 		lineageTag: a59de069-7647-457c-a389-e151de50d653
-		summarizeBy: sum
+		summarizeBy: average
 		sourceColumn: day_treatment_facilities
 
-		annotation SummarizationSetBy = Automatic
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column mh_expenditure_pct
 		dataType: double
 		lineageTag: 5c8a9965-5ff8-4b7f-8fe2-68217ac3a476
-		summarizeBy: sum
+		summarizeBy: average
 		sourceColumn: mh_expenditure_pct
 
-		annotation SummarizationSetBy = Automatic
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 

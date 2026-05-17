@@ -150,6 +150,26 @@ table _Measures
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	measure 'Male Suicide Rate' =
+			
+			CALCULATE(
+			    AVERAGE(fact_suicide_by_age[suicide_rate_per_100k]),
+			    fact_suicide_by_age[sex] = "Male"
+			)
+		lineageTag: 66a65ba3-9b7c-4f9c-87db-f23629470357
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Female Suicide Rate' =
+			
+			CALCULATE(
+			    AVERAGE(fact_suicide_by_age[suicide_rate_per_100k]),
+			    fact_suicide_by_age[sex] = "Female"
+			)
+		lineageTag: 0597e51b-2e63-4ee5-bf10-a5f77aca7f52
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column Value
 		isHidden
 		lineageTag: 815d2f43-d410-4798-befd-3fa9e71ebe7a
