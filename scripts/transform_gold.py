@@ -198,7 +198,7 @@ def run() -> None:
 
     log.info("--- Building dimensions ---")
     dim_country = build_dim_country()
-    dim_year    = build_dim_year()
+    dim_year    = build_dim_year(year_max=int(silver["year"].max()))
     dim_age     = build_dim_age(suicide_age)
 
     log.info("--- Building fact tables ---")

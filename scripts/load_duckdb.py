@@ -49,6 +49,9 @@ GOLD_TABLES = [
 # Load
 # ---------------------------------------------------------------------------
 
+ALLOWED_TABLES = {t for t, _ in GOLD_TABLES}
+
+
 def load_table(con: duckdb.DuckDBPyConnection, table: str, filename: str) -> None:
     """
     Drops and recreates one table from its Parquet file.
@@ -57,14 +60,18 @@ def load_table(con: duckdb.DuckDBPyConnection, table: str, filename: str) -> Non
     the data is copied, so DuckDB works even if the Parquet file is deleted.
     Using an absolute path avoids issues with the working directory.
     """
+    if table not in ALLOWED_TABLES:
+        raise ValueError(f"Unknown table name: {table}")
+
     parquet_path = os.path.abspath(os.path.join(GOLD_DIR, filename))
 
     if not os.path.exists(parquet_path):
         raise FileNotFoundError(f"Gold file not found: {parquet_path}")
 
+    safe_path = parquet_path.replace("'", "''")
     con.execute(
         f"CREATE OR REPLACE TABLE {table} AS "
-        f"SELECT * FROM read_parquet('{parquet_path}')"
+        f"SELECT * FROM read_parquet('{safe_path}')"
     )
 
     row_count = con.execute(f"SELECT COUNT(*) FROM {table}").fetchone()[0]
