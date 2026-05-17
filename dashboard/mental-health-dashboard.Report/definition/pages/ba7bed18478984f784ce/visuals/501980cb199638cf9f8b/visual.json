@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.1.0/schema.json",
-  "name": "0d179977a7fd3f4776f2",
+  "name": "501980cb199638cf9f8b",
   "position": {
-    "x": 181.26417751094743,
-    "y": 589.42547232580807,
-    "z": 8000,
-    "height": 87.463134603184429,
-    "width": 313.09267024618197,
-    "tabOrder": 8000
+    "x": 583.08756402122958,
+    "y": 626,
+    "z": 7002,
+    "height": 45.632939792965793,
+    "width": 244.64326055673325,
+    "tabOrder": 7002
   },
   "visual": {
     "visualType": "slicer",
@@ -17,61 +17,21 @@
           "projections": [
             {
               "field": {
-                "HierarchyLevel": {
+                "Column": {
                   "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "dim_year"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "date"
-                        }
-                      },
-                      "Hierarchy": "Date Hierarchy"
+                    "SourceRef": {
+                      "Entity": "dim_country"
                     }
                   },
-                  "Level": "Year"
+                  "Property": "region"
                 }
               },
-              "queryRef": "dim_year.date.Variation.Date Hierarchy.Year",
-              "nativeQueryRef": "date Year",
+              "queryRef": "dim_country.region",
+              "nativeQueryRef": "region",
               "active": true
             }
           ]
         }
-      },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "HierarchyLevel": {
-                "Expression": {
-                  "Hierarchy": {
-                    "Expression": {
-                      "PropertyVariationSource": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "dim_year"
-                          }
-                        },
-                        "Name": "Variation",
-                        "Property": "date"
-                      }
-                    },
-                    "Hierarchy": "Date Hierarchy"
-                  }
-                },
-                "Level": "Year"
-              }
-            },
-            "direction": "Ascending"
-          }
-        ],
-        "isDefaultSort": true
       }
     },
     "objects": {
@@ -81,39 +41,60 @@
             "mode": {
               "expr": {
                 "Literal": {
-                  "Value": "'Between'"
+                  "Value": "'Dropdown'"
+                }
+              }
+            },
+            "isInvertedSelectionMode": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }
           }
         }
       ],
-      "slider": [
+      "selection": [
         {
           "properties": {
-            "color": {
+            "singleSelect": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "selectAllCheckboxEnabled": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "items": [
+        {
+          "properties": {
+            "background": {
               "solid": {
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#8B5CF6'"
+                      "Value": "'#0F172A'"
                     }
                   }
                 }
               }
-            }
-          }
-        }
-      ],
-      "numericInputStyle": [
-        {
-          "properties": {
+            },
             "fontColor": {
               "solid": {
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#F8FAFC'"
+                      "Value": "'#CBD5E1'"
                     }
                   }
                 }
@@ -122,11 +103,16 @@
             "textSize": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
+                  "Value": "8D"
                 }
               }
             }
           }
+        }
+      ],
+      "general": [
+        {
+          "properties": {}
         }
       ],
       "header": [
@@ -140,11 +126,6 @@
               }
             }
           }
-        }
-      ],
-      "general": [
-        {
-          "properties": {}
         }
       ]
     },
@@ -175,7 +156,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Filter by Year'"
+                  "Value": "'Filter by Age'"
                 }
               }
             },
@@ -183,6 +164,13 @@
               "expr": {
                 "Literal": {
                   "Value": "'''Segoe UI Semibold'', wf_segoe-ui_semibold, helvetica, arial, sans-serif'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "11D"
                 }
               }
             },
@@ -194,13 +182,6 @@
                       "Value": "'#F8FAFC'"
                     }
                   }
-                }
-              }
-            },
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "11D"
                 }
               }
             }
@@ -222,7 +203,7 @@
       ]
     },
     "syncGroup": {
-      "groupName": "Year",
+      "groupName": "region",
       "fieldChanges": true,
       "filterChanges": true
     },
@@ -231,7 +212,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "dc4120db8d457b20c32b",
+        "name": "03fa723346575f585ac5",
         "ordinal": 0,
         "field": {
           "Measure": {
@@ -281,31 +262,21 @@
         "howCreated": "User"
       },
       {
-        "name": "77bf8b053d008418ad43",
+        "name": "f636b75a4c6b94c01ee9",
         "ordinal": 1,
         "field": {
-          "HierarchyLevel": {
+          "Column": {
             "Expression": {
-              "Hierarchy": {
-                "Expression": {
-                  "PropertyVariationSource": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "dim_year"
-                      }
-                    },
-                    "Name": "Variation",
-                    "Property": "date"
-                  }
-                },
-                "Hierarchy": "Date Hierarchy"
+              "SourceRef": {
+                "Entity": "dim_country"
               }
             },
-            "Level": "Year"
+            "Property": "region"
           }
         },
-        "type": "Advanced"
+        "type": "Categorical"
       }
-    ]
+    ],
+    "filterSortOrder": "Custom"
   }
 }

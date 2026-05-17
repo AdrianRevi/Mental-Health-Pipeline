@@ -78,13 +78,6 @@
       "data": [
         {
           "properties": {
-            "numericEnd": {
-              "expr": {
-                "Literal": {
-                  "Value": "2021D"
-                }
-              }
-            },
             "mode": {
               "expr": {
                 "Literal": {
@@ -151,55 +144,7 @@
       ],
       "general": [
         {
-          "properties": {
-            "filter": {
-              "filter": {
-                "Version": 2,
-                "From": [
-                  {
-                    "Name": "d",
-                    "Entity": "dim_year",
-                    "Type": 0
-                  }
-                ],
-                "Where": [
-                  {
-                    "Condition": {
-                      "Comparison": {
-                        "ComparisonKind": 4,
-                        "Left": {
-                          "HierarchyLevel": {
-                            "Expression": {
-                              "Hierarchy": {
-                                "Expression": {
-                                  "PropertyVariationSource": {
-                                    "Expression": {
-                                      "SourceRef": {
-                                        "Source": "d"
-                                      }
-                                    },
-                                    "Name": "Variation",
-                                    "Property": "date"
-                                  }
-                                },
-                                "Hierarchy": "Date Hierarchy"
-                              }
-                            },
-                            "Level": "Year"
-                          }
-                        },
-                        "Right": {
-                          "Literal": {
-                            "Value": "2021D"
-                          }
-                        }
-                      }
-                    }
-                  }
-                ]
-              }
-            }
-          }
+          "properties": {}
         }
       ]
     },

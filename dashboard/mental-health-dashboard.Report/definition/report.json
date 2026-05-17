@@ -56,11 +56,6 @@
       "type": "RegisteredResources",
       "items": [
         {
-          "name": "PBI_Background7948664786861951.png",
-          "path": "PBI_Background7948664786861951.png",
-          "type": "Image"
-        },
-        {
           "name": "linkedin1325871279627283.png",
           "path": "linkedin1325871279627283.png",
           "type": "Image"
@@ -84,6 +79,11 @@
           "name": "PBI_Background_-_Correlations5892781983759454.png",
           "path": "PBI_Background_-_Correlations5892781983759454.png",
           "type": "Image"
+        },
+        {
+          "name": "PBI_Background_-_Correlations9458502738366392.png",
+          "path": "PBI_Background_-_Correlations9458502738366392.png",
+          "type": "Image"
         }
       ]
     }
@@ -94,6 +94,7 @@
     "defaultDrillFilterOtherVisuals": true,
     "allowChangeFilterTypes": true,
     "useEnhancedTooltips": true,
+    "filterPaneHiddenInEditMode": true,
     "useDefaultAggregateDisplayName": true
   }
 }

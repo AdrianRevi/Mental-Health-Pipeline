@@ -170,7 +170,11 @@ table _Measures
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'Filter Fact Has Values' = INT(NOT(ISEMPTY(fact_suicide_by_age)))
+	measure 'Filter Fact Has Values' =
+			
+			INT(
+			    NOT(ISEMPTY(fact_suicide_by_age)) || NOT(ISEMPTY(fact_mental_health))
+			)
 		formatString: 0
 		lineageTag: 8b058294-9b8e-46f5-abea-6d92a2ed2c96
 
