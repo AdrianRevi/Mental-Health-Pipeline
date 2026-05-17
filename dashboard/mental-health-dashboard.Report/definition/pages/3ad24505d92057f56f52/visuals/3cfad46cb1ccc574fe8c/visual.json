@@ -26,7 +26,7 @@
                   "Property": "Male Female Ratio"
                 }
               },
-              "queryRef": "_Measures.Avg Outpatient Facilities",
+              "queryRef": "_Measures.Male Female Ratio",
               "nativeQueryRef": "Male vs Female Rate",
               "displayName": "Male vs Female Rate",
               "format": "0.0\"x\""

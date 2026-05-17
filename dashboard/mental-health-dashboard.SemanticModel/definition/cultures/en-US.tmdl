@@ -55,6 +55,9 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "country code": {
@@ -231,8 +234,7 @@ cultureInfo en-US
 			            "Weight": 0.714
 			          }
 			        }
-			      ],
-			      "SemanticType": "Location"
+			      ]
 			    },
 			    "dim_country.income_level": {
 			      "Definition": {
@@ -716,266 +718,6 @@ cultureInfo en-US
 			          }
 			        }
 			      ]
-			    },
-			    "dim_year.date.date_hierarchy": {
-			      "Definition": {
-			        "Binding": {
-			          "ConceptualEntity": "dim_year",
-			          "VariationSource": "date",
-			          "VariationSet": "Variation",
-			          "Hierarchy": "Date Hierarchy"
-			        }
-			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "date hierarchy": {
-			            "State": "Generated",
-			            "Weight": 0.97
-			          }
-			        }
-			      ],
-			      "SemanticType": "Time"
-			    },
-			    "dim_year.date.year": {
-			      "Definition": {
-			        "Binding": {
-			          "ConceptualEntity": "dim_year",
-			          "VariationSource": "date",
-			          "VariationSet": "Variation",
-			          "Hierarchy": "Date Hierarchy",
-			          "HierarchyLevel": "Year"
-			        }
-			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "year": {
-			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "date year": {
-			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "date yr": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.75
-			          }
-			        },
-			        {
-			          "yr": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.736
-			          }
-			        },
-			        {
-			          "moment year": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.6
-			          }
-			        },
-			        {
-			          "period year": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.582
-			          }
-			        }
-			      ],
-			      "SemanticType": "Time"
-			    },
-			    "dim_year.date.quarter": {
-			      "Definition": {
-			        "Binding": {
-			          "ConceptualEntity": "dim_year",
-			          "VariationSource": "date",
-			          "VariationSet": "Variation",
-			          "Hierarchy": "Date Hierarchy",
-			          "HierarchyLevel": "Quarter"
-			        }
-			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "quarter": {
-			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "date quarter": {
-			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "date qtr": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.833
-			          }
-			        },
-			        {
-			          "qtr": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.818
-			          }
-			        },
-			        {
-			          "moment quarter": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.6
-			          }
-			        },
-			        {
-			          "period quarter": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.582
-			          }
-			        }
-			      ],
-			      "SemanticType": "Time"
-			    },
-			    "dim_year.date.month": {
-			      "Definition": {
-			        "Binding": {
-			          "ConceptualEntity": "dim_year",
-			          "VariationSource": "date",
-			          "VariationSet": "Variation",
-			          "Hierarchy": "Date Hierarchy",
-			          "HierarchyLevel": "Month"
-			        }
-			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "month": {
-			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "date month": {
-			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "date mth": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.75
-			          }
-			        },
-			        {
-			          "mth": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.736
-			          }
-			        },
-			        {
-			          "moment month": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.6
-			          }
-			        },
-			        {
-			          "period month": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.582
-			          }
-			        }
-			      ],
-			      "SemanticType": "Time"
-			    },
-			    "dim_year.date.day": {
-			      "Definition": {
-			        "Binding": {
-			          "ConceptualEntity": "dim_year",
-			          "VariationSource": "date",
-			          "VariationSet": "Variation",
-			          "Hierarchy": "Date Hierarchy",
-			          "HierarchyLevel": "Day"
-			        }
-			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "day": {
-			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "date day": {
-			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "moment day": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.6
-			          }
-			        },
-			        {
-			          "period day": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.582
-			          }
-			        }
-			      ],
-			      "SemanticType": "Time"
 			    },
 			    "fact_mental_health": {
 			      "Definition": {
@@ -2110,7 +1852,7 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "entity__measure.top_country_rate": {
+			    "entity__measure.highest_country_rate": {
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "_Measures",
@@ -2120,7 +1862,7 @@ cultureInfo en-US
 			      "State": "Generated",
 			      "Terms": [
 			        {
-			          "top country rate": {
+			          "highest country rate": {
 			            "State": "Generated"
 			          }
 			        },
@@ -2137,7 +1879,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "top nation rate": {
+			          "highest nation rate": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
@@ -2147,7 +1889,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "top location rate": {
+			          "highest location rate": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
@@ -2177,63 +1919,63 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "best country rate": {
+			          "highest country degree": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
 			              "Agent": "Thesaurus"
 			            },
-			            "Weight": 0.591
+			            "Weight": 0.508
 			          }
 			        },
 			        {
-			          "first country rate": {
+			          "highest country frequency": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
 			              "Agent": "Thesaurus"
 			            },
-			            "Weight": 0.591
+			            "Weight": 0.508
 			          }
 			        },
 			        {
-			          "leading country rate": {
+			          "highest country percentage": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
 			              "Agent": "Thesaurus"
 			            },
-			            "Weight": 0.591
+			            "Weight": 0.508
 			          }
 			        },
 			        {
-			          "maximum country rate": {
+			          "highest country ratio": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
 			              "Agent": "Thesaurus"
 			            },
-			            "Weight": 0.591
+			            "Weight": 0.508
 			          }
 			        },
 			        {
-			          "peak country rate": {
+			          "highest country quotient": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
 			              "Agent": "Thesaurus"
 			            },
-			            "Weight": 0.591
+			            "Weight": 0.508
 			          }
 			        },
 			        {
-			          "upper country rate": {
+			          "country degree": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
 			              "Agent": "Thesaurus"
 			            },
-			            "Weight": 0.591
+			            "Weight": 0.5
 			          }
 			        },
 			        {
@@ -4530,6 +4272,9 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "suicide rate per 10 0k": {
@@ -5657,218 +5402,7 @@ cultureInfo en-US
 			    }
 			  },
 			  "Relationships": {
-			    "dim_year_date_date_hierarchy_has_dim_year_date_day": {
-			      "Binding": {
-			        "ConceptualEntity": "dim_year"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "dim_year.date.date_hierarchy": {
-			          "Target": {
-			            "Entity": "dim_year.date.date_hierarchy"
-			          }
-			        },
-			        "dim_year.date.day": {
-			          "Target": {
-			            "Entity": "dim_year.date.day"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "dim_year.date.date_hierarchy"
-			            },
-			            "Object": {
-			              "Role": "dim_year.date.day"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "date_hierarchies_have_days"
-			        }
-			      ]
-			    },
-			    "dim_year_date_date_hierarchy_has_dim_year_date_month": {
-			      "Binding": {
-			        "ConceptualEntity": "dim_year"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "dim_year.date.date_hierarchy": {
-			          "Target": {
-			            "Entity": "dim_year.date.date_hierarchy"
-			          }
-			        },
-			        "dim_year.date.month": {
-			          "Target": {
-			            "Entity": "dim_year.date.month"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "dim_year.date.date_hierarchy"
-			            },
-			            "Object": {
-			              "Role": "dim_year.date.month"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "date_hierarchies_have_months"
-			        }
-			      ]
-			    },
-			    "dim_year_date_date_hierarchy_has_dim_year_date_quarter": {
-			      "Binding": {
-			        "ConceptualEntity": "dim_year"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "dim_year.date.date_hierarchy": {
-			          "Target": {
-			            "Entity": "dim_year.date.date_hierarchy"
-			          }
-			        },
-			        "dim_year.date.quarter": {
-			          "Target": {
-			            "Entity": "dim_year.date.quarter"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "dim_year.date.date_hierarchy"
-			            },
-			            "Object": {
-			              "Role": "dim_year.date.quarter"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "date_hierarchies_have_quarters"
-			        }
-			      ]
-			    },
-			    "dim_year_date_date_hierarchy_has_dim_year_date_year": {
-			      "Binding": {
-			        "ConceptualEntity": "dim_year"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "dim_year.date.date_hierarchy": {
-			          "Target": {
-			            "Entity": "dim_year.date.date_hierarchy"
-			          }
-			        },
-			        "dim_year.date.year": {
-			          "Target": {
-			            "Entity": "dim_year.date.year"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "dim_year.date.date_hierarchy"
-			            },
-			            "Object": {
-			              "Role": "dim_year.date.year"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "date_hierarchies_have_years"
-			        }
-			      ]
-			    },
-			    "dim_year_date_has_date_hierarchy": {
-			      "Binding": {
-			        "ConceptualEntity": "dim_year"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "dim_year.date": {
-			          "Target": {
-			            "Entity": "dim_year.date"
-			          }
-			        },
-			        "dim_year.date.date_hierarchy": {
-			          "Target": {
-			            "Entity": "dim_year.date.date_hierarchy"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "dim_year.date"
-			            },
-			            "Object": {
-			              "Role": "dim_year.date.date_hierarchy"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "dates_have_date_hierarchies"
-			        }
-			      ]
-			    },
-			    "fact_suicide_by_age_has_dim_age": {
-			      "Binding": {
-			        "ConceptualEntity": "fact_suicide_by_age"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "fact_suicide_by_age": {
-			          "Target": {
-			            "Entity": "fact_suicide_by_age"
-			          }
-			        },
-			        "dim_age": {
-			          "Target": {
-			            "Entity": "dim_age"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "fact_suicide_by_age"
-			            },
-			            "Object": {
-			              "Role": "dim_age"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "fact_suicide_by_age_have_dim_ages"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "dim_age"
-			            },
-			            "Object": {
-			              "Role": "fact_suicide_by_age"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "dim_ages_have_fact_suicide_by_age"
-			        }
-			      ]
-			    },
-			    "fact_suicide_by_age_has_dim_year": {
+			    "fact_suicide_by_age_has_dim_year1": {
 			      "Binding": {
 			        "ConceptualEntity": "fact_suicide_by_age"
 			      },
@@ -5921,53 +5455,7 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "fact_suicide_by_age_has_dim_country": {
-			      "Binding": {
-			        "ConceptualEntity": "fact_suicide_by_age"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "fact_suicide_by_age": {
-			          "Target": {
-			            "Entity": "fact_suicide_by_age"
-			          }
-			        },
-			        "dim_country": {
-			          "Target": {
-			            "Entity": "dim_country"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "fact_suicide_by_age"
-			            },
-			            "Object": {
-			              "Role": "dim_country"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "fact_suicide_by_age_have_dim_countries"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "dim_country"
-			            },
-			            "Object": {
-			              "Role": "fact_suicide_by_age"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "dim_countries_have_fact_suicide_by_age"
-			        }
-			      ]
-			    },
-			    "fact_mental_health_has_dim_year": {
+			    "fact_mental_health_has_dim_year1": {
 			      "Binding": {
 			        "ConceptualEntity": "fact_mental_health"
 			      },
@@ -6017,6 +5505,98 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "dim_years_have_fact_mental_health"
+			        }
+			      ]
+			    },
+			    "fact_suicide_by_age_has_dim_age": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_suicide_by_age"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_suicide_by_age": {
+			          "Target": {
+			            "Entity": "fact_suicide_by_age"
+			          }
+			        },
+			        "dim_age": {
+			          "Target": {
+			            "Entity": "dim_age"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_suicide_by_age"
+			            },
+			            "Object": {
+			              "Role": "dim_age"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_suicide_by_age_have_dim_ages"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_age"
+			            },
+			            "Object": {
+			              "Role": "fact_suicide_by_age"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_ages_have_fact_suicide_by_age"
+			        }
+			      ]
+			    },
+			    "fact_suicide_by_age_has_dim_country": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_suicide_by_age"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_suicide_by_age": {
+			          "Target": {
+			            "Entity": "fact_suicide_by_age"
+			          }
+			        },
+			        "dim_country": {
+			          "Target": {
+			            "Entity": "dim_country"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_suicide_by_age"
+			            },
+			            "Object": {
+			              "Role": "dim_country"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_suicide_by_age_have_dim_countries"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_country"
+			            },
+			            "Object": {
+			              "Role": "fact_suicide_by_age"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_countries_have_fact_suicide_by_age"
 			        }
 			      ]
 			    },
@@ -6129,6 +5709,39 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "fact_suicide_by_age_have_filter_fact_has_values"
+			        }
+			      ]
+			    },
+			    "fact_mental_health_has_entity__measure_filter_fact_has_values": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_mental_health"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_mental_health": {
+			          "Target": {
+			            "Entity": "fact_mental_health"
+			          }
+			        },
+			        "entity__measure.filter_fact_has_values": {
+			          "Target": {
+			            "Entity": "entity__measure.filter_fact_has_values"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_mental_health"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.filter_fact_has_values"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_mental_health_have_filter_fact_has_values"
 			        }
 			      ]
 			    },
@@ -6360,39 +5973,6 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "dim_ages_have_age_groups"
-			        }
-			      ]
-			    },
-			    "fact_suicide_by_age_has_suicide_rate_per_10_0k": {
-			      "Binding": {
-			        "ConceptualEntity": "fact_suicide_by_age"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "fact_suicide_by_age": {
-			          "Target": {
-			            "Entity": "fact_suicide_by_age"
-			          }
-			        },
-			        "fact_suicide_by_age.suicide_rate_per_10_0k": {
-			          "Target": {
-			            "Entity": "fact_suicide_by_age.suicide_rate_per_10_0k"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "fact_suicide_by_age"
-			            },
-			            "Object": {
-			              "Role": "fact_suicide_by_age.suicide_rate_per_10_0k"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "fact_suicide_by_age_have_suicide_rate_per_10_0k"
 			        }
 			      ]
 			    },
@@ -7254,7 +6834,7 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "fact_suicide_by_age_has_entity__measure_top_country_rate": {
+			    "fact_suicide_by_age_has_entity__measure_highest_country_rate": {
 			      "Binding": {
 			        "ConceptualEntity": "fact_suicide_by_age"
 			      },
@@ -7265,9 +6845,9 @@ cultureInfo en-US
 			            "Entity": "fact_suicide_by_age"
 			          }
 			        },
-			        "entity__measure.top_country_rate": {
+			        "entity__measure.highest_country_rate": {
 			          "Target": {
-			            "Entity": "entity__measure.top_country_rate"
+			            "Entity": "entity__measure.highest_country_rate"
 			          }
 			        }
 			      },
@@ -7278,16 +6858,16 @@ cultureInfo en-US
 			              "Role": "fact_suicide_by_age"
 			            },
 			            "Object": {
-			              "Role": "entity__measure.top_country_rate"
+			              "Role": "entity__measure.highest_country_rate"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "fact_suicide_by_age_have_top_country_rate"
+			          "ID": "fact_suicide_by_age_have_highest_country_rate"
 			        }
 			      ]
 			    },
-			    "dim_age_has_entity__measure_top_country_rate": {
+			    "dim_age_has_entity__measure_highest_country_rate": {
 			      "Binding": {
 			        "ConceptualEntity": "dim_age"
 			      },
@@ -7298,9 +6878,9 @@ cultureInfo en-US
 			            "Entity": "dim_age"
 			          }
 			        },
-			        "entity__measure.top_country_rate": {
+			        "entity__measure.highest_country_rate": {
 			          "Target": {
-			            "Entity": "entity__measure.top_country_rate"
+			            "Entity": "entity__measure.highest_country_rate"
 			          }
 			        }
 			      },
@@ -7311,45 +6891,12 @@ cultureInfo en-US
 			              "Role": "dim_age"
 			            },
 			            "Object": {
-			              "Role": "entity__measure.top_country_rate"
+			              "Role": "entity__measure.highest_country_rate"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "dim_ages_have_top_country_rate"
-			        }
-			      ]
-			    },
-			    "dim_country_has_entity__measure_top_country_name": {
-			      "Binding": {
-			        "ConceptualEntity": "dim_country"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "dim_country": {
-			          "Target": {
-			            "Entity": "dim_country"
-			          }
-			        },
-			        "entity__measure.top_country_name": {
-			          "Target": {
-			            "Entity": "entity__measure.top_country_name"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "dim_country"
-			            },
-			            "Object": {
-			              "Role": "entity__measure.top_country_name"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "dim_countries_have_top_country_name"
+			          "ID": "dim_ages_have_highest_country_rate"
 			        }
 			      ]
 			    },
@@ -7650,39 +7197,6 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "dim_year_has_date": {
-			      "Binding": {
-			        "ConceptualEntity": "dim_year"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "dim_year": {
-			          "Target": {
-			            "Entity": "dim_year"
-			          }
-			        },
-			        "dim_year.date": {
-			          "Target": {
-			            "Entity": "dim_year.date"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "dim_year"
-			            },
-			            "Object": {
-			              "Role": "dim_year.date"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "dim_years_have_dates"
-			        }
-			      ]
-			    },
 			    "dim_year_has_period_label": {
 			      "Binding": {
 			        "ConceptualEntity": "dim_year"
@@ -7914,39 +7428,6 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "dim_country_has_country_code": {
-			      "Binding": {
-			        "ConceptualEntity": "dim_country"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "dim_country": {
-			          "Target": {
-			            "Entity": "dim_country"
-			          }
-			        },
-			        "dim_country.country_code": {
-			          "Target": {
-			            "Entity": "dim_country.country_code"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "dim_country"
-			            },
-			            "Object": {
-			              "Role": "dim_country.country_code"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "dim_countries_have_country_codes"
-			        }
-			      ]
-			    },
 			    "fact_suicide_by_age_in_dim_country": {
 			      "Binding": {
 			        "ConceptualEntity": "fact_suicide_by_age"
@@ -8127,51 +7608,6 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "dim_country_in_entity__measure_top_country_name": {
-			      "Binding": {
-			        "ConceptualEntity": "dim_country"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "dim_country": {
-			          "Target": {
-			            "Entity": "dim_country"
-			          }
-			        },
-			        "entity__measure.top_country_name": {
-			          "Target": {
-			            "Entity": "entity__measure.top_country_name"
-			          }
-			        }
-			      },
-			      "SemanticSlots": {
-			        "Where": {
-			          "Role": "entity__measure.top_country_name"
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Preposition": {
-			            "Subject": {
-			              "Role": "dim_country"
-			            },
-			            "Prepositions": [
-			              {
-			                "in": {
-			                  "State": "Generated"
-			                }
-			              }
-			            ],
-			            "Object": {
-			              "Role": "entity__measure.top_country_name"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "dim_countries_are_in_top_country_name"
-			        }
-			      ]
-			    },
 			    "dim_country_in_capital_city": {
 			      "Binding": {
 			        "ConceptualEntity": "dim_country"
@@ -8304,51 +7740,6 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "dim_countries_are_in_countries"
-			        }
-			      ]
-			    },
-			    "dim_country_in_country_code": {
-			      "Binding": {
-			        "ConceptualEntity": "dim_country"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "dim_country": {
-			          "Target": {
-			            "Entity": "dim_country"
-			          }
-			        },
-			        "dim_country.country_code": {
-			          "Target": {
-			            "Entity": "dim_country.country_code"
-			          }
-			        }
-			      },
-			      "SemanticSlots": {
-			        "Where": {
-			          "Role": "dim_country.country_code"
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Preposition": {
-			            "Subject": {
-			              "Role": "dim_country"
-			            },
-			            "Prepositions": [
-			              {
-			                "in": {
-			                  "State": "Generated"
-			                }
-			              }
-			            ],
-			            "Object": {
-			              "Role": "dim_country.country_code"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "dim_countries_are_in_country_codes"
 			        }
 			      ]
 			    }

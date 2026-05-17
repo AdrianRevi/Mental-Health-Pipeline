@@ -71,8 +71,9 @@
                 }
               },
               "queryRef": "Avg(fact_mental_health.health_expenditure_per_capita)",
-              "nativeQueryRef": "Average of health_expenditure_per_capita",
-              "active": true
+              "nativeQueryRef": "Health Expenditure per Capita (USD)",
+              "active": true,
+              "displayName": "Health Expenditure per Capita (USD)"
             }
           ]
         },

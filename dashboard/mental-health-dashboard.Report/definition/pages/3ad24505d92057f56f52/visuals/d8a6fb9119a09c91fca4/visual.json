@@ -26,7 +26,7 @@
                   "Property": "Latest Year Available"
                 }
               },
-              "queryRef": "_Measures.Year Range",
+              "queryRef": "_Measures.Latest Year Available",
               "nativeQueryRef": "Latest Year Available",
               "displayName": "Latest Year Available",
               "format": "0"

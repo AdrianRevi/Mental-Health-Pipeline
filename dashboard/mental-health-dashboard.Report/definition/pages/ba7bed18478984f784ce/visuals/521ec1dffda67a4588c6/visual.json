@@ -156,7 +156,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Filter by Age'"
+                  "Value": "'Filter by Income Level'"
                 }
               }
             },
