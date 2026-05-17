@@ -65,9 +65,9 @@ table _Measures
 
 	measure 'Top Country Rate' =
 			
-			MAXX(
-			    TOPN(1, dim_country, [Avg Suicide Rate per 100k], DESC),
-			    [Avg Suicide Rate per 100k]
+			CALCULATE(
+			    [Avg Suicide Rate per 100k],
+			    TOPN(1, ALLSELECTED(dim_country), [Avg Suicide Rate per 100k], DESC)
 			)
 		lineageTag: 75ceeaf4-f176-4bca-8339-c63344c37920
 
@@ -96,7 +96,9 @@ table _Measures
 			
 			CALCULATE(
 			    SELECTEDVALUE(dim_country[country]),
-			    TOPN(1, dim_country, [Avg Suicide Rate per 100k], ASC)
+			    TOPN(1,
+			        FILTER(ALLSELECTED(dim_country), [Avg Suicide Rate per 100k] > 0),
+			        [Avg Suicide Rate per 100k], ASC)
 			)
 		lineageTag: 27517c52-6bad-43d2-b773-d3f37b5cb140
 
@@ -133,6 +135,18 @@ table _Measures
 			        )
 			    )
 		lineageTag: ef2f0e78-f694-4155-bc48-d8a67fb2e5ae
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Lowest Country Rate' =
+			
+			CALCULATE(
+			    [Avg Suicide Rate per 100k],
+			    TOPN(1,
+			        FILTER(ALLSELECTED(dim_country), [Avg Suicide Rate per 100k] > 0),
+			        [Avg Suicide Rate per 100k], ASC)
+			)
+		lineageTag: d6069214-e978-45d9-afed-32ce993802a9
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 

@@ -27,8 +27,67 @@
                 }
               },
               "queryRef": "dim_country.country",
-              "nativeQueryRef": "country",
-              "active": true
+              "nativeQueryRef": "Country",
+              "active": true,
+              "displayName": "Country"
+            }
+          ]
+        },
+        "Tooltips": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_country"
+                        }
+                      },
+                      "Property": "region"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(dim_country.region)",
+              "nativeQueryRef": "Region",
+              "displayName": "Region"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_country"
+                        }
+                      },
+                      "Property": "income_level"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(dim_country.income_level)",
+              "nativeQueryRef": "Income Level",
+              "displayName": "Income Level"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Avg Suicide Rate per 100k"
+                }
+              },
+              "queryRef": "_Measures.Avg Suicide Rate per 100k",
+              "nativeQueryRef": "Avg Suicide Rate per 100k"
             }
           ]
         }
@@ -76,28 +135,33 @@
                           "min": {
                             "color": {
                               "Literal": {
-                                "Value": "'#0D1117'"
+                                "Value": "'#1E3A5F'"
                               }
                             }
                           },
                           "mid": {
                             "color": {
                               "Literal": {
-                                "Value": "'#6366F1'"
+                                "Value": "'#0D9488'"
                               }
                             }
                           },
                           "max": {
                             "color": {
                               "Literal": {
-                                "Value": "'#06B6D4'"
+                                "Value": "'#EF4444'"
                               }
                             }
                           },
                           "nullColoringStrategy": {
                             "strategy": {
                               "Literal": {
-                                "Value": "'asZero'"
+                                "Value": "'specificColor'"
+                              }
+                            },
+                            "color": {
+                              "Literal": {
+                                "Value": "'#1E293B'"
                               }
                             }
                           }
@@ -246,6 +310,19 @@
                       "Value": "'#F8FAFC'"
                     }
                   }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }

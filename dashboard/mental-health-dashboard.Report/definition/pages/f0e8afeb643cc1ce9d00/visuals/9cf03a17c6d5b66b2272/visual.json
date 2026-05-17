@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.1.0/schema.json",
-  "name": "b7ba8d917dc3dc42dde7",
+  "name": "9cf03a17c6d5b66b2272",
   "position": {
-    "x": 285.20587370603619,
-    "y": 556.46834914199951,
-    "z": 16000,
-    "height": 45.632939792965793,
-    "width": 193.93999412010461,
-    "tabOrder": 16000
+    "x": 713.63636363636363,
+    "y": 621.81818181818176,
+    "z": 4005,
+    "height": 45.454545454545453,
+    "width": 194.54545454545453,
+    "tabOrder": 4005
   },
   "visual": {
     "visualType": "slicer",
@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "dim_age"
+                      "Entity": "fact_suicide_by_age"
                     }
                   },
-                  "Property": "age_label"
+                  "Property": "sex"
                 }
               },
-              "queryRef": "dim_age.age_label",
-              "nativeQueryRef": "age_label",
+              "queryRef": "fact_suicide_by_age.sex",
+              "nativeQueryRef": "sex",
               "active": true
             }
           ]
@@ -41,14 +41,20 @@
             "mode": {
               "expr": {
                 "Literal": {
-                  "Value": "'Dropdown'"
+                  "Value": "'Basic'"
                 }
               }
-            },
-            "isInvertedSelectionMode": {
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "orientation": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "1D"
                 }
               }
             }
@@ -58,17 +64,17 @@
       "selection": [
         {
           "properties": {
-            "singleSelect": {
+            "selectAllCheckboxEnabled": {
               "expr": {
                 "Literal": {
                   "Value": "false"
                 }
               }
             },
-            "selectAllCheckboxEnabled": {
+            "singleSelect": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             }
@@ -78,17 +84,6 @@
       "items": [
         {
           "properties": {
-            "background": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#0F172A'"
-                    }
-                  }
-                }
-              }
-            },
             "fontColor": {
               "solid": {
                 "color": {
@@ -103,16 +98,22 @@
             "textSize": {
               "expr": {
                 "Literal": {
-                  "Value": "8D"
+                  "Value": "11D"
+                }
+              }
+            },
+            "background": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#0F172A'"
+                    }
+                  }
                 }
               }
             }
           }
-        }
-      ],
-      "general": [
-        {
-          "properties": {}
         }
       ],
       "header": [
@@ -143,6 +144,19 @@
           }
         }
       ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
       "title": [
         {
           "properties": {
@@ -156,7 +170,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Filter by Age'"
+                  "Value": "'Filter by Sex'"
                 }
               }
             },
@@ -187,23 +201,10 @@
             }
           }
         }
-      ],
-      "visualHeader": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          }
-        }
       ]
     },
     "syncGroup": {
-      "groupName": "age_label",
+      "groupName": "sex",
       "fieldChanges": true,
       "filterChanges": true
     },
@@ -212,15 +213,15 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "830734a577815586a2c6",
+        "name": "71bd54862018c5d96200",
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "dim_age"
+                "Entity": "fact_suicide_by_age"
               }
             },
-            "Property": "age_label"
+            "Property": "sex"
           }
         },
         "type": "Categorical",
@@ -228,8 +229,8 @@
           "Version": 2,
           "From": [
             {
-              "Name": "d",
-              "Entity": "dim_age",
+              "Name": "f",
+              "Entity": "fact_suicide_by_age",
               "Type": 0
             }
           ],
@@ -244,10 +245,10 @@
                           "Column": {
                             "Expression": {
                               "SourceRef": {
-                                "Source": "d"
+                                "Source": "f"
                               }
                             },
-                            "Property": "age_label"
+                            "Property": "sex"
                           }
                         }
                       ],
@@ -255,7 +256,7 @@
                         [
                           {
                             "Literal": {
-                              "Value": "'All Ages'"
+                              "Value": "'Both'"
                             }
                           }
                         ]

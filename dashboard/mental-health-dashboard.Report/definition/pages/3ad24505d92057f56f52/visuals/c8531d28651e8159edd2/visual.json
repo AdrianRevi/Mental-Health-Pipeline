@@ -203,6 +203,11 @@
         }
       ]
     },
+    "syncGroup": {
+      "groupName": "sex",
+      "fieldChanges": true,
+      "filterChanges": true
+    },
     "drillFilterOtherVisuals": true
   },
   "filterConfig": {

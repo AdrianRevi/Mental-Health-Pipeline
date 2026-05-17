@@ -5261,6 +5261,22 @@ cultureInfo en-US
 			          }
 			        }
 			      ]
+			    },
+			    "entity__measure.avg_suicide_rate_trend_per_100k": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Avg Suicide Rate Trend per 100k"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "avg suicide rate trend per 100k": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
 			    }
 			  },
 			  "Relationships": {
@@ -5670,6 +5686,39 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "dim_countries_have_fact_mental_health"
+			        }
+			      ]
+			    },
+			    "fact_suicide_by_age_has_entity__measure_avg_suicide_rate_trend_per_100k": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_suicide_by_age"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_suicide_by_age": {
+			          "Target": {
+			            "Entity": "fact_suicide_by_age"
+			          }
+			        },
+			        "entity__measure.avg_suicide_rate_trend_per_100k": {
+			          "Target": {
+			            "Entity": "entity__measure.avg_suicide_rate_trend_per_100k"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_suicide_by_age"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.avg_suicide_rate_trend_per_100k"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_suicide_by_age_have_avg_suicide_rate_trend_per_100k"
 			        }
 			      ]
 			    },
