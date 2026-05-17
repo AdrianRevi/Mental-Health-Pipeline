@@ -1944,6 +1944,16 @@ cultureInfo en-US
 			            },
 			            "Weight": 0.504
 			          }
+			        },
+			        {
+			          "Suicide Rate per 100k": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -5277,6 +5287,134 @@ cultureInfo en-US
 			          }
 			        }
 			      ]
+			    },
+			    "entity__measure.lowest_country_rate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Lowest Country Rate"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "lowest country rate": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "rate": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "country rate": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "lowest nation rate": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "lowest location rate": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "nation rate": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "location rate": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "lowest country degree": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "lowest country frequency": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "lowest country percentage": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "lowest country ratio": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "lowest country quotient": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "country degree": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        }
+			      ]
 			    }
 			  },
 			  "Relationships": {
@@ -5686,6 +5824,72 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "dim_countries_have_fact_mental_health"
+			        }
+			      ]
+			    },
+			    "fact_suicide_by_age_has_entity__measure_lowest_country_rate": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_suicide_by_age"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_suicide_by_age": {
+			          "Target": {
+			            "Entity": "fact_suicide_by_age"
+			          }
+			        },
+			        "entity__measure.lowest_country_rate": {
+			          "Target": {
+			            "Entity": "entity__measure.lowest_country_rate"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_suicide_by_age"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.lowest_country_rate"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_suicide_by_age_have_lowest_country_rate"
+			        }
+			      ]
+			    },
+			    "dim_age_has_entity__measure_lowest_country_rate": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_age"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_age": {
+			          "Target": {
+			            "Entity": "dim_age"
+			          }
+			        },
+			        "entity__measure.lowest_country_rate": {
+			          "Target": {
+			            "Entity": "entity__measure.lowest_country_rate"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_age"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.lowest_country_rate"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_ages_have_lowest_country_rate"
 			        }
 			      ]
 			    },
@@ -6709,39 +6913,6 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "fact_suicide_by_age_have_top_country_rate"
-			        }
-			      ]
-			    },
-			    "dim_country_has_entity__measure_top_country_rate": {
-			      "Binding": {
-			        "ConceptualEntity": "dim_country"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "dim_country": {
-			          "Target": {
-			            "Entity": "dim_country"
-			          }
-			        },
-			        "entity__measure.top_country_rate": {
-			          "Target": {
-			            "Entity": "entity__measure.top_country_rate"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "dim_country"
-			            },
-			            "Object": {
-			              "Role": "entity__measure.top_country_rate"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "dim_countries_have_top_country_rate"
 			        }
 			      ]
 			    },

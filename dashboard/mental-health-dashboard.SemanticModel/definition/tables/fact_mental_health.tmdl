@@ -25,12 +25,12 @@ table fact_mental_health
 	column gdp_per_capita
 		dataType: double
 		lineageTag: a9e4ec73-7cbe-4e5c-bd02-d86b084175b2
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: gdp_per_capita
 
 		changedProperty = IsHidden
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 

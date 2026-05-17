@@ -113,14 +113,71 @@ Mismo canvas `1280×720`. El mapa ocupa el espacio dominante — layout asimétr
 ---
 
 ### Página 3 — Socioeconomic Correlations
-Cuenta la historia analítica — relación entre economía y salud mental.
 
-**Visuals:**
-- Scatter plot: `gdp_per_capita` (eje X) vs `suicide_rate_per_100k` (eje Y), puntos = países, color = región
-- Scatter plot: `unemployment_rate` (eje X) vs `suicide_rate_per_100k` (eje Y), color = income level
-- Tabla resumen: correlaciones por región
+#### Fondo Figma
+Mismo canvas `1280×720`. Layout simétrico: 2 columnas × 2 filas de scatter/bar plots, fila de slicers al pie.
 
-**Filtros:** slicer de año, slicer de región
+#### Paleta de acentos
+| Color | Hex | Aparece en |
+|---|---|---|
+| Indigo | `#6366F1` | Scatter GDP · Slicer Year |
+| Violet | `#8B5CF6` | Scatter Youth Unemp · Slicer Income |
+| Cyan | `#06B6D4` | Bar Male vs Female |
+| Teal | `#0D9488` | Scatter Health Exp · Slicer Region |
+
+#### Cards — layout exacto
+| Card Figma | X | Y | W | H | Accent | Visual Power BI |
+|---|---|---|---|---|---|---|
+| `card-scatter-gdp` | 156 | 96 | 548 | 229 | Indigo | Scatter GDP vs Suicide |
+| `card-scatter-youth` | 716 | 96 | 548 | 229 | Violet | Scatter Youth Unemp vs Suicide |
+| `card-bar-sex` | 156 | 337 | 548 | 229 | Cyan | Bar Male vs Female by Age Group |
+| `card-scatter-health` | 716 | 337 | 548 | 229 | Teal | Scatter Health Exp vs Suicide |
+| `card-slicer-year` | 156 | 578 | 360 | 104 | Indigo | Slicer año |
+| `card-slicer-region` | 528 | 578 | 360 | 104 | Teal | Slicer región |
+| `card-slicer-income` | 900 | 578 | 364 | 104 | Violet | Slicer income level |
+
+#### Visuals — detalle de campos
+
+**Scatter 1 — GDP per capita vs Suicide Rate**
+- Eje X: `fact_mental_health[gdp_per_capita]`
+- Eje Y: `Avg Suicide Rate per 100k` (medida)
+- Details: `dim_country[country]`
+- Color: `dim_country[region]`
+- Trend line activado
+- Fuente: `fact_mental_health`
+
+**Scatter 2 — Youth Unemployment vs Suicide Rate**
+- Eje X: `fact_mental_health[youth_unemployment_rate]`
+- Eje Y: `Avg Suicide Rate per 100k` (medida)
+- Details: `dim_country[country]`
+- Color: `dim_country[income_level]`
+- Fuente: `fact_mental_health`
+
+**Bar — Male vs Female Suicide Rate by Age Group**
+- Eje Y: `dim_age[age_label]`
+- Eje X: medida de tasa filtrada por sexo (Male / Female)
+- Dos series: Male `#06B6D4` · Female `#8B5CF6`
+- Sorted by `dim_age[age_order]`
+- Fuente: `fact_suicide_by_age`
+
+**Scatter 3 — Health Expenditure % GDP vs Suicide Rate**
+- Eje X: `fact_mental_health[health_expenditure_gdp_pct]`
+- Eje Y: `Avg Suicide Rate per 100k` (medida)
+- Details: `dim_country[country]`
+- Color: `dim_country[region]`
+- Fuente: `fact_mental_health`
+
+**Slicers**
+- Año: `dim_year[year]` — Between
+- Región: `dim_country[region]` — Dropdown
+- Income level: `dim_country[income_level]` — Dropdown
+
+#### Notas de datos
+- `gdp_per_capita` — cobertura ~100%
+- `youth_unemployment_rate` — cobertura ~83%
+- `health_expenditure_gdp_pct` — cobertura ~85%
+- `gini_index` descartado — 72.6% nulos (insuficiente para scatter)
+- WHO facility indicators descartados — ~97% nulos
 
 ---
 
