@@ -1,5 +1,4 @@
 table fact_mental_health
-	isHidden
 	lineageTag: bc3ffce8-1202-4cd4-b605-84306931116d
 
 	column country_code
@@ -40,7 +39,6 @@ table fact_mental_health
 
 	column unemployment_rate
 		dataType: double
-		isHidden
 		lineageTag: 6cb8a35b-5f70-4f71-aebd-1c479d723634
 		summarizeBy: sum
 		sourceColumn: unemployment_rate

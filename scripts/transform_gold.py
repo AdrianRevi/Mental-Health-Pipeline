@@ -25,6 +25,7 @@ import os
 from datetime import datetime
 
 import pandas as pd
+from datetime import datetime
 
 # ---------------------------------------------------------------------------
 # Logging
@@ -71,9 +72,14 @@ def build_dim_country() -> pd.DataFrame:
 
     df = df.rename(columns={"country_name": "country"})
 
+    # Convert lat/lon from string to float (empty strings → NaN)
+    df["latitude"]  = pd.to_numeric(df["latitude"],  errors="coerce")
+    df["longitude"] = pd.to_numeric(df["longitude"], errors="coerce")
+
     # Keep only the columns Power BI needs
     df = df[
-        ["country_code", "country", "region", "income_level", "capital_city"]
+        ["country_code", "country", "region", "income_level", "capital_city",
+         "latitude", "longitude"]
     ].reset_index(drop=True)
 
     log.info("dim_country: %d countries", len(df))
@@ -84,7 +90,7 @@ def build_dim_country() -> pd.DataFrame:
 # dim_year
 # ---------------------------------------------------------------------------
 
-def build_dim_year(year_min: int = 2000, year_max: int = 2024) -> pd.DataFrame:
+def build_dim_year(year_min: int = 2000, year_max: int = None) -> pd.DataFrame:
     """
     Generates one row per year with decade and period label.
 
@@ -92,6 +98,8 @@ def build_dim_year(year_min: int = 2000, year_max: int = 2024) -> pd.DataFrame:
     date range of the pipeline.  In Power BI you would typically connect
     a full Date table, but for yearly data this simpler version is enough.
     """
+    if year_max is None:
+        year_max = datetime.now().year
     years = list(range(year_min, year_max + 1))
     df = pd.DataFrame({"year": years})
 

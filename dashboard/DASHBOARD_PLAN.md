@@ -4,7 +4,7 @@
 
 ---
 
-### Página 1 — Overview
+### Página 1 — Overview ✅ COMPLETADA
 Portada ejecutiva con los números clave de un vistazo.
 
 #### Fondo Figma
@@ -70,14 +70,45 @@ Todas las cards: Fill `#0C0C10` · Stroke `#17171F` 0.8px · Corner radius 8 · 
 ---
 
 ### Página 2 — World Map
-El visual más impactante — mapa coroplético mundial.
 
-**Visuals:**
-- Filled map: `suicide_rate_per_100k` por país (color gradient)
-- Tooltips: país, región, income level, tasa, año
-- KPI card con el país más alto y más bajo del año seleccionado
+#### Fondo Figma
+Mismo canvas `1280×720`. El mapa ocupa el espacio dominante — layout asimétrico: mapa grande izquierda/centro, KPIs columna derecha, slicers fila inferior.
 
-**Filtros:** slicer de año, slicer de región, slicer de income level
+#### Paleta de acentos
+| Color | Hex | Aparece en |
+|---|---|---|
+| Teal | `#0D9488` | Mapa · Slicer Region |
+| Cyan | `#06B6D4` | KPI Lowest · Slicer Region |
+| Indigo | `#6366F1` | Slicer Year |
+| Violet | `#8B5CF6` | KPI Highest · Slicer Income |
+
+#### Cards — layout exacto
+| Card Figma | X | Y | W | H | Accent | Visual Power BI |
+|---|---|---|---|---|---|---|
+| `card-map` | 156 | 96 | 780 | 470 | Teal | Filled map |
+| `card-kpi-highest` | 948 | 96 | 316 | 287 | Violet | KPI país mayor tasa |
+| `card-kpi-lowest` | 948 | 395 | 316 | 287 | Cyan | KPI país menor tasa |
+| `card-slicer-year` | 156 | 578 | 252 | 104 | Indigo | Slicer año |
+| `card-slicer-region` | 420 | 578 | 252 | 104 | Teal | Slicer región |
+| `card-slicer-income` | 684 | 578 | 252 | 104 | Violet | Slicer income level |
+
+#### Visuals — detalle de campos
+
+**Filled map**
+- Location: `dim_country[country]`
+- Color saturation: `Avg Suicide Rate per 100k`
+- Tooltips: country, region, income_level, Avg Suicide Rate per 100k
+
+**KPI Highest Rate Country**
+- Medidas: `Highest Rate Country` + `Top Country Rate`
+
+**KPI Lowest Rate Country**
+- Medidas: `Lowest Rate Country` + medida `Lowest Country Rate` (pendiente)
+
+**Slicers**
+- Año: `dim_year[year]` — Between
+- Región: `dim_country[region]` — Dropdown
+- Income level: `dim_country[income_level]` — Dropdown
 
 ---
 

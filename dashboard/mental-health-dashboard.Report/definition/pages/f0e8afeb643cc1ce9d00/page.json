@@ -14,7 +14,7 @@
               "name": {
                 "expr": {
                   "Literal": {
-                    "Value": "'PBI Background.png'"
+                    "Value": "'PBI Background- World Map.png'"
                   }
                 }
               },
@@ -23,7 +23,7 @@
                   "ResourcePackageItem": {
                     "PackageName": "RegisteredResources",
                     "PackageType": 1,
-                    "ItemName": "PBI_Background7948664786861951.png"
+                    "ItemName": "PBI_Background-_World_Map5788871548744418.png"
                   }
                 }
               },

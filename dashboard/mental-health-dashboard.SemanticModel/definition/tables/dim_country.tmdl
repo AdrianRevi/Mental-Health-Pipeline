@@ -12,6 +12,7 @@ table dim_country
 	column country
 		dataType: string
 		lineageTag: 4d6ad83b-b020-4477-8d0a-5a1f67ebd262
+		dataCategory: Country
 		summarizeBy: none
 		sourceColumn: country
 
@@ -20,6 +21,7 @@ table dim_country
 	column region
 		dataType: string
 		lineageTag: 347e934a-337c-4e64-acb1-61270d5aa7c6
+		dataCategory: Country
 		summarizeBy: none
 		sourceColumn: region
 
@@ -36,10 +38,33 @@ table dim_country
 	column capital_city
 		dataType: string
 		lineageTag: 527b02ff-a7d6-4ade-8c09-a2379a59bce3
+		dataCategory: City
 		summarizeBy: none
 		sourceColumn: capital_city
 
 		annotation SummarizationSetBy = Automatic
+
+	column latitude
+		dataType: double
+		lineageTag: e8370865-4eb2-4c50-b9f0-1cbbee198b9d
+		dataCategory: Latitude
+		summarizeBy: none
+		sourceColumn: latitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column longitude
+		dataType: double
+		lineageTag: b23a6cb3-5e5d-4528-bc59-2045a6137928
+		dataCategory: Longitude
+		summarizeBy: none
+		sourceColumn: longitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	partition dim_country = m
 		mode: import
