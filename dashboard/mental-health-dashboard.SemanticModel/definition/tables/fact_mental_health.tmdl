@@ -3,6 +3,7 @@ table fact_mental_health
 
 	column country_code
 		dataType: string
+		isHidden
 		lineageTag: ad894ac7-3e87-4917-8f9c-917422d3337e
 		summarizeBy: none
 		sourceColumn: country_code
@@ -13,6 +14,7 @@ table fact_mental_health
 
 	column year
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: 1748a390-50cd-4bb9-898f-887135c9b544
 		summarizeBy: none

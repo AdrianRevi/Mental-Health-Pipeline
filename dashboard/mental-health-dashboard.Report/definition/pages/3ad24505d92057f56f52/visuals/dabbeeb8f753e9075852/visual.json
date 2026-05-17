@@ -17,28 +17,17 @@
           "projections": [
             {
               "field": {
-                "HierarchyLevel": {
+                "Column": {
                   "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "dim_year"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "date"
-                        }
-                      },
-                      "Hierarchy": "Date Hierarchy"
+                    "SourceRef": {
+                      "Entity": "dim_year"
                     }
                   },
-                  "Level": "Year"
+                  "Property": "year"
                 }
               },
-              "queryRef": "dim_year.date.Variation.Date Hierarchy.Year",
-              "nativeQueryRef": "date Year",
+              "queryRef": "dim_year.year",
+              "nativeQueryRef": "year",
               "active": true
             }
           ]
@@ -66,27 +55,16 @@
         "sort": [
           {
             "field": {
-              "HierarchyLevel": {
+              "Measure": {
                 "Expression": {
-                  "Hierarchy": {
-                    "Expression": {
-                      "PropertyVariationSource": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "dim_year"
-                          }
-                        },
-                        "Name": "Variation",
-                        "Property": "date"
-                      }
-                    },
-                    "Hierarchy": "Date Hierarchy"
+                  "SourceRef": {
+                    "Entity": "_Measures"
                   }
                 },
-                "Level": "Year"
+                "Property": "Avg Suicide Rate Trend per 100k"
               }
             },
-            "direction": "Ascending"
+            "direction": "Descending"
           }
         ],
         "isDefaultSort": true

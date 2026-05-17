@@ -3,9 +3,12 @@ table dim_country
 
 	column country_code
 		dataType: string
+		isHidden
 		lineageTag: 9d8bf070-3229-4a79-ba55-4de2cc0f5b0d
 		summarizeBy: none
 		sourceColumn: country_code
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -21,7 +24,6 @@ table dim_country
 	column region
 		dataType: string
 		lineageTag: 347e934a-337c-4e64-acb1-61270d5aa7c6
-		dataCategory: Country
 		summarizeBy: none
 		sourceColumn: region
 
@@ -48,7 +50,7 @@ table dim_country
 		dataType: double
 		lineageTag: e8370865-4eb2-4c50-b9f0-1cbbee198b9d
 		dataCategory: Latitude
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: latitude
 
 		annotation SummarizationSetBy = Automatic
@@ -59,7 +61,7 @@ table dim_country
 		dataType: double
 		lineageTag: b23a6cb3-5e5d-4528-bc59-2045a6137928
 		dataCategory: Longitude
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: longitude
 
 		annotation SummarizationSetBy = Automatic

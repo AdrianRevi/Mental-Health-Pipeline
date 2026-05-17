@@ -17,28 +17,17 @@
           "projections": [
             {
               "field": {
-                "HierarchyLevel": {
+                "Column": {
                   "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "dim_year"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "date"
-                        }
-                      },
-                      "Hierarchy": "Date Hierarchy"
+                    "SourceRef": {
+                      "Entity": "dim_year"
                     }
                   },
-                  "Level": "Year"
+                  "Property": "year"
                 }
               },
-              "queryRef": "dim_year.date.Variation.Date Hierarchy.Year",
-              "nativeQueryRef": "date Year",
+              "queryRef": "dim_year.year",
+              "nativeQueryRef": "year",
               "active": true
             }
           ]
@@ -48,24 +37,13 @@
         "sort": [
           {
             "field": {
-              "HierarchyLevel": {
+              "Column": {
                 "Expression": {
-                  "Hierarchy": {
-                    "Expression": {
-                      "PropertyVariationSource": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "dim_year"
-                          }
-                        },
-                        "Name": "Variation",
-                        "Property": "date"
-                      }
-                    },
-                    "Hierarchy": "Date Hierarchy"
+                  "SourceRef": {
+                    "Entity": "dim_year"
                   }
                 },
-                "Level": "Year"
+                "Property": "year"
               }
             },
             "direction": "Ascending"
@@ -168,24 +146,13 @@
                       "Comparison": {
                         "ComparisonKind": 4,
                         "Left": {
-                          "HierarchyLevel": {
+                          "Column": {
                             "Expression": {
-                              "Hierarchy": {
-                                "Expression": {
-                                  "PropertyVariationSource": {
-                                    "Expression": {
-                                      "SourceRef": {
-                                        "Source": "d"
-                                      }
-                                    },
-                                    "Name": "Variation",
-                                    "Property": "date"
-                                  }
-                                },
-                                "Hierarchy": "Date Hierarchy"
+                              "SourceRef": {
+                                "Source": "d"
                               }
                             },
-                            "Level": "Year"
+                            "Property": "year"
                           }
                         },
                         "Right": {
@@ -339,27 +306,17 @@
         "name": "77bf8b053d008418ad43",
         "ordinal": 1,
         "field": {
-          "HierarchyLevel": {
+          "Column": {
             "Expression": {
-              "Hierarchy": {
-                "Expression": {
-                  "PropertyVariationSource": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "dim_year"
-                      }
-                    },
-                    "Name": "Variation",
-                    "Property": "date"
-                  }
-                },
-                "Hierarchy": "Date Hierarchy"
+              "SourceRef": {
+                "Entity": "dim_year"
               }
             },
-            "Level": "Year"
+            "Property": "date"
           }
         },
-        "type": "Advanced"
+        "type": "Advanced",
+        "howCreated": "User"
       }
     ],
     "filterSortOrder": "Custom"

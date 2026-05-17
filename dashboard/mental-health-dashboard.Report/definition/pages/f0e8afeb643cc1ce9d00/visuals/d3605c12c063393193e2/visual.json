@@ -23,7 +23,7 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Top Country Rate"
+                  "Property": "Highest Country Rate"
                 }
               },
               "queryRef": "_Measures.Top Country Rate",
@@ -75,7 +75,7 @@
                     "Entity": "_Measures"
                   }
                 },
-                "Property": "Top Country Rate"
+                "Property": "Highest Country Rate"
               }
             },
             "direction": "Descending"

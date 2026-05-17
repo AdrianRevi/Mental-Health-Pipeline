@@ -22,28 +22,28 @@ table _Measures
 			        KEEPFILTERS(fact_suicide_by_age[age_group] <> "All Ages"),
 			        KEEPFILTERS(fact_suicide_by_age[sex] <> "Both"))
 			)
+		formatString: #,0.00
+		displayFolder: Core Rates
 		lineageTag: 3d1261f9-6c23-4464-befd-3d37e33ecee5
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Countries Count' =
 			
 			DISTINCTCOUNT(dim_country[country])
 		formatString: #,0
+		displayFolder: _Utility
 		lineageTag: ecfb1fe7-9201-43f0-b3df-4b5ea6809f65
 
 	measure 'Latest Year Available' =
 			
-			FORMAT(
-			    CALCULATE(
-			        MAX(fact_mental_health[year]),
-			        FILTER(
-			            ALL(fact_mental_health),
-			            NOT ISBLANK(fact_mental_health[suicide_rate_per_100k])
-			        )
-			    ),
-			    "0"
+			CALCULATE(
+			    MAX(fact_mental_health[year]),
+			    FILTER(
+			        ALL(fact_mental_health),
+			        NOT ISBLANK(fact_mental_health[suicide_rate_per_100k])
+			    )
 			)
+		formatString: 0
+		displayFolder: YoY
 		lineageTag: 7d09ed95-dd85-4aa4-a5c2-c80f04c7885d
 
 	measure 'Male Female Ratio' =
@@ -53,25 +53,18 @@ table _Measures
 			RETURN
 			    IF(female_rate <> 0, DIVIDE(male_rate, female_rate), BLANK())
 		formatString: #,0.00
+		displayFolder: Gender
 		lineageTag: f9e3941a-99a8-4e74-b1d2-5392489bb6cc
 
-	measure 'Top Country Name' =
-			
-			CALCULATE(
-			    SELECTEDVALUE(dim_country[country]),
-			    TOPN(1, dim_country, [Avg Suicide Rate per 100k], DESC)
-			)
-		lineageTag: da49fa9e-91d6-4f35-9419-20d24b4b209d
-
-	measure 'Top Country Rate' =
+	measure 'Highest Country Rate' =
 			
 			CALCULATE(
 			    [Avg Suicide Rate per 100k],
 			    TOPN(1, ALLSELECTED(dim_country), [Avg Suicide Rate per 100k], DESC)
 			)
+		formatString: #,0.00
+		displayFolder: Rankings
 		lineageTag: 75ceeaf4-f176-4bca-8339-c63344c37920
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'YoY Change Suicide Rate' =
 			
@@ -80,9 +73,9 @@ table _Measures
 			VAR PrevRate    = CALCULATE([Avg Suicide Rate per 100k], dim_year[year] = CurrentYear - 1)
 			RETURN
 			IF(ISBLANK(PrevRate), BLANK(), CurrentRate - PrevRate)
+		formatString: #,0.00
+		displayFolder: YoY
 		lineageTag: 8cd7f456-e6e8-44f9-856c-add771e22ec5
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Highest Rate Country' =
 			
@@ -90,6 +83,7 @@ table _Measures
 			    SELECTEDVALUE(dim_country[country]),
 			    TOPN(1, dim_country, [Avg Suicide Rate per 100k], DESC)
 			)
+		displayFolder: Rankings
 		lineageTag: c1abbd01-3bba-4811-9919-a7b6adf4e95a
 
 	measure 'Lowest Rate Country' =
@@ -100,6 +94,7 @@ table _Measures
 			        FILTER(ALLSELECTED(dim_country), [Avg Suicide Rate per 100k] > 0),
 			        [Avg Suicide Rate per 100k], ASC)
 			)
+		displayFolder: Rankings
 		lineageTag: 27517c52-6bad-43d2-b773-d3f37b5cb140
 
 	measure 'YoY Change Label' =
@@ -113,6 +108,7 @@ table _Measures
 			        "▼ " & FORMAT(ABS(Change), "0.00")
 			    )
 			)
+		displayFolder: YoY
 		lineageTag: a6d224d7-5383-472c-bbfa-03b5616c4d7a
 
 	measure 'Avg Suicide Rate Trend per 100k' =
@@ -134,9 +130,9 @@ table _Measures
 			            fact_suicide_by_age[sex] = "Both"
 			        )
 			    )
+		formatString: #,0.00
+		displayFolder: Core Rates
 		lineageTag: ef2f0e78-f694-4155-bc48-d8a67fb2e5ae
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Lowest Country Rate' =
 			
@@ -146,9 +142,9 @@ table _Measures
 			        FILTER(ALLSELECTED(dim_country), [Avg Suicide Rate per 100k] > 0),
 			        [Avg Suicide Rate per 100k], ASC)
 			)
+		formatString: #,0.00
+		displayFolder: Rankings
 		lineageTag: d6069214-e978-45d9-afed-32ce993802a9
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Male Suicide Rate' =
 			
@@ -156,9 +152,9 @@ table _Measures
 			    AVERAGE(fact_suicide_by_age[suicide_rate_per_100k]),
 			    fact_suicide_by_age[sex] = "Male"
 			)
+		formatString: #,0.00
+		displayFolder: Gender
 		lineageTag: 66a65ba3-9b7c-4f9c-87db-f23629470357
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Female Suicide Rate' =
 			
@@ -166,9 +162,9 @@ table _Measures
 			    AVERAGE(fact_suicide_by_age[suicide_rate_per_100k]),
 			    fact_suicide_by_age[sex] = "Female"
 			)
+		formatString: #,0.00
+		displayFolder: Gender
 		lineageTag: 0597e51b-2e63-4ee5-bf10-a5f77aca7f52
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Filter Fact Has Values' =
 			
@@ -176,14 +172,15 @@ table _Measures
 			    NOT(ISEMPTY(fact_suicide_by_age)) || NOT(ISEMPTY(fact_mental_health))
 			)
 		formatString: 0
+		displayFolder: _Utility
 		lineageTag: 8b058294-9b8e-46f5-abea-6d92a2ed2c96
 
 	measure 'Avg Suicide Rate per 100k (WB)' =
 			
 			AVERAGE(fact_mental_health[suicide_rate_per_100k])
+		formatString: #,0.00
+		displayFolder: Core Rates
 		lineageTag: 6ed4a4e0-d809-4756-a2f9-c7e7e75d0964
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column Value
 		isHidden

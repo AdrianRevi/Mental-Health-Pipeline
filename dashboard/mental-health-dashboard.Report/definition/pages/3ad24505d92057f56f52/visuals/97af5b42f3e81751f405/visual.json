@@ -23,11 +23,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Top Country Name"
+                  "Property": "Highest Rate Country"
                 }
               },
-              "queryRef": "_Measures.Top Country Name",
-              "nativeQueryRef": "Top Country Name"
+              "queryRef": "_Measures.Highest Rate Country",
+              "nativeQueryRef": "Highest Rate Country"
             }
           ]
         }

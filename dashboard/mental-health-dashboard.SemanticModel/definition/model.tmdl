@@ -1,14 +1,14 @@
 model Model
 	culture: en-US
 	defaultPowerBIDataSourceVersion: powerBI_V3
-	sourceQueryCulture: es-ES
+	sourceQueryCulture: en-US
 	dataAccessOptions
 		legacyRedirects
 		returnErrorValuesAsNull
 
 annotation PBI_QueryOrder = ["dim_country","dim_year","fact_mental_health","fact_suicide_by_age","dim_age"]
 
-annotation __PBI_TimeIntelligenceEnabled = 1
+annotation __PBI_TimeIntelligenceEnabled = 0
 
 annotation PBIDesktopVersion = 2.146.1026.0 (25.08)+fb98ab832373de81dccd5c01cd96306a48477556
 
@@ -16,8 +16,6 @@ annotation PBI_ProTooling = ["DevMode"]
 
 ref table dim_country
 ref table dim_year
-ref table DateTableTemplate_e76b3f4a-89d4-4351-b2ed-e9f579ff7bd8
-ref table LocalDateTable_ff8da501-ac9e-47ad-bb86-fdb3e3ba601f
 ref table fact_mental_health
 ref table _Measures
 ref table fact_suicide_by_age
