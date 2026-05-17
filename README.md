@@ -8,6 +8,18 @@ An end-to-end ETL pipeline on public mental health data following the **Medallio
 
 ---
 
+## Dashboard Preview
+
+| Overview | World Map |
+|---|---|
+| ![Overview](screenshots/overview.png) | ![World Map](screenshots/world-map.png) |
+
+| Correlations | Resources |
+|---|---|
+| ![Correlations](screenshots/correlations.png) | ![Resources](screenshots/resources.png) |
+
+---
+
 ## Architecture
 
 ```
