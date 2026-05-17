@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.1.0/schema.json",
-  "name": "e8bc980163c1f4ee2860",
+  "name": "5afa255b3038291dff8d",
   "position": {
-    "x": 489.28652111346651,
-    "y": 591.96063564763949,
-    "z": 9000,
+    "x": 1002.6570937843317,
+    "y": 595.76338063038668,
+    "z": 10001,
     "height": 30.421959861977193,
-    "width": 110.27960449966733,
-    "tabOrder": 9000
+    "width": 154.64496263171739,
+    "tabOrder": 10001
   },
   "visual": {
     "visualType": "textbox",
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Filter by Region:",
+                    "value": "Filter by Income Level:",
                     "textStyle": {
                       "fontFamily": "Segoe UI Semibold",
                       "color": "#f8fafc"

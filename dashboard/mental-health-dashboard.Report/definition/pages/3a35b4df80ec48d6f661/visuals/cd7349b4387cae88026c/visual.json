@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.1.0/schema.json",
-  "name": "dd256ef17f8a6b0944b9",
+  "name": "cd7349b4387cae88026c",
   "position": {
-    "x": 713.64847509554829,
-    "y": 626.18534049236393,
-    "z": 11000,
-    "height": 44.365358132050076,
-    "width": 193.93999412010461,
-    "tabOrder": 11000
+    "x": 583.08756402122958,
+    "y": 626,
+    "z": 9000,
+    "height": 45.632939792965793,
+    "width": 244.64326055673325,
+    "tabOrder": 9000
   },
   "visual": {
     "visualType": "slicer",
@@ -23,11 +23,11 @@
                       "Entity": "dim_country"
                     }
                   },
-                  "Property": "income_level"
+                  "Property": "region"
                 }
               },
-              "queryRef": "dim_country.income_level",
-              "nativeQueryRef": "income_level",
+              "queryRef": "dim_country.region",
+              "nativeQueryRef": "region",
               "active": true
             }
           ]
@@ -201,11 +201,6 @@
           }
         }
       ]
-    },
-    "syncGroup": {
-      "groupName": "income_level",
-      "fieldChanges": true,
-      "filterChanges": true
     },
     "drillFilterOtherVisuals": true
   },
