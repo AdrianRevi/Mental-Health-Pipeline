@@ -1,0 +1,53 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.1.0/schema.json",
+  "name": "a46d16b42a726c80da31",
+  "position": {
+    "x": 456.44414858207961,
+    "y": 688.347224071362,
+    "z": 7006,
+    "height": 29.448009585940621,
+    "width": 369.32712022367195,
+    "tabOrder": 7006
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "World Bank Open Data · WHO Global Health Observatory · Adrian Reviriego",
+                    "textStyle": {
+                      "fontSize": "8pt",
+                      "color": "#6b7280"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "center"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

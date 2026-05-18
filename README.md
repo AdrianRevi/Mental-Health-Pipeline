@@ -286,3 +286,8 @@ mental-health-pipeline/
 ├── requirements.txt
 └── README.md
 ```
+
+---
+
+**Data sources:** [World Bank Open Data](https://data.worldbank.org) · [WHO Global Health Observatory](https://www.who.int/data/gho)  
+Built by [Adrian Reviriego](https://www.linkedin.com/in/adrian-reviriego/) · [GitHub](https://github.com/AdrianRevi)

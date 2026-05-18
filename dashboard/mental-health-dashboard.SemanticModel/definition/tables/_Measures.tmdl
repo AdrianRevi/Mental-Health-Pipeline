@@ -35,14 +35,16 @@ table _Measures
 
 	measure 'Latest Year Available' =
 			
-			CALCULATE(
-			    MAX(fact_mental_health[year]),
-			    FILTER(
-			        ALL(fact_mental_health),
-			        NOT ISBLANK(fact_mental_health[suicide_rate_per_100k])
+			FORMAT(
+			    CALCULATE(
+			        MAX(fact_mental_health[year]),
+			        FILTER(
+			            ALL(fact_mental_health),
+			            NOT ISBLANK(fact_mental_health[suicide_rate_per_100k])
+			        )
 			    )
+			    ,"0"
 			)
-		formatString: 0
 		displayFolder: YoY
 		lineageTag: 7d09ed95-dd85-4aa4-a5c2-c80f04c7885d
 
